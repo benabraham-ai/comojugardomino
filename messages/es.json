@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "blog": "Blog",
+    "about": "Sobre Nosotros",
+    "play": "Jugar Ahora"
+  },
+  "home": {
+    "hero_title": "Aprende a Jugar Domino",
+    "hero_subtitle": "Reglas, estrategias y cultura del domino latinoamericano. Todo lo que necesitas para dominar la mesa.",
+    "hero_cta": "Jugar Domino Live",
+    "featured_title": "Articulos Recientes",
+    "featured_view_all": "Ver todos los articulos"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Aprende todo sobre el domino: reglas, estrategias, y cultura.",
+    "read_more": "Leer mas",
+    "min_read": "min de lectura",
+    "back_to_blog": "Volver al blog",
+    "share": "Compartir",
+    "tags": "Etiquetas"
+  },
+  "about": {
+    "title": "Sobre Nosotros",
+    "description": "Somos un equipo apasionado por el domino latinoamericano. Nuestra mision es preservar y compartir la tradicion del domino con el mundo.",
+    "play_cta": "Juega Domino Live gratis"
+  },
+  "footer": {
+    "tagline": "La guia definitiva del domino latinoamericano.",
+    "play": "Jugar Domino Live",
+    "rights": "Todos los derechos reservados."
+  }
+}

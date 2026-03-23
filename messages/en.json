@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "home": "Home",
+    "blog": "Blog",
+    "about": "About",
+    "play": "Play Now"
+  },
+  "home": {
+    "hero_title": "Learn to Play Dominoes",
+    "hero_subtitle": "Rules, strategies, and culture of Latin American dominoes. Everything you need to master the table.",
+    "hero_cta": "Play Domino Live",
+    "featured_title": "Recent Articles",
+    "featured_view_all": "View all articles"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Learn everything about dominoes: rules, strategies, and culture.",
+    "read_more": "Read more",
+    "min_read": "min read",
+    "back_to_blog": "Back to blog",
+    "share": "Share",
+    "tags": "Tags"
+  },
+  "about": {
+    "title": "About Us",
+    "description": "We are a team passionate about Latin American dominoes. Our mission is to preserve and share the domino tradition with the world.",
+    "play_cta": "Play Domino Live for free"
+  },
+  "footer": {
+    "tagline": "The definitive guide to Latin American dominoes.",
+    "play": "Play Domino Live",
+    "rights": "All rights reserved."
+  }
+}
