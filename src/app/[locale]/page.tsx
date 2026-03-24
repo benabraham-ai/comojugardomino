@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/routing";
 import { routing } from "@/i18n/routing";
 import { DominoIcon, SignalBars } from "@/components/icons";
+import { WebsiteSchema, OrganizationSchema } from "@/components/schema";
 
 
 export function generateStaticParams() {
@@ -31,6 +32,10 @@ export default function HomePage({
 
   return (
     <>
+      {/* Schema.org Structured Data */}
+      <WebsiteSchema />
+      <OrganizationSchema />
+
       {/* Section 1: Hero Banner */}
       <section className="relative overflow-hidden min-h-[85vh] flex items-center">
         {/* Background — Dark Earth with warm gradients */}

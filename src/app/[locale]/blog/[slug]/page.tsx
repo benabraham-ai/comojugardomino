@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/routing";
 import { getPostBySlug, getAllSlugs } from "@/lib/posts";
 import { MDXRemote } from "@/components/MDXRemote";
+import { ArticleSchema, BreadcrumbSchema } from "@/components/schema";
 import type { Metadata } from "next";
 
 interface Props {
@@ -56,14 +57,34 @@ export default async function BlogPostPage({ params }: Props) {
 
   const t = await getTranslations({ locale: params.locale, namespace: "blog" });
 
+  const baseUrl = "https://comojugardomino.com";
+  const breadcrumbItems = [
+    { name: "Inicio", url: `${baseUrl}/${params.locale}` },
+    { name: "Blog", url: `${baseUrl}/${params.locale}/blog` },
+    { name: post.title, url: `${baseUrl}/${params.locale}/blog/${params.slug}` },
+  ];
+
   return (
-    <article className="max-w-3xl mx-auto px-4 py-12">
-      <Link
-        href="/blog"
-        className="text-sm text-orange hover:text-gold transition-colors mb-6 inline-block"
-      >
-        &larr; {t("back_to_blog")}
-      </Link>
+    <>
+      {/* Schema.org Structured Data */}
+      <ArticleSchema
+        title={post.title}
+        description={post.description}
+        image={post.image}
+        datePublished={post.date}
+        dateModified={post.date}
+        slug={params.slug}
+        locale={params.locale}
+      />
+      <BreadcrumbSchema items={breadcrumbItems} />
+
+      <article className="max-w-3xl mx-auto px-4 py-12">
+        <Link
+          href="/blog"
+          className="text-sm text-orange hover:text-gold transition-colors mb-6 inline-block"
+        >
+          &larr; {t("back_to_blog")}
+        </Link>
 
       {post.image && (
         <img
@@ -104,6 +125,7 @@ export default async function BlogPostPage({ params }: Props) {
       <div className="prose prose-domino prose-lg max-w-none">
         <MDXRemote source={post.content} />
       </div>
-    </article>
+      </article>
+    </>
   );
 }
