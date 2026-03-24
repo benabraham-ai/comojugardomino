@@ -20,13 +20,12 @@ export const CATEGORIES = [
 
 export type Category = (typeof CATEGORIES)[number];
 
-/** Display metadata per category (keyed by i18n message key) 
- * Using Barrio en Fuego palette colors */
+/** Display metadata per category (keyed by i18n message key) */
 export const CATEGORY_META: Record<Category, { colorClass: string }> = {
-  reglas: { colorClass: "bg-caribe-teal/10 text-caribe-teal" },
-  estrategia: { colorClass: "bg-pegue-red/10 text-pegue-red" },
-  cultura: { colorClass: "bg-ficha-gold/10 text-ficha-gold" },
-  psicologia: { colorClass: "bg-mesa/10 text-mesa" },
+  reglas: { colorClass: "bg-green/10 text-green" },
+  estrategia: { colorClass: "bg-orange/10 text-orange" },
+  cultura: { colorClass: "bg-gold/10 text-gold" },
+  psicologia: { colorClass: "bg-teal/10 text-teal" },
   variantes: { colorClass: "bg-cream/10 text-cream" },
 };
 

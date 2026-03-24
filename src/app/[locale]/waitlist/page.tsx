@@ -48,36 +48,36 @@ export default function WaitlistPage() {
     <>
       {/* Hero Section */}
       <section className="relative overflow-hidden min-h-[90vh] flex items-center">
-        {/* Background — Espresso */}
-        <div className="absolute inset-0 bg-espresso" />
-        <div className="absolute inset-0 bg-gradient-to-br from-espresso via-dark-surface to-dark-raised" />
+        {/* Background — Dark Earth */}
+        <div className="absolute inset-0 bg-dark" />
+        <div className="absolute inset-0 bg-gradient-to-br from-dark via-dark-surface to-dark-raised" />
         
         {/* Warm ambient glow */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-gradient-radial from-caribe-teal/15 via-transparent to-transparent rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 left-1/4 w-[350px] h-[350px] bg-gradient-radial from-pegue-red/10 via-transparent to-transparent rounded-full blur-3xl" />
+          <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-gradient-radial from-earth-olive/15 via-transparent to-transparent rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 left-1/4 w-[350px] h-[350px] bg-gradient-radial from-coral/10 via-transparent to-transparent rounded-full blur-3xl" />
         </div>
         
         {/* Decorative domino tiles pattern */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-4 -left-8 w-24 h-48 border-2 border-cream/5 rounded-xl rotate-12 opacity-30" />
           <div className="absolute bottom-20 -right-12 w-28 h-56 border-2 border-cream/5 rounded-xl -rotate-12 opacity-20" />
-          <div className="absolute top-1/4 right-1/3 w-20 h-40 border-2 border-caribe-teal/15 rounded-xl rotate-45 opacity-20" />
+          <div className="absolute top-1/4 right-1/3 w-20 h-40 border-2 border-earth-olive/15 rounded-xl rotate-45 opacity-20" />
           <div className="absolute bottom-1/3 left-1/4 w-16 h-32 border-2 border-cream/5 rounded-xl -rotate-6 opacity-25" />
           
           {/* Domino dots pattern */}
           <div className="absolute top-20 right-20 w-4 h-4 bg-cream/5 rounded-full" />
           <div className="absolute top-28 right-28 w-4 h-4 bg-cream/5 rounded-full" />
           <div className="absolute top-24 right-24 w-4 h-4 bg-cream/5 rounded-full" />
-          <div className="absolute bottom-40 left-40 w-3 h-3 bg-caribe-teal/15 rounded-full" />
-          <div className="absolute bottom-32 left-32 w-3 h-3 bg-caribe-teal/15 rounded-full" />
+          <div className="absolute bottom-40 left-40 w-3 h-3 bg-earth-olive/15 rounded-full" />
+          <div className="absolute bottom-32 left-32 w-3 h-3 bg-earth-olive/15 rounded-full" />
         </div>
 
         <div className="max-w-4xl mx-auto px-4 py-20 sm:py-32 relative z-10 w-full text-center">
           {/* Logo */}
           <div className="flex justify-center mb-8">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-caribe-teal to-mesa rounded-2xl shadow-lg shadow-caribe-teal/30">
-              <DominoIcon name="domino-live-logo" size={48} color="#1C0D00" />
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-earth-olive to-earth-khaki rounded-2xl shadow-lg shadow-earth-olive/30">
+              <DominoIcon name="domino-live-logo" size={48} color="#1A1714" />
             </div>
           </div>
 
@@ -92,7 +92,7 @@ export default function WaitlistPage() {
           </p>
 
           {/* CTA Label */}
-          <p className="mt-10 text-sm font-bold tracking-[0.2em] uppercase text-caribe-teal">
+          <p className="mt-10 text-sm font-bold tracking-[0.2em] uppercase text-earth-olive-light">
             {t("hero_cta")}
           </p>
 
@@ -100,8 +100,8 @@ export default function WaitlistPage() {
           <div className="mt-6 max-w-md mx-auto">
             {status === "success" ? (
               <div className="glass-card rounded-2xl p-8 text-center animate-fade-in">
-                <div className="w-16 h-16 bg-caribe-teal/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-caribe-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-16 h-16 bg-earth-olive/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-earth-olive-light" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
@@ -109,8 +109,8 @@ export default function WaitlistPage() {
               </div>
             ) : status === "duplicate" ? (
               <div className="glass-card rounded-2xl p-8 text-center animate-fade-in">
-                <div className="w-16 h-16 bg-ficha-gold/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-ficha-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-16 h-16 bg-gold/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
@@ -124,12 +124,12 @@ export default function WaitlistPage() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={t("email_placeholder")}
                   required
-                  className="flex-1 px-5 py-4 bg-dark-raised border border-cream/10 rounded-xl text-cream placeholder:text-cream-muted focus:outline-none focus:border-pegue-red focus:ring-1 focus:ring-pegue-red transition-all"
+                  className="flex-1 px-5 py-4 bg-dark-raised border border-cream/10 rounded-xl text-cream placeholder:text-cream-muted focus:outline-none focus:border-coral focus:ring-1 focus:ring-coral transition-all"
                 />
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="btn-teal px-8 py-4 text-white font-bold text-lg rounded-xl disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+                  className="btn-earth-olive px-8 py-4 text-white font-bold text-lg rounded-xl disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
                 >
                   {status === "loading" ? (
                     <span className="flex items-center justify-center gap-2">
@@ -146,14 +146,14 @@ export default function WaitlistPage() {
             )}
             
             {status === "error" && (
-              <p className="mt-3 text-pegue-red text-sm">{errorMessage}</p>
+              <p className="mt-3 text-earth-terracotta text-sm">{errorMessage}</p>
             )}
           </div>
         </div>
       </section>
 
       {/* Trust Bar Section */}
-      <section className="relative py-8 sm:py-10 bg-espresso border-t border-cream/5">
+      <section className="relative py-8 sm:py-10 bg-dark border-t border-cream/5">
         <div className="max-w-4xl mx-auto px-4">
           {/* Row 1: Feature Icons */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 justify-items-center">
@@ -164,7 +164,7 @@ export default function WaitlistPage() {
               { emoji: "📱", key: "trust_mobile" },
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-2">
-                <span className="text-pegue-red text-lg sm:text-xl">{item.emoji}</span>
+                <span className="text-coral text-lg sm:text-xl">{item.emoji}</span>
                 <span className="text-cream-muted text-sm font-medium">{t(item.key)}</span>
               </div>
             ))}
@@ -185,10 +185,10 @@ export default function WaitlistPage() {
         <div className="max-w-5xl mx-auto px-4">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: "users", key: "value_multiplayer", color: "caribe-teal" },
-              { icon: "flag", key: "value_rules", color: "mesa" },
-              { icon: "trophy", key: "value_ranked", color: "pegue-red" },
-              { icon: "heart", key: "value_community", color: "ficha-gold" },
+              { icon: "users", key: "value_multiplayer", color: "earth-olive" },
+              { icon: "flag", key: "value_rules", color: "earth-khaki" },
+              { icon: "trophy", key: "value_ranked", color: "earth-terracotta" },
+              { icon: "heart", key: "value_community", color: "earth-burgundy" },
             ].map((item, i) => (
               <div key={i} className="glass-card rounded-xl p-6 text-center hover:scale-105 transition-transform duration-300">
                 <div className={`w-12 h-12 bg-gradient-to-br from-${item.color} to-${item.color}/60 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-${item.color}/20`}>
@@ -202,21 +202,21 @@ export default function WaitlistPage() {
       </section>
 
       {/* Founders Tournament Section */}
-      <section className="relative py-20 sm:py-28 bg-espresso overflow-hidden">
+      <section className="relative py-20 sm:py-28 bg-dark overflow-hidden">
         {/* Background glow */}
         <div className="absolute inset-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-ficha-gold/10 via-transparent to-transparent rounded-full" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-gold/10 via-transparent to-transparent rounded-full" />
         </div>
 
         <div className="max-w-4xl mx-auto px-4 relative z-10">
-          <div className="glass-card rounded-3xl p-8 sm:p-12 lg:p-16 text-center border-ficha-gold/20">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-pegue-red to-ficha-gold rounded-2xl mb-8 shadow-lg shadow-pegue-red/30">
-              <svg className="w-10 h-10 text-espresso" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div className="glass-card rounded-3xl p-8 sm:p-12 lg:p-16 text-center border-gold/20">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-coral to-gold rounded-2xl mb-8 shadow-lg shadow-coral/30">
+              <svg className="w-10 h-10 text-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
               </svg>
             </div>
             
-            <span className="inline-block px-4 py-1 text-xs font-bold tracking-wider uppercase bg-ficha-gold/20 text-ficha-gold rounded-full mb-6">
+            <span className="inline-block px-4 py-1 text-xs font-bold tracking-wider uppercase bg-gold/20 text-gold rounded-full mb-6">
               {t("tournament_badge")}
             </span>
             
@@ -245,25 +245,25 @@ function ValueIcon({ name }: { name: string }) {
   switch (name) {
     case "users":
       return (
-        <svg className="w-6 h-6 text-espresso" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg className="w-6 h-6 text-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
         </svg>
       );
     case "flag":
       return (
-        <svg className="w-6 h-6 text-espresso" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg className="w-6 h-6 text-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
         </svg>
       );
     case "trophy":
       return (
-        <svg className="w-6 h-6 text-espresso" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg className="w-6 h-6 text-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       );
     case "heart":
       return (
-        <svg className="w-6 h-6 text-espresso" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg className="w-6 h-6 text-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
         </svg>
       );

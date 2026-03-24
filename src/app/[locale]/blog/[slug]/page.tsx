@@ -81,7 +81,7 @@ export default async function BlogPostPage({ params }: Props) {
       <article className="max-w-3xl mx-auto px-4 py-12">
         <Link
           href="/blog"
-          className="text-sm text-pegue-red hover:text-ficha-gold transition-colors mb-6 inline-block"
+          className="text-sm text-orange hover:text-gold transition-colors mb-6 inline-block"
         >
           &larr; {t("back_to_blog")}
         </Link>
@@ -99,7 +99,7 @@ export default async function BlogPostPage({ params }: Props) {
           {post.tags.map((tag) => (
             <span
               key={tag}
-              className="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 bg-pegue-red/10 text-pegue-red rounded"
+              className="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 bg-orange/10 text-orange rounded"
             >
               {tag}
             </span>
@@ -108,7 +108,7 @@ export default async function BlogPostPage({ params }: Props) {
         <h1 className="font-extrabold text-3xl sm:text-4xl leading-tight text-cream">
           {post.title}
         </h1>
-        <div className="mt-3 flex items-center gap-4 text-sm text-cream-muted">
+        <div className="mt-3 flex items-center gap-4 text-sm text-muted">
           <time dateTime={post.date}>
             {new Date(post.date).toLocaleDateString(
               params.locale === "es" ? "es-LA" : "en-US",

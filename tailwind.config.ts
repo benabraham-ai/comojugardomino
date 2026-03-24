@@ -9,146 +9,104 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // ═══════════════════════════════════════════════════════
-        // Barrio en Fuego Palette — Como Jugar Domino
-        // Matching domino-live brand colors
-        // ═══════════════════════════════════════════════════════
-        
+        // V5.2 Dark Earth Palette
         // ── Dark Backgrounds ──
-        espresso: "#1C0D00",           // Dark Base
         dark: {
-          DEFAULT: "#1C0D00",          // primary bg (espresso)
-          surface: "#2A1608",          // nav/surface (between espresso and amber-brown)
-          raised: "#3D1F08",           // raised panels (warm amber brown)
-          deep: "#140A00",             // deepest sections
+          DEFAULT: "#1A1714",      // primary bg (warm near-black)
+          surface: "#211E1A",     // nav/surface
+          raised: "#2A2420",      // raised panels/inputs
+          deep: "#131110",        // deepest sections
         },
-        
-        // ── Surface Colors ──
-        mesa: {
-          DEFAULT: "#C4956A",          // Mesa de Madera (table surface)
-          light: "#D4AA82",
-          dark: "#A67D55",
-        },
-        "amber-brown": "#3D1F08",      // Warm Amber Brown (panels)
-        "mesa-blanca": "#FFF5E0",      // Light Surface
-        
-        // ── Accent Colors ──
-        "pegue-red": {
-          DEFAULT: "#E8391D",          // ¡Me Pegué! Red (primary)
-          light: "#F25438",
-          dark: "#C82D14",
-        },
-        "ficha-gold": {
-          DEFAULT: "#FFB020",          // Ficha Gold (secondary)
-          light: "#FFC04D",
-          dark: "#E69A00",
-        },
-        
-        // ── Interactive ──
-        "caribe-teal": {
-          DEFAULT: "#00A8B0",          // Caribe Teal
-          light: "#00C4CE",
-          dark: "#008A90",
-        },
-        
-        // ── Urgency ──
-        "amber-alert": "#FF8C00",      // Amber Alert
-        
-        // ── Text Colors ──
-        cream: {
-          DEFAULT: "#FFF5E0",          // Mesa Blanca for text
-          secondary: "#E6D9C4",
-          muted: "#B5A38A",
-        },
-        ivory: "#FFF8EB",              // domino tiles
-        
-        // ── Legacy aliases for easier migration ──
-        coral: {
-          DEFAULT: "#E8391D",          // → pegue-red
-          light: "#F25438",
-          dark: "#C82D14",
-        },
-        gold: {
-          DEFAULT: "#FFB020",          // → ficha-gold
-          light: "#FFC04D",
-        },
-        teal: "#00A8B0",               // → caribe-teal
-        orange: "#E8391D",             // → pegue-red
-        green: "#00A8B0",              // → caribe-teal (closest earth alternative)
-        muted: "#B5A38A",
-        near: "#1C0D00",
-        
-        // ── Earth tone variants (for category badges, etc.) ──
+        // ── Earth Tone Cards ──
         earth: {
-          olive: "#6B8A4E",            // warm olive for variety
-          "olive-light": "#8BA66B",
-          khaki: "#C4956A",            // mesa de madera
-          "khaki-light": "#D4AA82",
+          olive: "#6B7C5C",
+          "olive-light": "#8A9972",
+          khaki: "#B5A07A",
+          "khaki-light": "#C9B899",
           brown: "#8B6F4E",
           "brown-light": "#A68963",
           taupe: "#9E9181",
-          terracotta: "#E8391D",       // pegue-red
-          "terracotta-light": "#F25438",
+          terracotta: "#C05C3A",
+          "terracotta-light": "#D4754F",
           burgundy: "#7D2E3B",
         },
-        
-        // ── Walnut aliases (for glass effects) ──
-        walnut: {
-          DEFAULT: "#2A1608",
-          light: "#3D1F08",
-          card: "#3D1F08",
+        // ── Accent Colors ──
+        coral: {
+          DEFAULT: "#E8572A",
+          light: "#F27650",
+          dark: "#D04D24",
         },
+        gold: {
+          DEFAULT: "#C9923A",
+          light: "#D9A854",
+        },
+        // ── Text Colors ──
+        cream: {
+          DEFAULT: "#F5F0E8",
+          secondary: "#C8BC9F",
+          muted: "#9E9181",
+        },
+        ivory: "#F0ECE2",         // domino tiles
+        // ── Legacy aliases (for gradual migration) ──
+        walnut: {
+          DEFAULT: "#211E1A",
+          light: "#2A2420",
+          card: "#2A2420",
+        },
+        orange: "#E8572A",
+        green: "#6B7C5C",
+        teal: "#6B9FBF",
+        near: "#1A1714",
+        muted: "#9E9181",
       },
       fontFamily: {
         outfit: ["var(--font-outfit)", "sans-serif"],
       },
       boxShadow: {
-        glow: "0 0 32px rgba(232, 57, 29, 0.18)",
-        "glow-coral": "0 4px 20px rgba(232, 57, 29, 0.40)",
-        "glow-red": "0 4px 20px rgba(232, 57, 29, 0.40)",
-        "glow-gold": "0 4px 14px rgba(255, 176, 32, 0.35)",
-        "glow-teal": "0 4px 14px rgba(0, 168, 176, 0.35)",
+        glow: "0 0 32px rgba(232, 87, 42, 0.18)",
+        "glow-coral": "0 4px 20px rgba(232, 87, 42, 0.40)",
+        "glow-gold": "0 4px 14px rgba(201, 146, 58, 0.35)",
       },
       typography: {
         domino: {
           css: {
-            "--tw-prose-body": "#FFF5E0",
-            "--tw-prose-headings": "#FFF5E0",
-            "--tw-prose-links": "#E8391D",
-            "--tw-prose-bold": "#FFF5E0",
-            "--tw-prose-quotes": "#E6D9C4",
-            "--tw-prose-code": "#E8391D",
-            color: "#FFF5E0",
+            "--tw-prose-body": "#F5F0E8",
+            "--tw-prose-headings": "#F5F0E8",
+            "--tw-prose-links": "#E8572A",
+            "--tw-prose-bold": "#F5F0E8",
+            "--tw-prose-quotes": "#C8BC9F",
+            "--tw-prose-code": "#E8572A",
+            color: "#F5F0E8",
             a: {
-              color: "#E8391D",
+              color: "#E8572A",
               textDecoration: "underline",
-              textDecorationColor: "#E8391D",
+              textDecorationColor: "#E8572A",
               textUnderlineOffset: "3px",
               "&:hover": {
-                color: "#FFB020",
+                color: "#C9923A",
               },
             },
             blockquote: {
-              borderLeftColor: "#E8391D",
-              color: "#E6D9C4",
+              borderLeftColor: "#E8572A",
+              color: "#C8BC9F",
             },
             strong: {
-              color: "#FFF5E0",
+              color: "#F5F0E8",
             },
             "h2, h3, h4": {
-              color: "#FFF5E0",
+              color: "#F5F0E8",
             },
             th: {
-              color: "#FFF5E0",
+              color: "#F5F0E8",
             },
             "thead th": {
-              borderBottomColor: "#3D1F08",
+              borderBottomColor: "#2A2420",
             },
             "tbody td": {
-              borderBottomColor: "#3D1F08",
+              borderBottomColor: "#2A2420",
             },
             hr: {
-              borderColor: "#3D1F08",
+              borderColor: "#2A2420",
             },
           },
         },

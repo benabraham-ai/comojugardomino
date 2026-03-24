@@ -38,7 +38,7 @@ export function PostCard({ post }: { post: PostMeta }) {
           ))}
         </div>
         <Link href={`/blog/${post.slug}`}>
-          <h2 className="font-bold text-lg text-cream group-hover:text-pegue-red transition-colors mb-2 leading-snug">
+          <h2 className="font-bold text-lg text-cream group-hover:text-coral transition-colors mb-2 leading-snug">
             {post.title}
           </h2>
         </Link>

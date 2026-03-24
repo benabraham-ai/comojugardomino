@@ -33,14 +33,14 @@ export default function AboutPage({ params }: { params: { locale: string } }) {
         {t("description")}
       </p>
 
-      <div className="bg-gradient-to-r from-pegue-red to-ficha-gold rounded-xl p-8">
-        <h2 className="font-extrabold text-2xl mb-3 text-espresso">Domino Live</h2>
-        <p className="text-espresso/80 mb-6">
+      <div className="bg-gradient-to-r from-coral to-gold rounded-xl p-8">
+        <h2 className="font-extrabold text-2xl mb-3 text-dark">Domino Live</h2>
+        <p className="text-dark/80 mb-6">
           {t("play_cta")}
         </p>
         <Link
           href="/waitlist"
-          className="inline-flex items-center px-6 py-3 bg-espresso text-cream font-bold rounded-lg hover:bg-dark-raised transition-colors"
+          className="inline-flex items-center px-6 py-3 bg-dark text-cream font-bold rounded-lg hover:bg-dark-raised transition-colors"
         >
           Domino Live &rarr;
         </Link>
