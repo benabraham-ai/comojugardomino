@@ -38,14 +38,14 @@ export default function HomePage({
 
       {/* Section 1: Hero Banner */}
       <section className="relative overflow-hidden min-h-[85vh] flex items-center">
-        {/* Background — Dark Earth with warm gradients */}
-        <div className="absolute inset-0 bg-dark" />
-        <div className="absolute inset-0 bg-gradient-to-br from-dark via-dark-surface to-dark-raised" />
+        {/* Background — Espresso with warm gradients */}
+        <div className="absolute inset-0 bg-espresso" />
+        <div className="absolute inset-0 bg-gradient-to-br from-espresso via-dark-surface to-dark-raised" />
         
         {/* Warm ambient glow */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-earth-brown/15 via-transparent to-transparent rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-gradient-radial from-earth-olive/10 via-transparent to-transparent rounded-full blur-3xl" />
+          <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-mesa/15 via-transparent to-transparent rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-gradient-radial from-caribe-teal/10 via-transparent to-transparent rounded-full blur-3xl" />
         </div>
         
         {/* Decorative domino tiles pattern — subtle, opacity 0.05-0.07 */}
@@ -53,7 +53,7 @@ export default function HomePage({
           {/* Floating tile accents */}
           <div className="absolute top-[15%] left-[8%] w-10 h-20 border border-cream/5 rounded-lg -rotate-12 opacity-[0.05]" />
           <div className="absolute bottom-[25%] left-[35%] w-7 h-14 border border-cream/5 rounded-lg rotate-[22deg] opacity-[0.06]" />
-          <div className="absolute top-[55%] right-[50%] w-8 h-16 border border-coral/10 rounded-lg -rotate-[7deg] opacity-[0.05]" />
+          <div className="absolute top-[55%] right-[50%] w-8 h-16 border border-pegue-red/10 rounded-lg -rotate-[7deg] opacity-[0.05]" />
         </div>
         
 
@@ -62,7 +62,7 @@ export default function HomePage({
           <div className="max-w-2xl">
             {/* Hero text content */}
             <div className="relative">
-              <p className="text-xs sm:text-sm font-bold tracking-[0.25em] uppercase text-coral mb-6 animate-fade-in">
+              <p className="text-xs sm:text-sm font-bold tracking-[0.25em] uppercase text-pegue-red mb-6 animate-fade-in">
                 {t("hero_title")}
               </p>
               <h1 className="font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight max-w-4xl text-cream">
@@ -95,7 +95,7 @@ export default function HomePage({
       </section>
 
       {/* Social Proof Banner */}
-      <section className="relative py-10 sm:py-12 bg-dark border-t border-cream/5">
+      <section className="relative py-10 sm:py-12 bg-espresso border-t border-cream/5">
         <div className="max-w-4xl mx-auto px-4 text-center">
           {/* Main Headline */}
           <h2 className="font-extrabold text-2xl sm:text-3xl md:text-4xl text-cream leading-tight">
@@ -104,7 +104,7 @@ export default function HomePage({
           
           {/* Waitlist Counter */}
           <p className="mt-4 text-cream-muted text-base sm:text-lg">
-            <span className="text-coral font-bold text-lg sm:text-xl">1,247</span>
+            <span className="text-pegue-red font-bold text-lg sm:text-xl">1,247</span>
             {" "}{t("trust_counter_label")}
           </p>
         </div>
@@ -115,7 +115,7 @@ export default function HomePage({
         <div className="max-w-5xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="inline-block px-3 py-1 text-xs font-bold tracking-wider uppercase bg-earth-olive/20 text-earth-olive-light rounded-full mb-6">
+              <span className="inline-block px-3 py-1 text-xs font-bold tracking-wider uppercase bg-caribe-teal/20 text-caribe-teal rounded-full mb-6">
                 {t("level_badge")}
               </span>
               <h2 className="font-extrabold text-3xl sm:text-4xl lg:text-5xl text-cream leading-tight">
@@ -126,7 +126,7 @@ export default function HomePage({
               </p>
               <Link
                 href="/blog"
-                className="mt-8 inline-flex items-center px-6 py-3 btn-earth-olive text-white font-bold rounded-xl"
+                className="mt-8 inline-flex items-center px-6 py-3 btn-teal text-white font-bold rounded-xl"
               >
                 {t("level_cta")}
                 <svg className="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -138,8 +138,8 @@ export default function HomePage({
               {/* Decorative card stack */}
               <div className="glass-card rounded-2xl p-8 relative z-10">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-coral to-gold rounded-xl flex items-center justify-center shadow-lg shadow-coral/20">
-                    <DominoIcon name="feature-lessons" size="lg" color="#1A1714" weight="fill" />
+                  <div className="w-12 h-12 bg-gradient-to-br from-pegue-red to-ficha-gold rounded-xl flex items-center justify-center shadow-lg shadow-pegue-red/20">
+                    <DominoIcon name="feature-lessons" size="lg" color="#1C0D00" weight="fill" />
                   </div>
                   <div>
                     <h3 className="font-bold text-cream">Lecciones Rápidas</h3>
@@ -148,34 +148,34 @@ export default function HomePage({
                 </div>
                 <div className="space-y-3">
                   <div className="h-3 bg-cream/10 rounded-full overflow-hidden">
-                    <div className="h-full w-3/4 bg-gradient-to-r from-earth-olive to-earth-olive-light rounded-full" />
+                    <div className="h-full w-3/4 bg-gradient-to-r from-caribe-teal to-caribe-teal-light rounded-full" />
                   </div>
                   <div className="h-3 bg-cream/10 rounded-full overflow-hidden">
-                    <div className="h-full w-1/2 bg-gradient-to-r from-coral to-gold rounded-full" />
+                    <div className="h-full w-1/2 bg-gradient-to-r from-pegue-red to-ficha-gold rounded-full" />
                   </div>
                   <div className="h-3 bg-cream/10 rounded-full overflow-hidden">
-                    <div className="h-full w-2/3 bg-gradient-to-r from-earth-olive to-earth-olive-light rounded-full" />
+                    <div className="h-full w-2/3 bg-gradient-to-r from-caribe-teal to-caribe-teal-light rounded-full" />
                   </div>
                 </div>
               </div>
               {/* Background accent */}
-              <div className="absolute -bottom-4 -right-4 w-full h-full bg-gradient-to-br from-earth-olive/20 to-transparent rounded-2xl -z-10" />
+              <div className="absolute -bottom-4 -right-4 w-full h-full bg-gradient-to-br from-caribe-teal/20 to-transparent rounded-2xl -z-10" />
             </div>
           </div>
         </div>
       </section>
 
       {/* Section 3: Juega Contra Bots */}
-      <section className="relative py-20 sm:py-28 bg-dark overflow-hidden">
+      <section className="relative py-20 sm:py-28 bg-espresso overflow-hidden">
         {/* Background pattern */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-earth-khaki rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-coral rounded-full blur-3xl" />
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-mesa rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-pegue-red rounded-full blur-3xl" />
         </div>
         
         <div className="max-w-5xl mx-auto px-4 relative z-10">
           <div className="text-center mb-12">
-            <span className="inline-block px-3 py-1 text-xs font-bold tracking-wider uppercase bg-earth-khaki/20 text-earth-khaki-light rounded-full mb-6">
+            <span className="inline-block px-3 py-1 text-xs font-bold tracking-wider uppercase bg-mesa/20 text-mesa rounded-full mb-6">
               {t("bots_badge")}
             </span>
             <h2 className="font-extrabold text-3xl sm:text-4xl lg:text-5xl text-cream leading-tight">
@@ -192,26 +192,26 @@ export default function HomePage({
               { 
                 signalLevel: 1 as const, 
                 label: "Fácil", 
-                gradient: "from-earth-olive/20 to-earth-olive/5",
-                borderColor: "border-earth-olive/30"
+                gradient: "from-caribe-teal/20 to-caribe-teal/5",
+                borderColor: "border-caribe-teal/30"
               },
               { 
                 signalLevel: 2 as const, 
                 label: "Intermedio", 
-                gradient: "from-earth-khaki/20 to-earth-khaki/5",
-                borderColor: "border-earth-khaki/30"
+                gradient: "from-mesa/20 to-mesa/5",
+                borderColor: "border-mesa/30"
               },
               { 
                 signalLevel: 3 as const, 
                 label: "Avanzado", 
-                gradient: "from-earth-terracotta/20 to-earth-terracotta/5",
-                borderColor: "border-earth-terracotta/30"
+                gradient: "from-pegue-red/20 to-pegue-red/5",
+                borderColor: "border-pegue-red/30"
               },
               { 
                 signalLevel: 4 as const, 
                 label: "Experto", 
-                gradient: "from-gold/20 to-gold/5",
-                borderColor: "border-gold/30"
+                gradient: "from-ficha-gold/20 to-ficha-gold/5",
+                borderColor: "border-ficha-gold/30"
               },
             ]).map((bot, i) => (
               <div
@@ -229,7 +229,7 @@ export default function HomePage({
           <div className="text-center">
             <Link
               href="/waitlist"
-              className="btn-earth-khaki inline-flex items-center px-8 py-4 text-dark font-bold text-lg rounded-xl"
+              className="btn-mesa inline-flex items-center px-8 py-4 text-espresso font-bold text-lg rounded-xl"
             >
               <DominoIcon name="game-controller" size="lg" color="currentColor" weight="fill" className="mr-2" />
               {t("bots_cta")}
@@ -242,12 +242,12 @@ export default function HomePage({
       <section className="relative py-20 sm:py-28 bg-dark-deep overflow-hidden">
         {/* Background glow */}
         <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-gradient-radial from-coral/8 via-transparent to-transparent rounded-full blur-2xl" />
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-gradient-radial from-earth-olive/8 via-transparent to-transparent rounded-full blur-2xl" />
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-gradient-radial from-pegue-red/8 via-transparent to-transparent rounded-full blur-2xl" />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-gradient-radial from-caribe-teal/8 via-transparent to-transparent rounded-full blur-2xl" />
         </div>
         
         <div className="max-w-3xl mx-auto px-4 relative z-10 text-center">
-          <span className="inline-block px-3 py-1 text-xs font-bold tracking-wider uppercase bg-coral/20 text-coral-light rounded-full mb-6">
+          <span className="inline-block px-3 py-1 text-xs font-bold tracking-wider uppercase bg-pegue-red/20 text-pegue-red-light rounded-full mb-6">
             Disponible ahora
           </span>
           <h2 className="font-extrabold text-3xl sm:text-4xl lg:text-5xl text-cream leading-tight">
@@ -261,7 +261,7 @@ export default function HomePage({
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="#"
-              className="inline-flex items-center justify-center px-6 py-3 bg-ivory text-dark rounded-xl hover:bg-cream hover:scale-105 transition-all duration-300 min-w-[180px] shadow-lg"
+              className="inline-flex items-center justify-center px-6 py-3 bg-mesa-blanca text-espresso rounded-xl hover:bg-cream hover:scale-105 transition-all duration-300 min-w-[180px] shadow-lg"
             >
               <svg className="w-8 h-8 mr-3" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
@@ -273,7 +273,7 @@ export default function HomePage({
             </a>
             <a
               href="#"
-              className="inline-flex items-center justify-center px-6 py-3 bg-ivory text-dark rounded-xl hover:bg-cream hover:scale-105 transition-all duration-300 min-w-[180px] shadow-lg"
+              className="inline-flex items-center justify-center px-6 py-3 bg-mesa-blanca text-espresso rounded-xl hover:bg-cream hover:scale-105 transition-all duration-300 min-w-[180px] shadow-lg"
             >
               <svg className="w-8 h-8 mr-3" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>

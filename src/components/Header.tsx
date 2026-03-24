@@ -28,8 +28,8 @@ export function Header() {
           <img src="/icon-light.svg" alt="" className="w-7 h-7 group-hover:scale-110 transition-transform" />
           <span className="font-outfit font-800 text-lg">
             <span className="text-cream">domino</span>
-            <span className="text-earth-olive-light">live</span>
-            <span className="text-coral">.</span>
+            <span className="text-caribe-teal">live</span>
+            <span className="text-pegue-red">.</span>
             <span className="text-cream-muted">com</span>
           </span>
         </Link>
@@ -40,9 +40,9 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className={`text-sm font-medium tracking-wide uppercase transition-all hover:text-coral ${
+              className={`text-sm font-medium tracking-wide uppercase transition-all hover:text-pegue-red ${
                 isActive(link.href, link.exact)
-                  ? "text-coral"
+                  ? "text-pegue-red"
                   : "text-cream-secondary"
               }`}
             >

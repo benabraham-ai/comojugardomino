@@ -37,8 +37,8 @@ export function Footer() {
               <img src="/icon-light.svg" alt="" className="w-8 h-8" />
               <span className="font-outfit font-extrabold text-xl">
                 <span className="text-cream">domino</span>
-                <span className="text-earth-olive-light">live</span>
-                <span className="text-coral">.</span>
+                <span className="text-caribe-teal">live</span>
+                <span className="text-pegue-red">.</span>
                 <span className="text-cream-muted">com</span>
               </span>
             </div>
@@ -60,7 +60,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-cream-muted text-sm hover:text-coral transition-colors"
+                    className="text-cream-muted text-sm hover:text-pegue-red transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -79,7 +79,7 @@ export function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-cream-muted text-sm hover:text-coral transition-colors"
+                    className="text-cream-muted text-sm hover:text-pegue-red transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -99,7 +99,7 @@ export function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-cream-muted text-sm hover:text-coral transition-colors"
+                      className="text-cream-muted text-sm hover:text-pegue-red transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -110,7 +110,7 @@ export function Footer() {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-cream-muted text-sm hover:text-coral transition-colors inline-flex items-center gap-1"
+                      className="text-cream-muted text-sm hover:text-pegue-red transition-colors inline-flex items-center gap-1"
                     >
                       {link.label}
                       <svg
@@ -153,14 +153,14 @@ export function Footer() {
             <div className="flex items-center gap-4 order-3">
               <a
                 href="#"
-                className="text-cream-muted text-xs hover:text-coral transition-colors"
+                className="text-cream-muted text-xs hover:text-pegue-red transition-colors"
               >
                 {t("legal.privacy")}
               </a>
               <span className="text-cream/20">|</span>
               <a
                 href="#"
-                className="text-cream-muted text-xs hover:text-coral transition-colors"
+                className="text-cream-muted text-xs hover:text-pegue-red transition-colors"
               >
                 {t("legal.terms")}
               </a>

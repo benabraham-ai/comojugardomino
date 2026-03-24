@@ -78,7 +78,7 @@ export function MobileNav() {
       <button
         ref={buttonRef}
         onClick={() => setIsOpen(!isOpen)}
-        className="relative z-50 flex items-center justify-center w-10 h-10 text-cream hover:text-coral transition-colors duration-200"
+        className="relative z-50 flex items-center justify-center w-10 h-10 text-cream hover:text-pegue-red transition-colors duration-200"
         aria-label={isOpen ? "Close menu" : "Open menu"}
         aria-expanded={isOpen}
         aria-controls="mobile-menu"
@@ -104,7 +104,7 @@ export function MobileNav() {
 
       {/* Overlay */}
       <div
-        className={`fixed inset-0 bg-dark/80 backdrop-blur-sm z-40 transition-opacity duration-300 ${
+        className={`fixed inset-0 bg-espresso/80 backdrop-blur-sm z-40 transition-opacity duration-300 ${
           isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
         onClick={closeMenu}
@@ -123,7 +123,7 @@ export function MobileNav() {
         }`}
       >
         {/* Menu background */}
-        <div className="absolute inset-0 bg-dark" />
+        <div className="absolute inset-0 bg-espresso" />
 
         {/* Menu content - centered */}
         <div className="relative h-full flex flex-col items-center justify-center px-8">
@@ -136,8 +136,8 @@ export function MobileNav() {
                 onClick={closeMenu}
                 className={`w-full text-center py-4 text-xl font-semibold tracking-wide rounded-xl transition-all duration-300 ${
                   isActive(link.href)
-                    ? "text-coral bg-coral/10"
-                    : "text-cream hover:text-coral hover:bg-cream/5"
+                    ? "text-pegue-red bg-pegue-red/10"
+                    : "text-cream hover:text-pegue-red hover:bg-cream/5"
                 }`}
                 style={{
                   transitionDelay: isOpen ? `${index * 75}ms` : "0ms",
