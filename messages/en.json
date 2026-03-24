@@ -1,4 +1,20 @@
 {
+  "waitlist": {
+    "hero_headline": "The table is waiting for you",
+    "hero_subtitle": "DominoLive is the Chess.com of dominoes. Play in real-time, compete in rankings, and join a community of true domino lovers. Coming soon.",
+    "hero_cta": "Reserve your spot free",
+    "email_placeholder": "you@email.com",
+    "submit_button": "Join the list",
+    "success_message": "You're in! We'll notify you when we launch.",
+    "value_multiplayer": "Real-time multiplayer with voice chat",
+    "value_rules": "Venezuelan rules, played right",
+    "value_ranked": "Compete in ranked matches",
+    "value_community": "Join a community of true domino lovers",
+    "tournament_badge": "Exclusive",
+    "tournament_headline": "Exclusive access to the first tournament",
+    "tournament_description": "Join the waitlist now and get invited to the Founders Tournament when we launch. Only waitlist members can compete.",
+    "footer_tagline": "If you know, you know."
+  },
   "nav": {
     "home": "Home",
     "blog": "Blog",
@@ -6,9 +22,22 @@
     "play": "Play Now"
   },
   "home": {
-    "hero_title": "Learn to Play Dominoes",
+    "hero_title": "If you know, you know.",
+    "hero_headline": "Learn to Play Dominoes",
     "hero_subtitle": "Rules, strategies, and culture of Latin American dominoes. Everything you need to master the table.",
-    "hero_cta": "Play Domino Live",
+    "hero_cta_primary": "Play DominoLive",
+    "hero_cta_secondary": "View lessons",
+    "level_badge": "Level up",
+    "level_title": "Level up your game",
+    "level_subtitle": "Learn with quick lessons and proven methods from the world's best players, designed for all skill levels.",
+    "level_cta": "Learn now",
+    "bots_badge": "Practice stress-free",
+    "bots_title": "Play against bots",
+    "bots_subtitle": "Build your partner table with characters of different skill levels.",
+    "bots_cta": "Play now",
+    "app_title": "Play anywhere with DominoLive App",
+    "app_subtitle": "Carry dominoes in your pocket. Play quick matches, practice with bots, or challenge friends from anywhere.",
+    "app_coming_soon": "Coming soon",
     "featured_title": "Recent Articles",
     "featured_view_all": "View all articles"
   },
@@ -19,7 +48,16 @@
     "min_read": "min read",
     "back_to_blog": "Back to blog",
     "share": "Share",
-    "tags": "Tags"
+    "tags": "Tags",
+    "all": "All",
+    "articles": "articles"
+  },
+  "categories": {
+    "reglas": "Rules",
+    "estrategia": "Strategy",
+    "cultura": "Culture",
+    "psicologia": "Psychology",
+    "variantes": "Variants"
   },
   "about": {
     "title": "About Us",

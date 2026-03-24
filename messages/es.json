@@ -1,4 +1,20 @@
 {
+  "waitlist": {
+    "hero_headline": "La mesa te está esperando",
+    "hero_subtitle": "DominoLive es el Chess.com del dominó. Juega en tiempo real, compite en rankings, y únete a la comunidad de verdaderos amantes del dominó. Próximamente.",
+    "hero_cta": "Reserva tu lugar gratis",
+    "email_placeholder": "tu@email.com",
+    "submit_button": "Unirme a la lista",
+    "success_message": "¡Estás dentro! Te avisaremos cuando lancemos.",
+    "value_multiplayer": "Multijugador en tiempo real con chat de voz",
+    "value_rules": "Reglas venezolanas, jugadas bien",
+    "value_ranked": "Compite en partidas rankeadas",
+    "value_community": "Únete a una comunidad de verdaderos dominoceros",
+    "tournament_badge": "Exclusivo",
+    "tournament_headline": "Acceso exclusivo al primer torneo",
+    "tournament_description": "Únete a la lista de espera ahora y obtén una invitación al Torneo de Fundadores cuando lancemos. Solo los miembros de la lista pueden competir.",
+    "footer_tagline": "El que sabe, sabe."
+  },
   "nav": {
     "home": "Inicio",
     "blog": "Blog",
@@ -6,11 +22,24 @@
     "play": "Jugar Ahora"
   },
   "home": {
-    "hero_title": "Aprende a Jugar Domino",
-    "hero_subtitle": "Reglas, estrategias y cultura del domino latinoamericano. Todo lo que necesitas para dominar la mesa.",
-    "hero_cta": "Jugar Domino Live",
-    "featured_title": "Articulos Recientes",
-    "featured_view_all": "Ver todos los articulos"
+    "hero_title": "El que sabe, sabe.",
+    "hero_headline": "Aprende a Jugar Dominó",
+    "hero_subtitle": "Reglas, estrategias y cultura del dominó latinoamericano. Todo lo que necesitas para dominar la mesa.",
+    "hero_cta_primary": "Jugar DominoLive",
+    "hero_cta_secondary": "Ver lecciones",
+    "level_badge": "Mejora tu juego",
+    "level_title": "Sube de nivel",
+    "level_subtitle": "Aprende con lecciones rápidas y métodos comprobados por los mejores jugadores del mundo, diseñadas para todos los niveles.",
+    "level_cta": "Aprende ahora",
+    "bots_badge": "Practica sin presión",
+    "bots_title": "Juega contra bots",
+    "bots_subtitle": "Arma tu mesa de pareja con personajes de diferentes niveles.",
+    "bots_cta": "Juega ahora",
+    "app_title": "Juega donde sea con DominoLive App",
+    "app_subtitle": "Lleva el dominó en tu bolsillo. Juega partidas rápidas, practica con bots o reta a tus amigos desde cualquier lugar.",
+    "app_coming_soon": "Próximamente disponible",
+    "featured_title": "Artículos Recientes",
+    "featured_view_all": "Ver todos los artículos"
   },
   "blog": {
     "title": "Blog",
@@ -19,7 +48,16 @@
     "min_read": "min de lectura",
     "back_to_blog": "Volver al blog",
     "share": "Compartir",
-    "tags": "Etiquetas"
+    "tags": "Etiquetas",
+    "all": "Todos",
+    "articles": "articulos"
+  },
+  "categories": {
+    "reglas": "Reglas",
+    "estrategia": "Estrategia",
+    "cultura": "Cultura",
+    "psicologia": "Psicologia",
+    "variantes": "Variantes"
   },
   "about": {
     "title": "Sobre Nosotros",
