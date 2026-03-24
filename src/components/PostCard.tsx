@@ -11,17 +11,15 @@ export function PostCard({ post }: { post: PostMeta }) {
 
   return (
     <article className="group glass-card rounded-xl overflow-hidden transition-all duration-300">
-      {post.image && (
-        <Link href={`/blog/${post.slug}`}>
-          <div className="overflow-hidden">
-            <img
-              src={post.image}
-              alt={post.title}
-              className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-        </Link>
-      )}
+      <Link href={`/blog/${post.slug}`}>
+        <div className="overflow-hidden">
+          <img
+            src={post.image}
+            alt={post.title}
+            className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+      </Link>
       <div className="p-5">
         <div className="flex flex-wrap items-center gap-2 mb-3">
           {catMeta && (

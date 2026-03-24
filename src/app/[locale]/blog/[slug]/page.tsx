@@ -21,6 +21,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPostBySlug(params.slug, params.locale);
   if (!post) return {};
 
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://comojugardomino.com";
+
   return {
     title: post.title,
     description: post.description,
@@ -31,7 +33,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       publishedTime: post.date,
       authors: [post.author],
       tags: post.tags,
-      ...(post.image && { images: [post.image] }),
+      images: post.image ? [{
+        url: `${baseUrl}${post.image}`,
+        width: 1200,
+        height: 630,
+        alt: post.title,
+      }] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: post.image ? [`${baseUrl}${post.image}`] : undefined,
     },
   };
 }

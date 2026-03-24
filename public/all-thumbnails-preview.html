@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All 66 El Chivo Thumbnails — Preview</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    background: #1A1714;
+    color: #F5F0E8;
+    font-family: -apple-system, 'Inter', sans-serif;
+    padding: 40px 20px;
+    line-height: 1.6;
+  }
+
+  h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; text-align: center; }
+
+  .subtitle {
+    color: #9E9181;
+    font-size: 14px;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(107, 124, 92, 0.2);
+    border: 1px solid rgba(107, 124, 92, 0.4);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    color: #6B7C5C;
+    margin-bottom: 32px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .card {
+    background: #211E1A;
+    border: 1px solid #2A2420;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .card:hover {
+    border-color: #E8572A;
+    transform: translateY(-2px);
+  }
+
+  .card img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+
+  .card-info {
+    padding: 10px 12px;
+    border-top: 1px solid #2A2420;
+  }
+
+  .card-name {
+    font-size: 11px;
+    font-weight: 500;
+    color: #9E9181;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .center { text-align: center; }
+
+  @media (max-width: 600px) {
+    body { padding: 20px 10px; }
+    .grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .card-info { padding: 8px; }
+    .card-name { font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<h1>🐐 All 66 El Chivo Thumbnails</h1>
+<p class="subtitle">3D mascot style — ready for blog implementation</p>
+<p class="center"><span class="badge">✅ COMPLETE — Ready to deploy</span></p>
+
+<div class="grid" id="grid"></div>
+
+<script>
+const articles = [
+  "adaptacion-tactica-domino-parejas",
+  "ahorcar-un-doble",
+  "arte-del-tranque",
+  "candado-domino",
+  "capicua",
+  "capicua-pollona-tranca-domino",
+  "cierre-perfecto-domino",
+  "como-jugar-domino",
+  "comunicacion-pareja",
+  "contar-fichas",
+  "conteo-fichas-domino-pareja",
+  "controlar-cabezas-domino",
+  "cuando-tu-pareja-esta-pegada",
+  "defender-el-punto-domino",
+  "doble-blanco-domino-parejas",
+  "doble-seis",
+  "domino-caribe",
+  "domino-colombiano",
+  "domino-cubano",
+  "domino-diaspora-latina",
+  "domino-dominicano",
+  "domino-online-parejas",
+  "domino-online-vs-presencial",
+  "domino-panameno",
+  "domino-puertorriqueno",
+  "domino-venezuela",
+  "el-levante-domino",
+  "errores-en-pareja",
+  "estrategia-basica-domino-venezolano",
+  "estrategia-ceros-domino-venezolano",
+  "estrategia-dobles-domino",
+  "estrategias-para-ganar",
+  "fallas-domino-parejas",
+  "faroleo-domino-parejas",
+  "fichas-pesadas-estrategia",
+  "gestion-marcador-domino-parejas",
+  "juego-defensivo-domino",
+  "juego-ofensivo-domino-parejas",
+  "la-pensada-domino-venezolano",
+  "la-tenaza-domino-parejas",
+  "leer-mano-companero-domino",
+  "lenguaje-secreto-domino",
+  "mano-debil-domino-parejas",
+  "matematica-secreta-domino",
+  "palos-fuertes-debiles",
+  "posicion-en-la-mesa",
+  "primer-turno",
+  "primera-mano-domino-venezolano",
+  "psicologia-rival",
+  "puntaje-critico-domino",
+  "puntuacion-domino-venezolano",
+  "que-es-domino-venezolano",
+  "reglas-basicas",
+  "reglas-domino-parejas",
+  "remontada-domino-venezolano",
+  "sacrificio-estrategico-domino",
+  "salida-dos-caras-domino",
+  "supersticiones-domino",
+  "tells-digitales-domino-online",
+  "tempo-ritmo-domino-parejas",
+  "tilt-mental-domino-parejas",
+  "tipos-de-jugadores-domino",
+  "torneos-domino",
+  "tranca-vs-domino-cuando-elegir",
+  "ultimas-fichas-domino-parejas",
+  "variantes-regionales"
+];
+
+const grid = document.getElementById('grid');
+articles.forEach(slug => {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML = `
+    <img src="/images/thumbnails/articles/${slug}.png?v=1" alt="${slug}" loading="lazy">
+    <div class="card-info">
+      <div class="card-name">${slug}</div>
+    </div>
+  `;
+  grid.appendChild(card);
+});
+</script>
+
+<p style="text-align: center; color: #6B6560; font-size: 11px; margin-top: 40px;">
+  Pixel 🎨 • 3D El Chivo Style • V5.2 Dark Earth
+</p>
+
+</body>
+</html>

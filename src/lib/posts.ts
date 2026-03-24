@@ -4,6 +4,20 @@ import matter from "gray-matter";
 import readingTime from "reading-time";
 
 const postsDirectory = path.join(process.cwd(), "content", "posts");
+const thumbnailsDirectory = path.join(process.cwd(), "public", "images", "thumbnails", "articles");
+const DEFAULT_THUMBNAIL = "/images/thumbnails/examples/thumb-el-que-sabe.png";
+
+/**
+ * Get the thumbnail image path for a post.
+ * Uses El Chivo custom thumbnails if available, otherwise falls back to default.
+ */
+function getPostThumbnail(slug: string): string {
+  const thumbnailPath = path.join(thumbnailsDirectory, `${slug}.png`);
+  if (fs.existsSync(thumbnailPath)) {
+    return `/images/thumbnails/articles/${slug}.png`;
+  }
+  return DEFAULT_THUMBNAIL;
+}
 
 export interface PostMeta {
   slug: string;
@@ -44,7 +58,7 @@ export function getAllPosts(locale: string): PostMeta[] {
         author: data.author ?? "Domino Live",
         category: data.category ?? "estrategia",
         tags: data.tags ?? [],
-        image: data.image,
+        image: getPostThumbnail(slug),
         series: data.series,
         readingTime: Math.ceil(stats.minutes).toString(),
       } satisfies PostMeta;
@@ -72,7 +86,7 @@ export function getPostBySlug(slug: string, locale: string): Post | null {
     author: data.author ?? "Domino Live",
     category: data.category ?? "estrategia",
     tags: data.tags ?? [],
-    image: data.image,
+    image: getPostThumbnail(slug),
     series: data.series,
     readingTime: Math.ceil(stats.minutes).toString(),
     content,
