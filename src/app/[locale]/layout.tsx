@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat, Lilita_One } from "next/font/google";
+import { Outfit } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { setRequestLocale } from "next-intl/server";
@@ -13,27 +13,24 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-const montserrat = Montserrat({
+const outfit = Outfit({
   subsets: ["latin", "latin-ext"],
-  variable: "--font-body",
+  variable: "--font-outfit",
   display: "swap",
-});
-
-const heading = Lilita_One({
-  weight: "400",
-  subsets: ["latin", "latin-ext"],
-  variable: "--font-heading",
-  display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "Como Jugar Domino - Aprende Reglas y Estrategias",
+    default: "Como Jugar Domino — Reglas, Estrategia y Cultura",
     template: "%s | Como Jugar Domino",
   },
   description:
     "Aprende a jugar domino: reglas, estrategias y cultura del domino latinoamericano. La guia definitiva para principiantes y expertos.",
   metadataBase: new URL("https://comojugardomino.com"),
+  icons: {
+    icon: "/icon-dark.svg",
+  },
   openGraph: {
     type: "website",
     siteName: "Como Jugar Domino",
@@ -61,7 +58,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body
-        className={`${montserrat.variable} ${heading.variable} font-body antialiased bg-hueso text-cafecito`}
+        className={`${outfit.variable} font-outfit antialiased bg-dark text-cream`}
       >
         <NextIntlClientProvider messages={messages}>
           <div className="min-h-screen flex flex-col">

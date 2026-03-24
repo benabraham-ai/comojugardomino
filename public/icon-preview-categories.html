@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog Category Icons — Preview</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    background: #1A1714;
+    color: #F5F0E8;
+    font-family: -apple-system, 'Inter', sans-serif;
+    padding: 40px;
+    line-height: 1.6;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    color: #9E9181;
+    font-size: 14px;
+    margin-bottom: 40px;
+  }
+
+  h2 {
+    font-size: 16px;
+    color: #E8572A;
+    margin: 32px 0 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .icon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 24px;
+  }
+
+  .icon-card {
+    background: #211E1A;
+    border: 1px solid #2A2420;
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+  }
+
+  .icon-card:hover {
+    border-color: #E8572A;
+  }
+
+  .icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+
+  .icon-wrapper svg {
+    transition: color 0.2s ease;
+  }
+
+  .icon-label {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .icon-desc {
+    font-size: 11px;
+    color: #9E9181;
+  }
+
+  .size-label {
+    font-size: 9px;
+    color: #6B6560;
+    margin-top: 4px;
+  }
+
+  /* Demo filter bar */
+  .filter-demo {
+    background: #211E1A;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+
+  .filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid #2A2420;
+    background: transparent;
+    color: #9E9181;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .filter-btn:hover {
+    border-color: #E8572A;
+    color: #F5F0E8;
+  }
+
+  .filter-btn:hover svg {
+    color: #E8572A;
+  }
+
+  .filter-btn.active {
+    background: rgba(232, 87, 42, 0.15);
+    border-color: #E8572A;
+    color: #F5F0E8;
+  }
+
+  .filter-btn.active svg {
+    color: #E8572A;
+  }
+</style>
+</head>
+<body>
+
+<h1>Blog Category Icons</h1>
+<p class="subtitle">V5.2 Dark Earth palette • Clean SVG icons</p>
+
+<!-- Interactive Demo -->
+<h2>Interactive Filter Demo</h2>
+<div class="filter-demo">
+  <button class="filter-btn active">
+    <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="14" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="6" cy="14" r="1.5" fill="currentColor" stroke="none"/><circle cx="14" cy="14" r="1.5" fill="currentColor" stroke="none"/><circle cx="10" cy="10" r="1.5" fill="currentColor" stroke="none"/><line x1="10" y1="3" x2="10" y2="17"/><line x1="3" y1="10" x2="17" y2="10"/></svg>
+    <span>Todos</span>
+  </button>
+  <button class="filter-btn">
+    <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="2" width="14" height="16" rx="2"/><polyline points="6,7 7.5,8.5 10,6"/><line x1="11.5" y1="7" x2="14" y2="7"/><polyline points="6,11 7.5,12.5 10,10"/><line x1="11.5" y1="11" x2="14" y2="11"/><polyline points="6,15 7.5,16.5 10,14"/><line x1="11.5" y1="15" x2="14" y2="15"/></svg>
+    <span>Reglas</span>
+  </button>
+  <button class="filter-btn">
+    <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3"/><line x1="10" y1="2" x2="10" y2="6"/><line x1="10" y1="14" x2="10" y2="18"/><line x1="2" y1="10" x2="6" y2="10"/><line x1="14" y1="10" x2="18" y2="10"/><circle cx="10" cy="10" r="1" fill="currentColor" stroke="none"/></svg>
+    <span>Estrategia</span>
+  </button>
+  <button class="filter-btn">
+    <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><path d="M10 2 C13 5 13 15 10 18"/><path d="M10 2 C7 5 7 15 10 18"/><line x1="2" y1="10" x2="18" y2="10"/><path d="M3.5 6.5 C6 5 14 5 16.5 6.5"/><path d="M3.5 13.5 C6 15 14 15 16.5 13.5"/></svg>
+    <span>Cultura</span>
+  </button>
+  <button class="filter-btn">
+    <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 17 L6 14 C4 13 3 11 3 9 C3 5.5 6 3 10 3 C14 3 17 5.5 17 9 C17 11 16 13 14 14 L14 17"/><line x1="6" y1="17" x2="14" y2="17"/><line x1="10" y1="7" x2="10" y2="5"/><line x1="12.5" y1="7.5" x2="13.5" y2="6"/><line x1="7.5" y1="7.5" x2="6.5" y2="6"/></svg>
+    <span>Psicología</span>
+  </button>
+  <button class="filter-btn">
+    <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" y1="17" x2="10" y2="11"/><path d="M10 11 C10 8 5 8 5 5"/><line x1="10" y1="11" x2="10" y2="5"/><path d="M10 11 C10 8 15 8 15 5"/><circle cx="5" cy="4" r="1.5" fill="currentColor" stroke="none"/><circle cx="10" cy="4" r="1.5" fill="currentColor" stroke="none"/><circle cx="15" cy="4" r="1.5" fill="currentColor" stroke="none"/><circle cx="10" cy="17" r="1.5" fill="currentColor" stroke="none"/></svg>
+    <span>Variantes</span>
+  </button>
+</div>
+
+<!-- All Icons at Different Sizes -->
+<h2>Icon Set (16px, 20px, 24px)</h2>
+<div class="icon-grid">
+
+  <!-- Todos -->
+  <div class="icon-card">
+    <div class="icon-wrapper">
+      <svg style="color: #E8572A;" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="14" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="6" cy="14" r="1.5" fill="currentColor" stroke="none"/><circle cx="14" cy="14" r="1.5" fill="currentColor" stroke="none"/><circle cx="10" cy="10" r="1.5" fill="currentColor" stroke="none"/><line x1="10" y1="3" x2="10" y2="17"/><line x1="3" y1="10" x2="17" y2="10"/></svg>
+      <svg style="color: #E8572A;" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="14" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="6" cy="14" r="1.5" fill="currentColor" stroke="none"/><circle cx="14" cy="14" r="1.5" fill="currentColor" stroke="none"/><circle cx="10" cy="10" r="1.5" fill="currentColor" stroke="none"/><line x1="10" y1="3" x2="10" y2="17"/><line x1="3" y1="10" x2="17" y2="10"/></svg>
+      <svg style="color: #E8572A;" width="24" height="24" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="14" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="6" cy="14" r="1.5" fill="currentColor" stroke="none"/><circle cx="14" cy="14" r="1.5" fill="currentColor" stroke="none"/><circle cx="10" cy="10" r="1.5" fill="currentColor" stroke="none"/><line x1="10" y1="3" x2="10" y2="17"/><line x1="3" y1="10" x2="17" y2="10"/></svg>
+    </div>
+    <div class="icon-label">Todos</div>
+    <div class="icon-desc">Grid + crosshair</div>
+    <div class="size-label">16 • 20 • 24px</div>
+  </div>
+
+  <!-- Reglas -->
+  <div class="icon-card">
+    <div class="icon-wrapper">
+      <svg style="color: #9E9181;" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="2" width="14" height="16" rx="2"/><polyline points="6,7 7.5,8.5 10,6"/><line x1="11.5" y1="7" x2="14" y2="7"/><polyline points="6,11 7.5,12.5 10,10"/><line x1="11.5" y1="11" x2="14" y2="11"/><polyline points="6,15 7.5,16.5 10,14"/><line x1="11.5" y1="15" x2="14" y2="15"/></svg>
+      <svg style="color: #9E9181;" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="2" width="14" height="16" rx="2"/><polyline points="6,7 7.5,8.5 10,6"/><line x1="11.5" y1="7" x2="14" y2="7"/><polyline points="6,11 7.5,12.5 10,10"/><line x1="11.5" y1="11" x2="14" y2="11"/><polyline points="6,15 7.5,16.5 10,14"/><line x1="11.5" y1="15" x2="14" y2="15"/></svg>
+      <svg style="color: #9E9181;" width="24" height="24" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="2" width="14" height="16" rx="2"/><polyline points="6,7 7.5,8.5 10,6"/><line x1="11.5" y1="7" x2="14" y2="7"/><polyline points="6,11 7.5,12.5 10,10"/><line x1="11.5" y1="11" x2="14" y2="11"/><polyline points="6,15 7.5,16.5 10,14"/><line x1="11.5" y1="15" x2="14" y2="15"/></svg>
+    </div>
+    <div class="icon-label">Reglas</div>
+    <div class="icon-desc">Checklist</div>
+    <div class="size-label">16 • 20 • 24px</div>
+  </div>
+
+  <!-- Estrategia -->
+  <div class="icon-card">
+    <div class="icon-wrapper">
+      <svg style="color: #9E9181;" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3"/><line x1="10" y1="2" x2="10" y2="6"/><line x1="10" y1="14" x2="10" y2="18"/><line x1="2" y1="10" x2="6" y2="10"/><line x1="14" y1="10" x2="18" y2="10"/><circle cx="10" cy="10" r="1" fill="currentColor" stroke="none"/></svg>
+      <svg style="color: #9E9181;" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3"/><line x1="10" y1="2" x2="10" y2="6"/><line x1="10" y1="14" x2="10" y2="18"/><line x1="2" y1="10" x2="6" y2="10"/><line x1="14" y1="10" x2="18" y2="10"/><circle cx="10" cy="10" r="1" fill="currentColor" stroke="none"/></svg>
+      <svg style="color: #9E9181;" width="24" height="24" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3"/><line x1="10" y1="2" x2="10" y2="6"/><line x1="10" y1="14" x2="10" y2="18"/><line x1="2" y1="10" x2="6" y2="10"/><line x1="14" y1="10" x2="18" y2="10"/><circle cx="10" cy="10" r="1" fill="currentColor" stroke="none"/></svg>
+    </div>
+    <div class="icon-label">Estrategia</div>
+    <div class="icon-desc">Target</div>
+    <div class="size-label">16 • 20 • 24px</div>
+  </div>
+
+  <!-- Cultura -->
+  <div class="icon-card">
+    <div class="icon-wrapper">
+      <svg style="color: #9E9181;" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><path d="M10 2 C13 5 13 15 10 18"/><path d="M10 2 C7 5 7 15 10 18"/><line x1="2" y1="10" x2="18" y2="10"/><path d="M3.5 6.5 C6 5 14 5 16.5 6.5"/><path d="M3.5 13.5 C6 15 14 15 16.5 13.5"/></svg>
+      <svg style="color: #9E9181;" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><path d="M10 2 C13 5 13 15 10 18"/><path d="M10 2 C7 5 7 15 10 18"/><line x1="2" y1="10" x2="18" y2="10"/><path d="M3.5 6.5 C6 5 14 5 16.5 6.5"/><path d="M3.5 13.5 C6 15 14 15 16.5 13.5"/></svg>
+      <svg style="color: #9E9181;" width="24" height="24" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><path d="M10 2 C13 5 13 15 10 18"/><path d="M10 2 C7 5 7 15 10 18"/><line x1="2" y1="10" x2="18" y2="10"/><path d="M3.5 6.5 C6 5 14 5 16.5 6.5"/><path d="M3.5 13.5 C6 15 14 15 16.5 13.5"/></svg>
+    </div>
+    <div class="icon-label">Cultura</div>
+    <div class="icon-desc">Globe</div>
+    <div class="size-label">16 • 20 • 24px</div>
+  </div>
+
+  <!-- Psicología -->
+  <div class="icon-card">
+    <div class="icon-wrapper">
+      <svg style="color: #9E9181;" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 17 L6 14 C4 13 3 11 3 9 C3 5.5 6 3 10 3 C14 3 17 5.5 17 9 C17 11 16 13 14 14 L14 17"/><line x1="6" y1="17" x2="14" y2="17"/><line x1="10" y1="7" x2="10" y2="5"/><line x1="12.5" y1="7.5" x2="13.5" y2="6"/><line x1="7.5" y1="7.5" x2="6.5" y2="6"/></svg>
+      <svg style="color: #9E9181;" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 17 L6 14 C4 13 3 11 3 9 C3 5.5 6 3 10 3 C14 3 17 5.5 17 9 C17 11 16 13 14 14 L14 17"/><line x1="6" y1="17" x2="14" y2="17"/><line x1="10" y1="7" x2="10" y2="5"/><line x1="12.5" y1="7.5" x2="13.5" y2="6"/><line x1="7.5" y1="7.5" x2="6.5" y2="6"/></svg>
+      <svg style="color: #9E9181;" width="24" height="24" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 17 L6 14 C4 13 3 11 3 9 C3 5.5 6 3 10 3 C14 3 17 5.5 17 9 C17 11 16 13 14 14 L14 17"/><line x1="6" y1="17" x2="14" y2="17"/><line x1="10" y1="7" x2="10" y2="5"/><line x1="12.5" y1="7.5" x2="13.5" y2="6"/><line x1="7.5" y1="7.5" x2="6.5" y2="6"/></svg>
+    </div>
+    <div class="icon-label">Psicología</div>
+    <div class="icon-desc">Mind</div>
+    <div class="size-label">16 • 20 • 24px</div>
+  </div>
+
+  <!-- Variantes -->
+  <div class="icon-card">
+    <div class="icon-wrapper">
+      <svg style="color: #9E9181;" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" y1="17" x2="10" y2="11"/><path d="M10 11 C10 8 5 8 5 5"/><line x1="10" y1="11" x2="10" y2="5"/><path d="M10 11 C10 8 15 8 15 5"/><circle cx="5" cy="4" r="1.5" fill="currentColor" stroke="none"/><circle cx="10" cy="4" r="1.5" fill="currentColor" stroke="none"/><circle cx="15" cy="4" r="1.5" fill="currentColor" stroke="none"/><circle cx="10" cy="17" r="1.5" fill="currentColor" stroke="none"/></svg>
+      <svg style="color: #9E9181;" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" y1="17" x2="10" y2="11"/><path d="M10 11 C10 8 5 8 5 5"/><line x1="10" y1="11" x2="10" y2="5"/><path d="M10 11 C10 8 15 8 15 5"/><circle cx="5" cy="4" r="1.5" fill="currentColor" stroke="none"/><circle cx="10" cy="4" r="1.5" fill="currentColor" stroke="none"/><circle cx="15" cy="4" r="1.5" fill="currentColor" stroke="none"/><circle cx="10" cy="17" r="1.5" fill="currentColor" stroke="none"/></svg>
+      <svg style="color: #9E9181;" width="24" height="24" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" y1="17" x2="10" y2="11"/><path d="M10 11 C10 8 5 8 5 5"/><line x1="10" y1="11" x2="10" y2="5"/><path d="M10 11 C10 8 15 8 15 5"/><circle cx="5" cy="4" r="1.5" fill="currentColor" stroke="none"/><circle cx="10" cy="4" r="1.5" fill="currentColor" stroke="none"/><circle cx="15" cy="4" r="1.5" fill="currentColor" stroke="none"/><circle cx="10" cy="17" r="1.5" fill="currentColor" stroke="none"/></svg>
+    </div>
+    <div class="icon-label">Variantes</div>
+    <div class="icon-desc">Branching</div>
+    <div class="size-label">16 • 20 • 24px</div>
+  </div>
+
+</div>
+
+<p style="text-align: center; color: #6B6560; font-size: 12px; margin-top: 40px;">
+  Click the filter buttons above to see active/inactive states — Luna 🎨
+</p>
+
+<script>
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>

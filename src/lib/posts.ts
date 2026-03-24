@@ -11,6 +11,7 @@ export interface PostMeta {
   description: string;
   date: string;
   author: string;
+  category: string;
   tags: string[];
   image?: string;
   series?: string;
@@ -41,6 +42,7 @@ export function getAllPosts(locale: string): PostMeta[] {
         description: data.description ?? "",
         date: data.date ?? "",
         author: data.author ?? "Domino Live",
+        category: data.category ?? "estrategia",
         tags: data.tags ?? [],
         image: data.image,
         series: data.series,
@@ -68,6 +70,7 @@ export function getPostBySlug(slug: string, locale: string): Post | null {
     description: data.description ?? "",
     date: data.date ?? "",
     author: data.author ?? "Domino Live",
+    category: data.category ?? "estrategia",
     tags: data.tags ?? [],
     image: data.image,
     series: data.series,
@@ -79,4 +82,26 @@ export function getPostBySlug(slug: string, locale: string): Post | null {
 export function getAllSlugs(): string[] {
   if (!fs.existsSync(postsDirectory)) return [];
   return fs.readdirSync(postsDirectory);
+}
+
+export function getCategoryCounts(locale: string): Record<string, number> {
+  const posts = getAllPosts(locale);
+  const counts: Record<string, number> = {};
+  for (const post of posts) {
+    counts[post.category] = (counts[post.category] ?? 0) + 1;
+  }
+  return counts;
+}
+
+export function getAllTags(locale: string): { tag: string; count: number }[] {
+  const posts = getAllPosts(locale);
+  const counts: Record<string, number> = {};
+  for (const post of posts) {
+    for (const tag of post.tags) {
+      counts[tag] = (counts[tag] ?? 0) + 1;
+    }
+  }
+  return Object.entries(counts)
+    .map(([tag, count]) => ({ tag, count }))
+    .sort((a, b) => b.count - a.count);
 }

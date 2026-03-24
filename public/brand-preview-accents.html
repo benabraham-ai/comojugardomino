@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DominoLive — Accent Color Options</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    background: #140C08;
+    color: #F5EDD6;
+    font-family: -apple-system, 'Inter', 'Segoe UI', sans-serif;
+    padding: 24px;
+    line-height: 1.6;
+  }
+
+  h1 {
+    font-weight: 800;
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    font-weight: 700;
+    font-size: 20px;
+    margin: 32px 0 16px;
+  }
+
+  .subtitle {
+    color: #B8A082;
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+
+  .options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .option-box {
+    background: rgba(30, 20, 13, 0.65);
+    backdrop-filter: blur(12px);
+    border-radius: 14px;
+    padding: 28px;
+    border: 2px solid transparent;
+  }
+
+  .option-box h3 {
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+
+  .option-box .desc {
+    font-size: 13px;
+    color: #B8A082;
+    margin-bottom: 20px;
+  }
+
+  /* Option 1: Cool Blue */
+  .option-blue {
+    border-color: rgba(45, 112, 179, 0.4);
+  }
+
+  .accent-blue { color: #2D70B3; }
+  .bg-blue { background: #2D70B3; }
+
+  .swatch-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .swatch {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+  }
+
+  /* Option 3: Burgundy */
+  .option-burgundy {
+    border-color: rgba(138, 43, 80, 0.4);
+  }
+
+  .accent-burgundy { color: #8A2B50; }
+  .bg-burgundy { background: #8A2B50; }
+
+  /* Use Cases */
+  .use-case {
+    background: rgba(20, 12, 8, 0.5);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+
+  .use-case-title {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+    color: #8C6D4A;
+  }
+
+  /* Demo Elements */
+  .demo-link-blue {
+    color: #2D70B3;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .demo-link-burgundy {
+    color: #8A2B50;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .demo-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .demo-badge-blue {
+    background: rgba(45, 112, 179, 0.2);
+    color: #2D70B3;
+    border: 1px solid rgba(45, 112, 179, 0.3);
+  }
+
+  .demo-badge-burgundy {
+    background: rgba(138, 43, 80, 0.2);
+    color: #C44D7A;
+    border: 1px solid rgba(138, 43, 80, 0.3);
+  }
+
+  .demo-btn-blue {
+    background: linear-gradient(to bottom, #2D70B3 0%, #245A91 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  .demo-btn-burgundy {
+    background: linear-gradient(to bottom, #8A2B50 0%, #6E2240 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  .demo-notification {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+  }
+
+  .demo-notification-blue {
+    background: rgba(45, 112, 179, 0.15);
+    border-left: 3px solid #2D70B3;
+  }
+
+  .demo-notification-burgundy {
+    background: rgba(138, 43, 80, 0.15);
+    border-left: 3px solid #8A2B50;
+  }
+
+  .demo-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  /* Full palette preview */
+  .palette-preview {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .palette-color {
+    flex: 1;
+    height: 40px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+
+  .divider {
+    height: 1px;
+    background: rgba(61, 33, 16, 0.5);
+    margin: 32px 0;
+  }
+
+  /* Side by side full palette */
+  .full-palette {
+    margin-top: 24px;
+  }
+
+  .palette-label {
+    font-size: 11px;
+    color: #8C6D4A;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+
+<h1>Accent Color Options</h1>
+<p class="subtitle">V4.1 warm palette + one accent color for contrast</p>
+
+<div class="options-grid">
+
+  <!-- OPTION 1: COOL BLUE -->
+  <div class="option-box option-blue">
+    <h3 class="accent-blue">Option 1: Azul Profundo</h3>
+    <p class="desc">Cool contrast to balance the warm palette. Professional, trustworthy.</p>
+    
+    <div class="swatch-row">
+      <div class="swatch bg-blue" style="color: white;">#2D70B3</div>
+      <div class="swatch" style="background: #1E4A7A; color: white;">#1E4A7A<br><span style="font-size:8px;">dark</span></div>
+      <div class="swatch" style="background: #5A9BD4; color: #140C08;">#5A9BD4<br><span style="font-size:8px;">light</span></div>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-title">Links & Info</div>
+      <p style="font-size: 13px;">Ver <span class="demo-link-blue">reglas del torneo</span> o <span class="demo-link-blue">contactar soporte</span></p>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-title">Badges & Tags</div>
+      <span class="demo-badge-blue">EN LÍNEA</span>
+      <span class="demo-badge-blue" style="margin-left: 8px;">NUEVO</span>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-title">Info Button</div>
+      <button class="demo-btn-blue">Ver Estadísticas</button>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-title">Notification</div>
+      <div class="demo-notification demo-notification-blue">
+        <span class="demo-dot" style="background: #2D70B3;"></span>
+        Carlos te invitó a una partida
+      </div>
+    </div>
+
+    <div class="full-palette">
+      <div class="palette-label">Full V4.1 + Blue</div>
+      <div class="palette-preview">
+        <div class="palette-color" style="background: #7A1F0E;">Caoba</div>
+        <div class="palette-color" style="background: #E8870A; color: #140C08;">Ámbar</div>
+        <div class="palette-color" style="background: #D4930F; color: #140C08;">Oro</div>
+        <div class="palette-color" style="background: #2D70B3;">Azul</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION 3: BURGUNDY -->
+  <div class="option-box option-burgundy">
+    <h3 class="accent-burgundy">Option 3: Vino Real</h3>
+    <p class="desc">Rich burgundy/purple. Luxury prestige, tournament exclusivity.</p>
+    
+    <div class="swatch-row">
+      <div class="swatch bg-burgundy" style="color: white;">#8A2B50</div>
+      <div class="swatch" style="background: #5E1D36; color: white;">#5E1D36<br><span style="font-size:8px;">dark</span></div>
+      <div class="swatch" style="background: #C44D7A; color: white;">#C44D7A<br><span style="font-size:8px;">light</span></div>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-title">Links & Premium</div>
+      <p style="font-size: 13px;">Accede al <span class="demo-link-burgundy">club VIP</span> o <span class="demo-link-burgundy">torneos exclusivos</span></p>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-title">Badges & Tags</div>
+      <span class="demo-badge-burgundy">PREMIUM</span>
+      <span class="demo-badge-burgundy" style="margin-left: 8px;">VIP</span>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-title">Premium Button</div>
+      <button class="demo-btn-burgundy">Unirse al Club</button>
+    </div>
+
+    <div class="use-case">
+      <div class="use-case-title">Notification</div>
+      <div class="demo-notification demo-notification-burgundy">
+        <span class="demo-dot" style="background: #8A2B50;"></span>
+        Desbloqueaste un logro exclusivo
+      </div>
+    </div>
+
+    <div class="full-palette">
+      <div class="palette-label">Full V4.1 + Burgundy</div>
+      <div class="palette-preview">
+        <div class="palette-color" style="background: #7A1F0E;">Caoba</div>
+        <div class="palette-color" style="background: #E8870A; color: #140C08;">Ámbar</div>
+        <div class="palette-color" style="background: #D4930F; color: #140C08;">Oro</div>
+        <div class="palette-color" style="background: #8A2B50;">Vino</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="divider"></div>
+
+<h2>Quick Comparison</h2>
+<div class="options-grid" style="margin-top: 20px;">
+  <div style="text-align: center;">
+    <p style="font-size: 13px; color: #B8A082; margin-bottom: 12px;"><strong>Azul Profundo</strong></p>
+    <p style="font-size: 12px; color: #8C6D4A;">
+      ✓ Cool/warm balance<br>
+      ✓ Trust & reliability<br>
+      ✓ Info states, links<br>
+      ✓ Online indicators<br>
+      ✓ Notifications
+    </p>
+  </div>
+  <div style="text-align: center;">
+    <p style="font-size: 13px; color: #B8A082; margin-bottom: 12px;"><strong>Vino Real</strong></p>
+    <p style="font-size: 12px; color: #8C6D4A;">
+      ✓ Luxury prestige<br>
+      ✓ Tournament/VIP<br>
+      ✓ Premium features<br>
+      ✓ Achievements<br>
+      ✓ Exclusive content
+    </p>
+  </div>
+</div>
+
+<p style="text-align: center; color: #8C6D4A; font-size: 13px; padding: 32px 0;">
+  Pick one: Azul or Vino? — Luna 🎨
+</p>
+
+</body>
+</html>

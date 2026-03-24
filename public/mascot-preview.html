@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mascot Concepts — DominoLive</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    background: #1A1714;
+    color: #F5F0E8;
+    font-family: -apple-system, 'Inter', sans-serif;
+    padding: 40px;
+    line-height: 1.6;
+  }
+
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    color: #9E9181;
+    font-size: 14px;
+    margin-bottom: 40px;
+  }
+
+  .concept {
+    background: #211E1A;
+    border: 1px solid #2A2420;
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 32px;
+  }
+
+  .concept:hover {
+    border-color: #E8572A;
+  }
+
+  .concept-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .concept-emoji {
+    font-size: 48px;
+  }
+
+  .concept-title {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .concept-tagline {
+    color: #E8572A;
+    font-size: 14px;
+    margin-top: 4px;
+  }
+
+  .concept-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  .concept-section h3 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #9E9181;
+    margin-bottom: 12px;
+  }
+
+  .concept-section p, .concept-section li {
+    font-size: 14px;
+    color: #C8BC9F;
+  }
+
+  .concept-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .concept-section li {
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 6px;
+  }
+
+  .concept-section li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #E8572A;
+  }
+
+  .traits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .trait {
+    background: rgba(232, 87, 42, 0.15);
+    border: 1px solid rgba(232, 87, 42, 0.3);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    color: #E8572A;
+  }
+
+  .pros-cons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .pros h4, .cons h4 {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  .pros h4 { color: #6B9F6B; }
+  .cons h4 { color: #C05C3A; }
+
+  .pros li::before { content: "✓"; color: #6B9F6B; }
+  .cons li::before { content: "⚠"; color: #C05C3A; }
+
+  .recommendation {
+    background: linear-gradient(135deg, rgba(232, 87, 42, 0.1), rgba(107, 124, 92, 0.1));
+    border: 2px solid #E8572A;
+    border-radius: 16px;
+    padding: 32px;
+    margin-top: 40px;
+  }
+
+  .recommendation h2 {
+    font-size: 20px;
+    margin-bottom: 16px;
+    color: #E8572A;
+  }
+
+  .recommendation-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+  }
+
+  .recommendation-table th,
+  .recommendation-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #2A2420;
+    font-size: 14px;
+  }
+
+  .recommendation-table th {
+    color: #9E9181;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+  }
+
+  .recommendation-table td:first-child {
+    color: #E8572A;
+    font-weight: 600;
+  }
+
+  .ficha-demo {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    margin: 24px 0;
+  }
+
+  .ficha {
+    width: 60px;
+    height: 100px;
+    background: #F5F0E8;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 8px;
+    position: relative;
+  }
+
+  .ficha::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 3px;
+    background: #E8572A;
+    transform: translateY(-50%);
+  }
+
+  .ficha-half {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 4px;
+    width: 100%;
+    height: 45%;
+  }
+
+  .pip {
+    width: 10px;
+    height: 10px;
+    background: #1A1714;
+    border-radius: 50%;
+  }
+
+  .ficha-label {
+    font-size: 11px;
+    color: #9E9181;
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  @media (max-width: 768px) {
+    body { padding: 20px; }
+    .pros-cons { grid-template-columns: 1fr; }
+    .ficha-demo { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<h1>🎨 Mascot Concepts</h1>
+<p class="subtitle">DominoLive Brand Identity • V5.2 Dark Earth • Choose your champion</p>
+
+<!-- CONCEPT 1: LA IGUANA -->
+<div class="concept">
+  <div class="concept-header">
+    <span class="concept-emoji">🦎</span>
+    <div>
+      <div class="concept-title">La Iguana</div>
+      <div class="concept-tagline">Patient. Calculated. Caribbean cool.</div>
+    </div>
+  </div>
+
+  <div class="concept-grid">
+    <div class="concept-section">
+      <h3>Visual Direction</h3>
+      <p>Geometric-stylized Caribbean iguana. Upright bipedal stance. Think Shepard Fairey meets Nike SB. Half-lidded amber eyes. Optional thin gold chain or cap.</p>
+    </div>
+    <div class="concept-section">
+      <h3>Three Poses</h3>
+      <ul>
+        <li><strong>Neutral:</strong> Arms crossed, observing</li>
+        <li><strong>Thinking:</strong> Hand on chin, tile nearby</li>
+        <li><strong>Celebrating:</strong> Fist up, controlled joy</li>
+      </ul>
+    </div>
+    <div class="concept-section">
+      <h3>Personality</h3>
+      <div class="traits">
+        <span class="trait">Patient</span>
+        <span class="trait">Calculated</span>
+        <span class="trait">Cool</span>
+        <span class="trait">Culturally rooted</span>
+        <span class="trait">Quietly dominant</span>
+      </div>
+    </div>
+    <div class="concept-section">
+      <h3>Best For</h3>
+      <ul>
+        <li>Thumbnails (expressions match content)</li>
+        <li>App icon (head + crest only)</li>
+        <li>Merch (t-shirt silhouette, cap patch)</li>
+        <li>Loading screens</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pros-cons">
+    <div class="pros">
+      <h4>Pros</h4>
+      <ul>
+        <li>Culturally authentic (Caribbean native)</li>
+        <li>Unique — nobody has mascot iguana</li>
+        <li>Adult appeal, not childish</li>
+        <li>Scales from icon to billboard</li>
+      </ul>
+    </div>
+    <div class="cons">
+      <h4>Cons</h4>
+      <ul>
+        <li>Needs quality illustration</li>
+        <li>Iguana ≠ domino (not obvious link)</li>
+        <li>Green on dark needs contrast care</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CONCEPT 2: EL CAPO -->
+<div class="concept">
+  <div class="concept-header">
+    <span class="concept-emoji">👴</span>
+    <div>
+      <div class="concept-title">El Capo</div>
+      <div class="concept-tagline">Timeless. Aspirational. The master's silhouette.</div>
+    </div>
+  </div>
+
+  <div class="concept-grid">
+    <div class="concept-section">
+      <h3>Visual Direction</h3>
+      <p>Cuban poster art meets Saul Bass. Never fully revealed — mystique is the point. Fedora silhouette. Minimal. Aspirational.</p>
+    </div>
+    <div class="concept-section">
+      <h3>Three Variations</h3>
+      <ul>
+        <li><strong>Full Silhouette:</strong> Seated figure, fedora, holding tile</li>
+        <li><strong>Hands Only:</strong> Two hands on table with tile</li>
+        <li><strong>Iconic Profile:</strong> Minimal line art, fedora star</li>
+      </ul>
+    </div>
+    <div class="concept-section">
+      <h3>Personality</h3>
+      <div class="traits">
+        <span class="trait">Authoritative</span>
+        <span class="trait">Timeless</span>
+        <span class="trait">Aspirational</span>
+        <span class="trait">Minimal</span>
+        <span class="trait">Cultural gravitas</span>
+      </div>
+    </div>
+    <div class="concept-section">
+      <h3>Best For</h3>
+      <ul>
+        <li>Channel banners / YouTube headers</li>
+        <li>About page hero section</li>
+        <li>Premium merch (screenprint)</li>
+        <li>Achievement badge ("El Capo" level)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pros-cons">
+    <div class="pros">
+      <h4>Pros</h4>
+      <ul>
+        <li>Timeless — won't look dated</li>
+        <li>Strong emotional pull</li>
+        <li>Works in 2-color for print</li>
+        <li>Sophisticated, editorial</li>
+      </ul>
+    </div>
+    <div class="cons">
+      <h4>Cons</h4>
+      <ul>
+        <li>Too cold for beginner content</li>
+        <li>Lacks expressiveness</li>
+        <li>Too abstract for app icon</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CONCEPT 3: LA FICHA -->
+<div class="concept">
+  <div class="concept-header">
+    <span class="concept-emoji">🎭</span>
+    <div>
+      <div class="concept-title">La Ficha</div>
+      <div class="concept-tagline">The game piece IS the mascot.</div>
+    </div>
+  </div>
+
+  <!-- Visual Demo -->
+  <div class="ficha-demo">
+    <div>
+      <div class="ficha">
+        <div class="ficha-half"><span class="pip"></span></div>
+        <div class="ficha-half"><span class="pip"></span></div>
+      </div>
+      <div class="ficha-label">[1|1] Friendly</div>
+    </div>
+    <div>
+      <div class="ficha">
+        <div class="ficha-half"><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+        <div class="ficha-half"><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+      </div>
+      <div class="ficha-label">[3|3] Focused</div>
+    </div>
+    <div>
+      <div class="ficha">
+        <div class="ficha-half"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+        <div class="ficha-half"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+      </div>
+      <div class="ficha-label">[6|6] Intense</div>
+    </div>
+  </div>
+
+  <div class="concept-grid">
+    <div class="concept-section">
+      <h3>Visual Direction</h3>
+      <p>Domino tile geometry becomes the face. Pips ARE the expression system. Coral dividing line = mouth/expression. Stands upright at jaunty angle.</p>
+    </div>
+    <div class="concept-section">
+      <h3>Expression System</h3>
+      <ul>
+        <li><strong>[1|1]:</strong> Wide eyes, smile — beginner</li>
+        <li><strong>[3|3]:</strong> Squinted focus — strategy</li>
+        <li><strong>[6|6]:</strong> Intense, serious — expert</li>
+      </ul>
+    </div>
+    <div class="concept-section">
+      <h3>Personality</h3>
+      <div class="traits">
+        <span class="trait">Expressive</span>
+        <span class="trait">Approachable</span>
+        <span class="trait">Witty</span>
+        <span class="trait">Scalable</span>
+        <span class="trait">Adaptable</span>
+      </div>
+    </div>
+    <div class="concept-section">
+      <h3>Best For</h3>
+      <ul>
+        <li>App icon (STRONGEST)</li>
+        <li>Difficulty indicators</li>
+        <li>Animated stickers</li>
+        <li>Achievement badges (pip = level)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pros-cons">
+    <div class="pros">
+      <h4>Pros</h4>
+      <ul>
+        <li>Most readable at tiny sizes</li>
+        <li>Self-explaining — instant recognition</li>
+        <li>Infinite expression system</li>
+        <li>Lowest risk — geometric, hard to fail</li>
+      </ul>
+    </div>
+    <div class="cons">
+      <h4>Cons</h4>
+      <ul>
+        <li>Could feel "too cute"</li>
+        <li>Less "cool factor"</li>
+        <li>Domino tiles are generic symbols</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CONCEPT 4: EL LAGARTO -->
+<div class="concept">
+  <div class="concept-header">
+    <span class="concept-emoji">🦎⚡</span>
+    <div>
+      <div class="concept-title">El Lagarto</div>
+      <div class="concept-tagline">Miami Vice meets esports. Sunglasses never come off.</div>
+    </div>
+  </div>
+
+  <div class="concept-grid">
+    <div class="concept-section">
+      <h3>Visual Direction</h3>
+      <p>Aggressive iguana variant. Angular jaw, dramatic crest. Reflective sunglasses ALWAYS on. Optional hoodie. Esports team logo energy.</p>
+    </div>
+    <div class="concept-section">
+      <h3>Three Views</h3>
+      <ul>
+        <li><strong>Front:</strong> Confrontational stance, direct eye contact</li>
+        <li><strong>Profile:</strong> Low-angle, dramatic crest reveal</li>
+        <li><strong>Icon:</strong> Head + sunglasses only (badge)</li>
+      </ul>
+    </div>
+    <div class="concept-section">
+      <h3>Personality</h3>
+      <div class="traits">
+        <span class="trait">Aggressive</span>
+        <span class="trait">Stylish</span>
+        <span class="trait">Urban</span>
+        <span class="trait">Fierce</span>
+        <span class="trait">Magnetic</span>
+      </div>
+    </div>
+    <div class="concept-section">
+      <h3>Best For</h3>
+      <ul>
+        <li>Tournament/competitive content</li>
+        <li>YouTube thumbnails (aggressive titles)</li>
+        <li>Merch (hoodie print, phone cases)</li>
+        <li>Competitive mode UI face</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pros-cons">
+    <div class="pros">
+      <h4>Pros</h4>
+      <ul>
+        <li>Strongest merch potential</li>
+        <li>Appeals to 18-30 audience</li>
+        <li>Esports-ready</li>
+        <li>High social shareability</li>
+      </ul>
+    </div>
+    <div class="cons">
+      <h4>Cons</h4>
+      <ul>
+        <li>May alienate traditional audience</li>
+        <li>Trend-dependent aesthetic</li>
+        <li>Too aggressive for tutorials</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- RECOMMENDATION -->
+<div class="recommendation">
+  <h2>🎯 Luna's Recommendation: Dual System</h2>
+  <p style="color: #C8BC9F; margin-bottom: 16px;">Use multiple mascots for different emotional registers:</p>
+  
+  <table class="recommendation-table">
+    <tr>
+      <th>Role</th>
+      <th>Mascot</th>
+      <th>Why</th>
+    </tr>
+    <tr>
+      <td>App Icon / UI</td>
+      <td>La Ficha</td>
+      <td>Best at small sizes, brand-connected</td>
+    </tr>
+    <tr>
+      <td>Brand Character</td>
+      <td>La Iguana</td>
+      <td>Ownable, culturally authentic</td>
+    </tr>
+    <tr>
+      <td>Premium Emblem</td>
+      <td>El Capo</td>
+      <td>Aspirational, editorial quality</td>
+    </tr>
+    <tr>
+      <td>Competitive Mode</td>
+      <td>El Lagarto</td>
+      <td>Reserved for tournaments/esports</td>
+    </tr>
+  </table>
+
+  <p style="color: #9E9181; font-size: 13px; margin-top: 20px;">
+    Together they cover the full player journey: <strong style="color: #F5F0E8;">curious → regular → aspirational → competitive</strong>
+  </p>
+</div>
+
+<p style="text-align: center; color: #6B6560; font-size: 12px; margin-top: 40px;">
+  V5.2 Dark Earth • Luna 🎨 • Ready for Gabriel's feedback
+</p>
+
+</body>
+</html>

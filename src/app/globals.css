@@ -2,15 +2,194 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --color-madera: #A96E4F;
-  --color-hueso: #F7F5E6;
-  --color-terracota: #D8734B;
-  --color-verde: #5C804A;
-  --color-cafecito: #38220F;
+/* ============================================================
+   V5.2 Dark Earth Palette — Base Styles
+   ============================================================ */
+body {
+  color: #F5F0E8;
+  background: #1A1714;
 }
 
-body {
-  color: var(--color-cafecito);
-  background: var(--color-hueso);
+::selection {
+  background: #E8572A;
+  color: #F5F0E8;
+}
+
+/* ============================================================
+   Glassmorphism Utilities — Dark Glass
+   ============================================================ */
+.glass {
+  background: rgba(35, 29, 23, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(245, 240, 232, 0.08);
+}
+
+.glass-card {
+  background: rgba(35, 29, 23, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(245, 240, 232, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+.glass-card:hover {
+  background: rgba(42, 36, 32, 0.78);
+  border-color: rgba(245, 240, 232, 0.12);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.glass-navbar {
+  background: rgba(33, 30, 26, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(245, 240, 232, 0.07);
+}
+
+.glass-button {
+  background: rgba(255, 250, 245, 0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(245, 240, 232, 0.08);
+}
+
+.glass-button:hover {
+  background: rgba(255, 250, 245, 0.10);
+  border-color: rgba(245, 240, 232, 0.16);
+}
+
+/* Earth-tinted glass variants */
+.glass-olive {
+  background: rgba(107, 124, 92, 0.20);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(107, 124, 92, 0.30);
+}
+
+.glass-coral {
+  background: rgba(232, 87, 42, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(232, 87, 42, 0.22);
+}
+
+/* ============================================================
+   Button Utilities — Earth Tones
+   ============================================================ */
+.btn-coral {
+  background: linear-gradient(to bottom, #E8572A 0%, #D04D24 100%);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(232, 87, 42, 0.40);
+  transition: all 0.2s ease;
+}
+
+.btn-coral:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 28px rgba(232, 87, 42, 0.55);
+}
+
+.btn-earth-olive {
+  background: linear-gradient(145deg, #6B7C5C 0%, #5A6A4D 100%);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn-earth-olive:hover {
+  background: linear-gradient(145deg, #8A9972 0%, #6B7C5C 100%);
+  transform: translateY(-1px);
+}
+
+.btn-earth-khaki {
+  background: linear-gradient(145deg, #B5A07A 0%, #9D8A68 100%);
+  color: #1A1714;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn-earth-khaki:hover {
+  background: linear-gradient(145deg, #C9B899 0%, #B5A07A 100%);
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+   Card Utilities — Earth Tone Cards
+   ============================================================ */
+.card-olive {
+  background: linear-gradient(145deg, #6B7C5C 0%, #4E5E42 100%);
+  box-shadow: 0 6px 28px rgba(75, 90, 65, 0.45), 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.card-khaki {
+  background: linear-gradient(145deg, #B5A07A 0%, #9B8665 100%);
+  box-shadow: 0 6px 28px rgba(181, 160, 122, 0.35), 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.card-brown {
+  background: linear-gradient(145deg, #8B6F4E 0%, #6B5038 100%);
+  box-shadow: 0 6px 28px rgba(139, 111, 78, 0.40), 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.card-terracotta {
+  background: linear-gradient(145deg, #C05C3A 0%, #A04830 100%);
+  box-shadow: 0 6px 28px rgba(192, 92, 58, 0.45), 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.card-burgundy {
+  background: linear-gradient(145deg, #7D2E3B 0%, #5A1F29 100%);
+  box-shadow: 0 6px 28px rgba(125, 46, 59, 0.45), 0 2px 8px rgba(0,0,0,0.5);
+}
+
+/* ============================================================
+   Animations
+   ============================================================ */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* ============================================================
+   Transition Utilities
+   ============================================================ */
+.duration-250 {
+  transition-duration: 250ms;
+}
+
+/* ============================================================
+   Radial Gradient Utility
+   ============================================================ */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to));
 }

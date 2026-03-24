@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DominoLive — Whiskey Grade (V4) Preview</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    background: #140C08;
+    color: #F5EDD6;
+    font-family: -apple-system, 'Inter', 'Segoe UI', sans-serif;
+    padding: 24px;
+    line-height: 1.6;
+  }
+
+  h1 {
+    font-weight: 800;
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    font-weight: 700;
+    font-size: 22px;
+    margin: 32px 0 16px;
+    color: #E8870A;
+  }
+
+  .subtitle {
+    color: #B8A082;
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+
+  .section {
+    background: #1E140D;
+    border: 1px solid #3D2110;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  .section-title {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #8C6D4A;
+    margin-bottom: 16px;
+  }
+
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 16px;
+  }
+
+  .color-card {
+    text-align: center;
+  }
+
+  .color-swatch {
+    width: 100%;
+    height: 80px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    border: 1px solid rgba(245, 237, 214, 0.1);
+  }
+
+  .color-name {
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+
+  .color-hex {
+    font-size: 11px;
+    color: #8C6D4A;
+    font-family: monospace;
+  }
+
+  /* Button Preview */
+  .button-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn-primary {
+    background: #7A1F0E;
+    color: #F5EDD6;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  .btn-amber {
+    background: #E8870A;
+    color: #140C08;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  .btn-gold {
+    background: #D4930F;
+    color: #140C08;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: #B8A082;
+    border: 1.5px solid #8C5220;
+    padding: 14px 28px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  /* Card Preview */
+  .preview-card {
+    background: #1E140D;
+    border: 1px solid #3D2110;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 320px;
+  }
+
+  .preview-card.active {
+    border-left: 3px solid #E8870A;
+    background: #251810;
+  }
+
+  .preview-card.premium {
+    border: 1px solid #D4930F;
+    background: linear-gradient(135deg, #251810 0%, #1E140D 100%);
+  }
+
+  .card-title {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .card-subtitle {
+    font-size: 13px;
+    color: #B8A082;
+  }
+
+  .card-badge {
+    display: inline-block;
+    background: #D4930F;
+    color: #140C08;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+
+  /* Comparison */
+  .comparison {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .comparison-box {
+    padding: 24px;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .comparison-box h4 {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+
+  .v2-style {
+    background: #1A110A;
+  }
+  .v2-style .demo-btn {
+    background: #8B3A2A;
+    color: #F5EDD6;
+    padding: 12px 24px;
+    border-radius: 6px;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .v2-style .demo-gold {
+    background: #C49A3C;
+    color: #1A110A;
+    padding: 12px 24px;
+    border-radius: 6px;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .v4-style {
+    background: #140C08;
+  }
+  .v4-style .demo-btn {
+    background: #7A1F0E;
+    color: #F5EDD6;
+    padding: 12px 24px;
+    border-radius: 6px;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .v4-style .demo-gold {
+    background: #E8870A;
+    color: #140C08;
+    padding: 12px 24px;
+    border-radius: 6px;
+    display: inline-block;
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .divider {
+    height: 1px;
+    background: #3D2110;
+    margin: 32px 0;
+  }
+
+  /* Hero Preview */
+  .hero-preview {
+    background: linear-gradient(180deg, #1E140D 0%, #140C08 100%);
+    border: 1px solid #3D2110;
+    border-radius: 12px;
+    padding: 48px 24px;
+    text-align: center;
+  }
+
+  .hero-preview h1 {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .hero-preview p {
+    color: #B8A082;
+    font-size: 16px;
+    margin-bottom: 24px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .tagline {
+    font-style: italic;
+    color: #E8870A;
+    font-size: 18px;
+    margin-top: 32px;
+  }
+
+  /* Signal bars */
+  .signal-demo {
+    display: flex;
+    gap: 24px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .signal-item {
+    text-align: center;
+  }
+
+  .signal-bars {
+    display: flex;
+    gap: 3px;
+    align-items: flex-end;
+    height: 32px;
+    margin-bottom: 8px;
+    justify-content: center;
+  }
+
+  .bar {
+    width: 8px;
+    border-radius: 2px 2px 0 0;
+  }
+
+  .signal-label {
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  /* Whiskey gradient demo */
+  .whiskey-gradient {
+    height: 60px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #7A1F0E 0%, #C4622D 33%, #E8870A 66%, #D4930F 100%);
+    margin-bottom: 8px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Whiskey Grade</h1>
+<p class="subtitle">DominoLive Brand Direction V4 — Warm Wood with Energy</p>
+
+<!-- V2 vs V4 COMPARISON -->
+<h2>V2 (Muted) → V4 (Vibrant)</h2>
+<div class="comparison">
+  <div class="comparison-box v2-style">
+    <h4 style="color: #7A6550;">V2 — Café con Leche</h4>
+    <div class="demo-btn">Jugar Ahora</div><br>
+    <div class="demo-gold">Torneo VIP</div>
+    <p style="font-size: 10px; color: #7A6550; margin-top: 12px;">Terracota #8B3A2A / Gold #C49A3C<br>Too muted, reads as tan</p>
+  </div>
+  <div class="comparison-box v4-style">
+    <h4 style="color: #E8870A;">V4 — Whiskey Grade</h4>
+    <div class="demo-btn">Jugar Ahora</div><br>
+    <div class="demo-gold">Torneo VIP</div>
+    <p style="font-size: 10px; color: #8C6D4A; margin-top: 12px;">Caoba #7A1F0E / Ámbar #E8870A<br>Rich, saturated, alive</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- COLOR GRADIENT -->
+<div class="section">
+  <div class="section-title">The Whiskey Gradient</div>
+  <div class="whiskey-gradient"></div>
+  <p style="font-size: 12px; color: #8C6D4A; text-align: center;">Caoba → Cobre → Ámbar → Oro Encendido</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- PRIMARY COLORS -->
+<div class="section">
+  <div class="section-title">Primary Colors</div>
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background: #7A1F0E;"></div>
+      <div class="color-name">Caoba</div>
+      <div class="color-hex">#7A1F0E</div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #E8870A;"></div>
+      <div class="color-name">Ámbar Puro</div>
+      <div class="color-hex">#E8870A</div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #F5EDD6;"></div>
+      <div class="color-name">Marfil</div>
+      <div class="color-hex">#F5EDD6</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECONDARY COLORS -->
+<div class="section">
+  <div class="section-title">Secondary Colors</div>
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background: #C4622D;"></div>
+      <div class="color-name">Cobre</div>
+      <div class="color-hex">#C4622D</div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #D4930F;"></div>
+      <div class="color-name">Oro Encendido</div>
+      <div class="color-hex">#D4930F</div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #8C5220;"></div>
+      <div class="color-name">Madera Rica</div>
+      <div class="color-hex">#8C5220</div>
+    </div>
+  </div>
+</div>
+
+<!-- BACKGROUNDS -->
+<div class="section">
+  <div class="section-title">Backgrounds</div>
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background: #140C08; border: 1px solid #3D2110;"></div>
+      <div class="color-name">Fondo Principal</div>
+      <div class="color-hex">#140C08</div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #1E140D;"></div>
+      <div class="color-name">Fondo Tarjeta</div>
+      <div class="color-hex">#1E140D</div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #3D2110;"></div>
+      <div class="color-name">Fondo Mesa</div>
+      <div class="color-hex">#3D2110</div>
+    </div>
+  </div>
+</div>
+
+<!-- TEXT COLORS -->
+<div class="section">
+  <div class="section-title">Text Colors</div>
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background: #140C08; display: flex; align-items: center; justify-content: center;">
+        <span style="color: #F5EDD6; font-weight: 600; font-size: 18px;">Aa</span>
+      </div>
+      <div class="color-name">Texto Principal</div>
+      <div class="color-hex">#F5EDD6</div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #140C08; display: flex; align-items: center; justify-content: center;">
+        <span style="color: #B8A082; font-weight: 600; font-size: 18px;">Aa</span>
+      </div>
+      <div class="color-name">Texto Secundario</div>
+      <div class="color-hex">#B8A082</div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #140C08; display: flex; align-items: center; justify-content: center;">
+        <span style="color: #8C6D4A; font-weight: 600; font-size: 18px;">Aa</span>
+      </div>
+      <div class="color-name">Texto Muted</div>
+      <div class="color-hex">#8C6D4A</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<h2>Buttons</h2>
+<div class="section">
+  <div class="button-row">
+    <button class="btn-primary">Jugar Ahora</button>
+    <button class="btn-amber">Unirme</button>
+    <button class="btn-gold">Torneo VIP</button>
+    <button class="btn-secondary">Ver Perfil</button>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<h2>Cards</h2>
+<div class="section" style="display: flex; gap: 16px; flex-wrap: wrap;">
+  <div class="preview-card">
+    <div class="card-title">Carlos Mendoza</div>
+    <div class="card-subtitle">ELO 1847 • Miami, FL</div>
+  </div>
+  <div class="preview-card active">
+    <div class="card-title">Tu Turno</div>
+    <div class="card-subtitle">Mesa #42 • 3 jugadores esperando</div>
+  </div>
+  <div class="preview-card premium">
+    <div class="card-badge">TORNEO</div>
+    <div class="card-title">Copa Fundadores</div>
+    <div class="card-subtitle">Inscripción abierta • 64 jugadores</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<h2>Signal Bars (Difficulty)</h2>
+<div class="section">
+  <div class="signal-demo">
+    <div class="signal-item">
+      <div class="signal-bars">
+        <div class="bar" style="height: 8px; background: #8C5220;"></div>
+        <div class="bar" style="height: 14px; background: rgba(140,82,32,0.3);"></div>
+        <div class="bar" style="height: 20px; background: rgba(140,82,32,0.3);"></div>
+        <div class="bar" style="height: 28px; background: rgba(140,82,32,0.3);"></div>
+      </div>
+      <div class="signal-label" style="color: #8C5220;">Fácil</div>
+    </div>
+    <div class="signal-item">
+      <div class="signal-bars">
+        <div class="bar" style="height: 8px; background: #C4622D;"></div>
+        <div class="bar" style="height: 14px; background: #C4622D;"></div>
+        <div class="bar" style="height: 20px; background: rgba(196,98,45,0.3);"></div>
+        <div class="bar" style="height: 28px; background: rgba(196,98,45,0.3);"></div>
+      </div>
+      <div class="signal-label" style="color: #C4622D;">Intermedio</div>
+    </div>
+    <div class="signal-item">
+      <div class="signal-bars">
+        <div class="bar" style="height: 8px; background: #E8870A;"></div>
+        <div class="bar" style="height: 14px; background: #E8870A;"></div>
+        <div class="bar" style="height: 20px; background: #E8870A;"></div>
+        <div class="bar" style="height: 28px; background: rgba(232,135,10,0.3);"></div>
+      </div>
+      <div class="signal-label" style="color: #E8870A;">Avanzado</div>
+    </div>
+    <div class="signal-item">
+      <div class="signal-bars">
+        <div class="bar" style="height: 8px; background: #D4930F;"></div>
+        <div class="bar" style="height: 14px; background: #D4930F;"></div>
+        <div class="bar" style="height: 20px; background: #D4930F;"></div>
+        <div class="bar" style="height: 28px; background: #D4930F;"></div>
+      </div>
+      <div class="signal-label" style="color: #D4930F;">Experto</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<h2>Hero Preview</h2>
+<div class="hero-preview">
+  <h1>La Mesa Te Está Esperando</h1>
+  <p>Dominó en tiempo real con chat de voz. Reglas venezolanas. Jugadores de verdad. La experiencia que siempre quisiste.</p>
+  <button class="btn-amber">Reserva Tu Lugar Gratis</button>
+  <div class="tagline">El que sabe, sabe.</div>
+</div>
+
+<div class="divider"></div>
+
+<h2>Why V4 Works</h2>
+<div class="section">
+  <ul style="list-style: none; padding: 0;">
+    <li style="margin-bottom: 12px;">✅ <strong>Same warmth, more saturation</strong> — rich mahogany, not dusty leather</li>
+    <li style="margin-bottom: 12px;">✅ <strong>Amber that pops</strong> — whiskey glow, not dirty tan</li>
+    <li style="margin-bottom: 12px;">✅ <strong>Wood = authentic</strong> — actual domino table surface</li>
+    <li style="margin-bottom: 12px;">✅ <strong>Premium energy</strong> — Macallan/Woodford vibe, confident warmth</li>
+    <li style="margin-bottom: 12px;">✅ <strong>No green</strong> — no poker/casino confusion</li>
+    <li style="margin-bottom: 12px;">✅ <strong>Typography unchanged</strong></li>
+  </ul>
+</div>
+
+<p style="text-align: center; color: #8C6D4A; font-size: 13px; padding: 24px 0;">
+  Preview for Gabriel's approval — Luna 🎨 March 2026
+</p>
+
+</body>
+</html>

@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Domino Live — V5.3 "La Mesa" (Wood Texture)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       V5.3 DESIGN TOKENS — "La Mesa" Wood Surface Edition
+       ============================================================
+       PRODUCTION NOTE: Replace the CSS wood grain simulation with
+       a real high-res mahogany/walnut image:
+         background-image: url('/assets/textures/mahogany-table.jpg');
+         background-size: 600px 400px;
+         background-repeat: repeat;
+       Free wood textures: Unsplash, Pexels, Freepik, Poly Haven
+       Recommended: dark mahogany, 1024×1024px, tileable
+       ============================================================ */
+    :root {
+      /* ── Wood surface base tones ── */
+      --wood-dark:       #2A1A0E;      /* deep mahogany shadow */
+      --wood-mid:        #3D2010;      /* mid mahogany */
+      --wood-grain-1:    #4A2812;      /* primary grain */
+      --wood-grain-2:    #5C3318;      /* secondary grain */
+      --wood-grain-3:    #3A1E0C;      /* dark grain stripe */
+      --wood-highlight:  #6B4020;      /* warm highlight */
+      --wood-warm:       #7A4E28;      /* warm walnut tone */
+
+      /* ── Table felt / surface overlay ── */
+      --overlay-dark:    rgba(20, 10, 4, 0.55);   /* readability overlay */
+      --overlay-mid:     rgba(20, 10, 4, 0.35);   /* lighter overlay */
+
+      /* ── Earth tone palette (from V5.1, adapted for dark bg) ── */
+      --card-olive:      #6B7C5C;
+      --card-khaki:      #B5A07A;
+      --card-brown:      #8B6F4E;
+      --card-taupe:      #9E9181;
+
+      /* ── Primary accent — coral/orange (same as V5.1) ── */
+      --accent-coral:    #E8572A;
+      --accent-coral-light: #F27650;
+      --accent-coral-dark:  #C44420;
+
+      /* ── Secondary accents ── */
+      --accent-burgundy: #7D2E3B;
+      --accent-terra:    #C05C3A;
+      --accent-gold:     #C9923A;      /* warm gold for wood era */
+
+      /* ── Text — cream/ivory on dark wood ── */
+      --text-cream:      #F5F0E8;      /* primary light text */
+      --text-ivory:      #EDE6D8;      /* secondary */
+      --text-muted:      #C4B89A;      /* muted warm */
+      --text-dim:        #9A8C78;      /* dimmed */
+      --text-dark:       #1C1C1A;      /* for light card surfaces */
+
+      /* ── Card surfaces (solid, to float above wood) ── */
+      --card-surface:    rgba(42, 26, 14, 0.85);   /* dark wood card */
+      --card-light:      rgba(245, 240, 232, 0.92); /* cream card */
+      --card-glass:      rgba(90, 60, 30, 0.45);   /* glass/wood card */
+      --card-glass-border: rgba(200, 160, 90, 0.30);
+      --card-cream-border: rgba(245, 240, 232, 0.50);
+
+      /* ── Domino tile colors ── */
+      --tile-ivory:      #F0EAD8;
+      --tile-shadow:     rgba(0, 0, 0, 0.60);
+      --tile-pip:        #1C1C1A;
+      --tile-edge:       #D4C4A0;
+
+      /* ── Utility ── */
+      --shadow-sm:  0 2px 6px rgba(0,0,0,0.40);
+      --shadow-md:  0 6px 20px rgba(0,0,0,0.50);
+      --shadow-lg:  0 12px 40px rgba(0,0,0,0.60);
+      --shadow-xl:  0 20px 60px rgba(0,0,0,0.70);
+      --glow-coral: 0 0 24px rgba(232, 87, 42, 0.45);
+      --radius-sm:  8px;
+      --radius-md:  14px;
+      --radius-lg:  20px;
+      --radius-xl:  28px;
+    }
+
+    /* ============================================================
+       RESET
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ============================================================
+       WOOD GRAIN BACKGROUND — CSS Simulation
+       ============================================================
+       Technique: layered repeating-linear-gradients at slight
+       angles to mimic natural wood grain striping. Multiple layers
+       at varying opacities create depth.
+       PRODUCTION: swap entire background for a real texture image.
+       ============================================================ */
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text-cream);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+
+      /* === SIMULATED WOOD GRAIN === */
+      background-color: var(--wood-mid);
+      background-image:
+        /* Layer 1: Fine grain lines — primary direction */
+        repeating-linear-gradient(
+          92deg,
+          transparent 0px,
+          transparent 18px,
+          rgba(90, 50, 20, 0.18) 18px,
+          rgba(90, 50, 20, 0.18) 19px,
+          transparent 19px,
+          transparent 34px,
+          rgba(30, 12, 4, 0.22) 34px,
+          rgba(30, 12, 4, 0.22) 36px
+        ),
+        /* Layer 2: Wider grain bands */
+        repeating-linear-gradient(
+          88deg,
+          transparent 0px,
+          transparent 40px,
+          rgba(100, 60, 25, 0.15) 40px,
+          rgba(100, 60, 25, 0.15) 55px,
+          transparent 55px,
+          transparent 80px,
+          rgba(20, 8, 2, 0.20) 80px,
+          rgba(20, 8, 2, 0.20) 95px
+        ),
+        /* Layer 3: Knot/warmth variation — diagonal drift */
+        repeating-linear-gradient(
+          95deg,
+          transparent 0px,
+          transparent 60px,
+          rgba(120, 70, 25, 0.10) 60px,
+          rgba(120, 70, 25, 0.10) 80px,
+          transparent 80px,
+          transparent 130px,
+          rgba(50, 22, 8, 0.12) 130px,
+          rgba(50, 22, 8, 0.12) 145px
+        ),
+        /* Layer 4: Base color gradient (depth) */
+        linear-gradient(
+          180deg,
+          #3A1E0C 0%,
+          #2A1A0E 30%,
+          #321806 60%,
+          #2A1A0E 100%
+        );
+      background-size:
+        120px 100%,
+        200px 100%,
+        300px 100%,
+        100% 100%;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    /* ============================================================
+       LAYOUT CONTAINERS
+       ============================================================ */
+    .page-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .section {
+      margin-bottom: 72px;
+    }
+
+    .section-label {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-gold);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(201,146,58,0.4) 0%, transparent 100%);
+    }
+
+    /* ============================================================
+       NAVIGATION
+       ============================================================ */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(20, 10, 4, 0.80);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(201, 146, 58, 0.20);
+      margin-bottom: 0;
+    }
+
+    .nav-brand {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 22px;
+      letter-spacing: -0.04em;
+      color: var(--text-cream);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-brand .brand-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-coral);
+      box-shadow: 0 0 8px var(--accent-coral);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text-cream); }
+
+    .nav-cta {
+      background: var(--accent-coral);
+      color: white;
+      border: none;
+      padding: 9px 20px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 0.01em;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+
+    .nav-cta:hover {
+      background: var(--accent-coral-light);
+      box-shadow: var(--glow-coral);
+    }
+
+    /* ============================================================
+       HERO SECTION
+       ============================================================ */
+    .hero {
+      padding: 80px 0 64px;
+      text-align: center;
+      position: relative;
+    }
+
+    /* Vignette overlay for hero — improves text readability */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        ellipse 70% 80% at 50% 50%,
+        transparent 20%,
+        rgba(20, 10, 4, 0.45) 100%
+      );
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(201, 146, 58, 0.15);
+      border: 1px solid rgba(201, 146, 58, 0.40);
+      color: var(--accent-gold);
+      font-family: 'Roboto Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+
+    .hero-badge .badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent-gold);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 80px);
+      font-weight: 900;
+      color: var(--text-cream);
+      text-shadow: 0 2px 20px rgba(0,0,0,0.60);
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .hero h1 span {
+      color: var(--accent-coral);
+      text-shadow: 0 0 30px rgba(232, 87, 42, 0.50);
+    }
+
+    .hero-tagline {
+      font-size: clamp(16px, 2.5vw, 22px);
+      color: var(--text-ivory);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      font-weight: 400;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.50);
+      position: relative;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 52px;
+      position: relative;
+    }
+
+    /* ============================================================
+       BUTTONS
+       ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.22s ease;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-primary {
+      background: var(--accent-coral);
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: var(--radius-md);
+      font-size: 16px;
+      box-shadow: 0 4px 16px rgba(232, 87, 42, 0.40), 0 1px 0 rgba(255,255,255,0.15) inset;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-coral-light);
+      transform: translateY(-2px);
+      box-shadow: var(--glow-coral), 0 8px 24px rgba(232,87,42,0.45);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 8px rgba(232,87,42,0.35);
+    }
+
+    .btn-secondary {
+      background: rgba(245, 240, 232, 0.10);
+      color: var(--text-cream);
+      padding: 13px 28px;
+      border-radius: var(--radius-md);
+      font-size: 16px;
+      border: 1.5px solid rgba(245, 240, 232, 0.30);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(245, 240, 232, 0.18);
+      border-color: rgba(245, 240, 232, 0.55);
+      transform: translateY(-2px);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, var(--accent-gold), #A87030);
+      color: #fff;
+      padding: 12px 26px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      box-shadow: 0 3px 12px rgba(201, 146, 58, 0.40);
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(201, 146, 58, 0.55);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-muted);
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      border: 1.5px solid rgba(200, 160, 90, 0.25);
+    }
+
+    .btn-ghost:hover {
+      color: var(--text-cream);
+      border-color: rgba(200, 160, 90, 0.50);
+    }
+
+    .btn-sm {
+      padding: 9px 18px;
+      font-size: 13px;
+      border-radius: var(--radius-sm);
+    }
+
+    .btn-lg {
+      padding: 18px 44px;
+      font-size: 18px;
+      border-radius: var(--radius-lg);
+    }
+
+    /* ============================================================
+       CARD SYSTEM — Floating above wood
+       ============================================================ */
+
+    /* Dark wood-tone card */
+    .card {
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .card-dark {
+      background: rgba(28, 16, 6, 0.88);
+      border: 1px solid rgba(201, 146, 58, 0.18);
+    }
+
+    /* Glass-wood card */
+    .card-glass {
+      background: rgba(60, 35, 15, 0.55);
+      border: 1px solid rgba(200, 155, 80, 0.25);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    /* Cream / ivory card (max contrast) */
+    .card-cream {
+      background: rgba(245, 240, 232, 0.93);
+      border: 1px solid rgba(245, 240, 232, 0.60);
+      color: var(--text-dark);
+    }
+
+    .card-cream h3, .card-cream p {
+      color: var(--text-dark);
+    }
+
+    /* Olive card */
+    .card-olive {
+      background: rgba(50, 58, 40, 0.85);
+      border: 1px solid rgba(107, 124, 92, 0.40);
+    }
+
+    /* Burgundy accent card */
+    .card-burgundy {
+      background: rgba(60, 20, 28, 0.88);
+      border: 1px solid rgba(125, 46, 59, 0.45);
+    }
+
+    /* ============================================================
+       GRID HELPERS
+       ============================================================ */
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+    @media (max-width: 768px) {
+      .grid-3 { grid-template-columns: 1fr; }
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .grid-2 { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+
+    /* ============================================================
+       COLOR SWATCHES
+       ============================================================ */
+    .swatch-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .swatch {
+      flex: 1;
+      min-width: 80px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+
+    .swatch-color {
+      height: 72px;
+    }
+
+    .swatch-info {
+      padding: 10px 12px;
+      background: rgba(28, 16, 6, 0.90);
+      border: 1px solid rgba(201, 146, 58, 0.15);
+      border-top: none;
+    }
+
+    .swatch-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-ivory);
+      margin-bottom: 2px;
+    }
+
+    .swatch-hex {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    /* ============================================================
+       DOMINO TILES
+       ============================================================ */
+    .domino-showcase {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 40px;
+      background: rgba(15, 8, 3, 0.65);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(201, 146, 58, 0.15);
+      position: relative;
+      /* Subtle felt/baize look on top of wood via inner overlay */
+      background-image:
+        radial-gradient(ellipse 80% 60% at 50% 100%, rgba(30, 50, 20, 0.12) 0%, transparent 70%);
+      box-shadow: var(--shadow-xl), inset 0 1px 0 rgba(201, 146, 58, 0.15);
+    }
+
+    .domino {
+      display: flex;
+      flex-direction: column;
+      background: var(--tile-ivory);
+      border-radius: 8px;
+      box-shadow:
+        0 6px 20px rgba(0,0,0,0.70),
+        0 1px 0 rgba(255,255,255,0.80) inset,
+        0 -1px 0 rgba(0,0,0,0.30) inset;
+      padding: 8px;
+      gap: 0;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .domino:hover {
+      transform: translateY(-4px) rotate(-1deg);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.80);
+    }
+
+    .domino-half {
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+
+    .domino-half.square {
+      width: 52px;
+      height: 52px;
+    }
+
+    .domino-half.rect-w {
+      width: 52px;
+      height: 52px;
+    }
+
+    .domino-divider {
+      height: 1.5px;
+      background: rgba(0,0,0,0.25);
+      margin: 2px 4px;
+    }
+
+    /* Pip grid layouts */
+    .pips {
+      display: grid;
+      width: 100%;
+      height: 100%;
+      padding: 6px;
+    }
+
+    .pip {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--tile-pip);
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.50);
+      justify-self: center;
+      align-self: center;
+    }
+
+    /* Pip grid variants */
+    .pips-0 { display: block; }
+    .pips-1 { grid-template: 1fr / 1fr; }
+    .pips-2 { grid-template: 1fr 1fr / 1fr; }
+    .pips-2 .pip:nth-child(1) { align-self: start; }
+    .pips-2 .pip:nth-child(2) { align-self: end; }
+    .pips-3 { grid-template: 1fr 1fr 1fr / 1fr; }
+    .pips-4 { grid-template: 1fr 1fr / 1fr 1fr; }
+    .pips-5 { grid-template: 1fr 1fr 1fr / 1fr 1fr; }
+    .pips-5 .pip:nth-child(3) { grid-column: 1 / 3; }
+    .pips-6 { grid-template: 1fr 1fr 1fr / 1fr 1fr; }
+
+    /* Domino tile sizes */
+    .domino-sm .domino-half.square { width: 40px; height: 40px; }
+    .domino-sm .pip { width: 7px; height: 7px; }
+    .domino-lg .domino-half.square { width: 64px; height: 64px; }
+    .domino-lg .pip { width: 11px; height: 11px; }
+
+    /* Scattered on table */
+    .domino-scattered {
+      position: relative;
+      display: inline-block;
+    }
+
+    .domino-h {
+      flex-direction: row;
+    }
+
+    .domino-h .domino-divider {
+      width: 1.5px;
+      height: auto;
+      margin: 4px 2px;
+    }
+
+    /* Rotated tiles for the "real table" feel */
+    .tilt-1 { transform: rotate(-8deg); }
+    .tilt-2 { transform: rotate(5deg); }
+    .tilt-3 { transform: rotate(-3deg); }
+    .tilt-4 { transform: rotate(12deg); }
+    .tilt-5 { transform: rotate(-15deg); }
+
+    .domino.tilt-1:hover { transform: rotate(-8deg) translateY(-4px); }
+    .domino.tilt-2:hover { transform: rotate(5deg) translateY(-4px); }
+    .domino.tilt-3:hover { transform: rotate(-3deg) translateY(-4px); }
+
+    /* ============================================================
+       FEATURE CARDS SECTION
+       ============================================================ */
+    .feature-icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+    }
+
+    .feature-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-cream);
+      margin-bottom: 8px;
+    }
+
+    .feature-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       STATS BAR
+       ============================================================ */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(201, 146, 58, 0.20);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      margin-bottom: 20px;
+    }
+
+    .stat-cell {
+      background: rgba(28, 16, 6, 0.90);
+      padding: 28px 20px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--text-cream);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-number span { color: var(--accent-coral); }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* ============================================================
+       WAITLIST FORM (hero)
+       ============================================================ */
+    .waitlist-form {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .waitlist-input {
+      flex: 1;
+      background: rgba(245, 240, 232, 0.10);
+      border: 1.5px solid rgba(245, 240, 232, 0.30);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      color: var(--text-cream);
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      backdrop-filter: blur(8px);
+    }
+
+    .waitlist-input::placeholder { color: var(--text-dim); }
+    .waitlist-input:focus {
+      border-color: rgba(232, 87, 42, 0.60);
+      background: rgba(245, 240, 232, 0.14);
+    }
+
+    /* ============================================================
+       PRODUCTION NOTES BANNER
+       ============================================================ */
+    .prod-note {
+      background: rgba(201, 146, 58, 0.10);
+      border: 1px solid rgba(201, 146, 58, 0.30);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 12px;
+      color: var(--accent-gold);
+      line-height: 1.7;
+      margin-bottom: 48px;
+    }
+
+    .prod-note strong {
+      color: var(--text-cream);
+      display: block;
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+
+    /* ============================================================
+       PLAYER CARD
+       ============================================================ */
+    .player-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .player-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .player-info .player-name {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--text-cream);
+    }
+
+    .player-info .player-score {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 13px;
+      color: var(--accent-gold);
+    }
+
+    .badge-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(232, 87, 42, 0.15);
+      border: 1px solid rgba(232, 87, 42, 0.35);
+      color: var(--accent-coral-light);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-family: 'Roboto Mono', monospace;
+      text-transform: uppercase;
+    }
+
+    .badge-live::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--accent-coral);
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    /* ============================================================
+       SCOREBOARD
+       ============================================================ */
+    .scoreboard-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(201, 146, 58, 0.12);
+    }
+
+    .scoreboard-row:last-child { border-bottom: none; }
+
+    .rank {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 13px;
+      color: var(--text-dim);
+      width: 28px;
+    }
+
+    .rank.gold { color: var(--accent-gold); font-weight: 700; }
+
+    .score-val {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 17px;
+      color: var(--text-cream);
+    }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    footer {
+      text-align: center;
+      padding: 48px 0 32px;
+      border-top: 1px solid rgba(201, 146, 58, 0.15);
+      margin-top: 20px;
+    }
+
+    footer .footer-brand {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 28px;
+      letter-spacing: -0.04em;
+      color: var(--text-cream);
+      margin-bottom: 8px;
+    }
+
+    footer p {
+      font-size: 14px;
+      color: var(--text-dim);
+      margin-bottom: 24px;
+    }
+
+    footer .footer-links {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    footer .footer-links a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+
+    footer .footer-links a:hover { color: var(--accent-coral); }
+
+    /* ============================================================
+       SCROLL INDICATORS (decorative)
+       ============================================================ */
+    .divider-line {
+      height: 1px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(201, 146, 58, 0.30) 20%,
+        rgba(201, 146, 58, 0.50) 50%,
+        rgba(201, 146, 58, 0.30) 80%,
+        transparent 100%
+      );
+      margin: 48px 0;
+    }
+
+    .wood-note-inline {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 10px;
+      color: var(--text-dim);
+      text-align: center;
+      margin-top: 8px;
+      opacity: 0.7;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAV
+       ============================================================ -->
+  <nav>
+    <div class="nav-brand">
+      <div class="brand-dot"></div>
+      Domino Live
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Jugar</a></li>
+      <li><a href="#">Torneos</a></li>
+      <li><a href="#">Rankings</a></li>
+      <li><a href="#">Comunidad</a></li>
+    </ul>
+    <button class="nav-cta">Únete Ahora</button>
+  </nav>
+
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <div class="page-wrapper">
+
+    <!-- ── Production Note ── -->
+    <div style="height: 48px;"></div>
+    <div class="prod-note">
+      <strong>🔧 V5.3 "La Mesa" — Production Texture Notes</strong>
+      Wood grain is currently <em>simulated via CSS layered gradients</em>. For production, replace <code>body { background-image: ... }</code> with:<br>
+      <code>background-image: url('/assets/textures/mahogany-walnut.jpg'); background-size: 800px; background-repeat: repeat;</code><br>
+      Free sources: <strong>Poly Haven</strong> (CC0), <strong>Pexels</strong>, <strong>Unsplash</strong> — search "dark mahogany wood", "walnut wood grain", "rosewood texture". Recommended: 1024×1024px, seamlessly tileable.
+    </div>
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <div class="section hero">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        V5.3 · La Mesa · Wood Surface Edition
+      </div>
+
+      <h1>Juega Dominó<br><span>Como en Casa.</span></h1>
+      <p class="hero-tagline">
+        La auténtica experiencia venezolana de dominó — en tu pantalla, con la
+        vibra de la mesa de siempre.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn btn-primary btn-lg">🎲 Empieza a Jugar</button>
+        <button class="btn btn-secondary btn-lg">Ver Demo</button>
+      </div>
+
+      <!-- Waitlist -->
+      <div class="waitlist-form">
+        <input class="waitlist-input" type="email" placeholder="tu@email.com" />
+        <button class="btn btn-gold">Entrar a la lista</button>
+      </div>
+    </div>
+
+    <div class="divider-line"></div>
+
+    <!-- ============================================================
+         DOMINO TILES ON WOOD (the star of V5.3)
+         ============================================================ -->
+    <div class="section">
+      <div class="section-label">🁣 Fichas en La Mesa</div>
+
+      <div class="domino-showcase">
+
+        <!-- 6|6 — Double six -->
+        <div class="domino tilt-3">
+          <div class="domino-half square">
+            <div class="pips pips-6">
+              <div class="pip"></div><div class="pip"></div>
+              <div class="pip"></div><div class="pip"></div>
+              <div class="pip"></div><div class="pip"></div>
+            </div>
+          </div>
+          <div class="domino-divider"></div>
+          <div class="domino-half square">
+            <div class="pips pips-6">
+              <div class="pip"></div><div class="pip"></div>
+              <div class="pip"></div><div class="pip"></div>
+              <div class="pip"></div><div class="pip"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5|3 -->
+        <div class="domino domino-lg tilt-1">
+          <div class="domino-half square">
+            <div class="pips pips-5">
+              <div class="pip"></div><div class="pip"></div>
+              <div class="pip"></div>
+              <div class="pip"></div><div class="pip"></div>
+            </div>
+          </div>
+          <div class="domino-divider"></div>
+          <div class="domino-half square">
+            <div class="pips pips-3">
+              <div class="pip"></div>
+              <div class="pip"></div>
+              <div class="pip"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4|2 — medium, vertical -->
+        <div class="domino tilt-5" style="transform: rotate(-15deg);">
+          <div class="domino-half square">
+            <div class="pips pips-4">
+              <div class="pip"></div><div class="pip"></div>
+              <div class="pip"></div><div class="pip"></div>
+            </div>
+          </div>
+          <div class="domino-divider"></div>
+          <div class="domino-half square">
+            <div class="pips pips-2">
+              <div class="pip"></div>
+              <div class="pip"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6|1 — horizontal -->
+        <div class="domino domino-h tilt-2">
+          <div class="domino-half square">
+            <div class="pips pips-6">
+              <div class="pip"></div><div class="pip"></div>
+              <div class="pip"></div><div class="pip"></div>
+              <div class="pip"></div><div class="pip"></div>
+            </div>
+          </div>
+          <div class="domino-divider"></div>
+          <div class="domino-half square">
+            <div class="pips pips-1">
+              <div class="pip"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3|3 — Double three, small -->
+        <div class="domino domino-sm" style="transform: rotate(7deg);">
+          <div class="domino-half square">
+            <div class="pips pips-3">
+              <div class="pip"></div>
+              <div class="pip"></div>
+              <div class="pip"></div>
+            </div>
+          </div>
+          <div class="domino-divider"></div>
+          <div class="domino-half square">
+            <div class="pips pips-3">
+              <div class="pip"></div>
+              <div class="pip"></div>
+              <div class="pip"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 0|5 -->
+        <div class="domino tilt-4" style="transform: rotate(12deg);">
+          <div class="domino-half square" style="background: rgba(240,234,216,0.5);">
+            <!-- blank half -->
+          </div>
+          <div class="domino-divider"></div>
+          <div class="domino-half square">
+            <div class="pips pips-5">
+              <div class="pip"></div><div class="pip"></div>
+              <div class="pip"></div>
+              <div class="pip"></div><div class="pip"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="wood-note-inline">
+        ↑ CSS-simulated mahogany wood grain — real texture image recommended for production
+      </p>
+    </div>
+
+    <div class="divider-line"></div>
+
+    <!-- ============================================================
+         STATS BAR
+         ============================================================ -->
+    <div class="section">
+      <div class="section-label">📊 La Liga</div>
+      <div class="stats-bar">
+        <div class="stat-cell">
+          <div class="stat-number">12<span>K+</span></div>
+          <div class="stat-label">Jugadores activos</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number">847</div>
+          <div class="stat-label">Partidas ahora mismo</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number"><span>#1</span></div>
+          <div class="stat-label">Dominó venezolano online</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         FEATURE CARDS — floating on wood
+         ============================================================ -->
+    <div class="section">
+      <div class="section-label">✨ Por Qué Domino Live</div>
+      <div class="grid-3">
+
+        <div class="card card-dark">
+          <div class="feature-icon">🎯</div>
+          <div class="feature-title">Reglas Venezolanas</div>
+          <p class="feature-desc">El juego como lo conoces — con las reglas que aprendiste en casa. Nada de versiones gringas.</p>
+        </div>
+
+        <div class="card card-glass">
+          <div class="feature-icon">🏆</div>
+          <div class="feature-title">Torneos Semanales</div>
+          <p class="feature-desc">Compite por premios reales. Rankings globales. Tu nombre en lo más alto de la tabla.</p>
+        </div>
+
+        <div class="card card-olive">
+          <div class="feature-icon">🎙️</div>
+          <div class="feature-title">Voz en Tiempo Real</div>
+          <p class="feature-desc">Habla con tu pareja como en la mesa. El trash talk incluido — por supuesto.</p>
+        </div>
+
+        <div class="card card-burgundy">
+          <div class="feature-icon">📱</div>
+          <div class="feature-title">Mobile-First</div>
+          <p class="feature-desc">Diseñado para tu teléfono. Fluido, rápido, táctil. La mesa cabe en tu bolsillo.</p>
+        </div>
+
+        <div class="card card-cream">
+          <div class="feature-icon">🤝</div>
+          <div class="feature-title">Invita a Tu Familia</div>
+          <p class="feature-desc">Un link, y están jugando. Sin registro complicado. Tu abuelo puede entrar también.</p>
+        </div>
+
+        <div class="card card-glass">
+          <div class="feature-icon">⚡</div>
+          <div class="feature-title">Sin Lag, Sin Excusas</div>
+          <p class="feature-desc">Infraestructura real-time de baja latencia. Cada jugada, al instante.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="divider-line"></div>
+
+    <!-- ============================================================
+         LIVE GAME CARD + SCOREBOARD
+         ============================================================ -->
+    <div class="section">
+      <div class="section-label">🎮 En Vivo Ahora</div>
+      <div class="grid-2">
+
+        <!-- Live game card -->
+        <div class="card card-dark">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h3 style="color: var(--text-cream); font-size: 18px;">Sala Caraqueña 🇻🇪</h3>
+            <span class="badge-live">En Vivo</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <div class="player-card">
+              <div class="player-avatar" style="background: rgba(107,124,92,0.4);">🧑</div>
+              <div class="player-info">
+                <div class="player-name">Carlos & Pedro</div>
+                <div class="player-score">Equipo A · 87 pts</div>
+              </div>
+            </div>
+            <div style="text-align: center; font-family: 'Roboto Mono', monospace; font-size: 11px; color: var(--text-dim); letter-spacing: 0.12em;">VS</div>
+            <div class="player-card">
+              <div class="player-avatar" style="background: rgba(125,46,59,0.4);">👩</div>
+              <div class="player-info">
+                <div class="player-name">María & Josefina</div>
+                <div class="player-score">Equipo B · 73 pts</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(201,146,58,0.15);">
+            <div style="display: flex; gap: 10px;">
+              <button class="btn btn-primary btn-sm" style="flex:1;">👀 Observar</button>
+              <button class="btn btn-ghost btn-sm" style="flex:1;">💬 Chat</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scoreboard -->
+        <div class="card card-glass">
+          <h3 style="color: var(--text-cream); font-size: 18px; margin-bottom: 18px;">🏅 Top Jugadores</h3>
+          <div>
+            <div class="scoreboard-row">
+              <span class="rank gold">1st</span>
+              <div class="player-card" style="flex: 1;">
+                <div class="player-avatar" style="background: rgba(201,146,58,0.25); width: 34px; height: 34px; font-size: 16px;">🥇</div>
+                <div class="player-info">
+                  <div class="player-name" style="font-size: 14px;">El Maestro</div>
+                  <div class="player-score" style="font-size: 11px;">2,847 victorias</div>
+                </div>
+              </div>
+              <span class="score-val">9,420</span>
+            </div>
+            <div class="scoreboard-row">
+              <span class="rank" style="color: #C0C0C0;">2nd</span>
+              <div class="player-card" style="flex: 1;">
+                <div class="player-avatar" style="background: rgba(107,124,92,0.30); width: 34px; height: 34px; font-size: 16px;">😎</div>
+                <div class="player-info">
+                  <div class="player-name" style="font-size: 14px;">LaReina</div>
+                  <div class="player-score" style="font-size: 11px;">2,231 victorias</div>
+                </div>
+              </div>
+              <span class="score-val">8,170</span>
+            </div>
+            <div class="scoreboard-row">
+              <span class="rank" style="color: #CD7F32;">3rd</span>
+              <div class="player-card" style="flex: 1;">
+                <div class="player-avatar" style="background: rgba(192,92,58,0.30); width: 34px; height: 34px; font-size: 16px;">🔥</div>
+                <div class="player-info">
+                  <div class="player-name" style="font-size: 14px;">SixSix_Caraqueño</div>
+                  <div class="player-score" style="font-size: 11px;">1,994 victorias</div>
+                </div>
+              </div>
+              <span class="score-val">7,850</span>
+            </div>
+            <div class="scoreboard-row">
+              <span class="rank">4th</span>
+              <div class="player-card" style="flex: 1;">
+                <div class="player-avatar" style="background: rgba(60,35,15,0.50); width: 34px; height: 34px; font-size: 16px;">🎲</div>
+                <div class="player-info">
+                  <div class="player-name" style="font-size: 14px;">Abuela Pro</div>
+                  <div class="player-score" style="font-size: 11px;">1,742 victorias</div>
+                </div>
+              </div>
+              <span class="score-val">7,200</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="divider-line"></div>
+
+    <!-- ============================================================
+         COLOR PALETTE SWATCHES
+         ============================================================ -->
+    <div class="section">
+      <div class="section-label">🎨 V5.3 Paleta de Colores — La Mesa</div>
+
+      <!-- Wood tones row -->
+      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 14px; font-family: 'Roboto Mono', monospace; letter-spacing: 0.05em;">── FONDOS DE MADERA ──</p>
+      <div class="swatch-row">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #2A1A0E;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Wood Dark</div>
+            <div class="swatch-hex">#2A1A0E</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #3D2010;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Wood Mid</div>
+            <div class="swatch-hex">#3D2010</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #4A2812;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Grain Primary</div>
+            <div class="swatch-hex">#4A2812</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #6B4020;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Wood Highlight</div>
+            <div class="swatch-hex">#6B4020</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #7A4E28;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Walnut Warm</div>
+            <div class="swatch-hex">#7A4E28</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accent row -->
+      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 14px; font-family: 'Roboto Mono', monospace; letter-spacing: 0.05em; margin-top: 20px;">── ACENTOS ──</p>
+      <div class="swatch-row">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #E8572A; box-shadow: 0 0 20px rgba(232,87,42,0.5) inset;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Coral CTA ★</div>
+            <div class="swatch-hex">#E8572A</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #C9923A;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Gold Accent</div>
+            <div class="swatch-hex">#C9923A</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #7D2E3B;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Burgundy</div>
+            <div class="swatch-hex">#7D2E3B</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #C05C3A;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Terracotta</div>
+            <div class="swatch-hex">#C05C3A</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #6B7C5C;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Olive</div>
+            <div class="swatch-hex">#6B7C5C</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text + tile row -->
+      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 14px; font-family: 'Roboto Mono', monospace; letter-spacing: 0.05em; margin-top: 20px;">── TEXTOS Y FICHAS ──</p>
+      <div class="swatch-row">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #F5F0E8;"></div>
+          <div class="swatch-info" style="background: rgba(28,16,6,0.95);">
+            <div class="swatch-name">Cream Text</div>
+            <div class="swatch-hex">#F5F0E8</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #EDE6D8;"></div>
+          <div class="swatch-info" style="background: rgba(28,16,6,0.95);">
+            <div class="swatch-name">Ivory</div>
+            <div class="swatch-hex">#EDE6D8</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #F0EAD8; border: 1px solid rgba(200,160,90,0.3);"></div>
+          <div class="swatch-info" style="background: rgba(28,16,6,0.95);">
+            <div class="swatch-name">Tile Ivory</div>
+            <div class="swatch-hex">#F0EAD8</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #C4B89A;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Muted Text</div>
+            <div class="swatch-hex">#C4B89A</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #1C1C1A;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Pip Dark</div>
+            <div class="swatch-hex">#1C1C1A</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider-line"></div>
+
+    <!-- ============================================================
+         BUTTON SYSTEM
+         ============================================================ -->
+    <div class="section">
+      <div class="section-label">🔘 Sistema de Botones</div>
+      <div class="card card-dark" style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center;">
+        <button class="btn btn-primary">🎲 Primario</button>
+        <button class="btn btn-primary btn-lg">Primario Grande</button>
+        <button class="btn btn-secondary">Secundario</button>
+        <button class="btn btn-gold">✨ Dorado</button>
+        <button class="btn btn-ghost">Ghost</button>
+        <button class="btn btn-primary btn-sm">Pequeño</button>
+        <button class="btn btn-secondary btn-sm">Sec. Pequeño</button>
+        <button class="btn btn-primary" disabled style="opacity:0.4; cursor: not-allowed;">Deshabilitado</button>
+      </div>
+    </div>
+
+    <div class="divider-line"></div>
+
+    <!-- ============================================================
+         DESIGN NOTES
+         ============================================================ -->
+    <div class="section">
+      <div class="section-label">📝 Notas de Diseño</div>
+      <div class="grid-2">
+        <div class="card card-dark">
+          <h3 style="font-size: 16px; color: var(--accent-gold); margin-bottom: 14px;">✅ Decisiones Tomadas</h3>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px;">
+            <li style="font-size: 14px; color: var(--text-muted);">🪵 <strong style="color: var(--text-ivory);">Fondo oscuro simulado</strong> — mahogany CSS gradients, reemplazar con imagen real en prod</li>
+            <li style="font-size: 14px; color: var(--text-muted);">✍️ <strong style="color: var(--text-ivory);">Texto cream/ivory</strong> — máxima legibilidad sobre madera oscura</li>
+            <li style="font-size: 14px; color: var(--text-ivory);">🃏 <strong>Cards sólidas</strong> — contrastan con la textura sin competir</li>
+            <li style="font-size: 14px; color: var(--text-muted);">🥃 <strong style="color: var(--text-ivory);">Glass cards</strong> — efecto "flotando sobre la mesa"</li>
+            <li style="font-size: 14px; color: var(--text-muted);">🟠 <strong style="color: var(--text-ivory);">Coral #E8572A</strong> — CTAs sin cambio (identidad intacta)</li>
+            <li style="font-size: 14px; color: var(--text-muted);">🌟 <strong style="color: var(--text-ivory);">Gold #C9923A</strong> — nuevo acento para labels en madera</li>
+          </ul>
+        </div>
+        <div class="card card-glass">
+          <h3 style="font-size: 16px; color: var(--accent-gold); margin-bottom: 14px;">⚡ Próximos Pasos</h3>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px;">
+            <li style="font-size: 14px; color: var(--text-muted);">📸 Conseguir textura real tileable (Poly Haven CC0)</li>
+            <li style="font-size: 14px; color: var(--text-muted);">🔍 A/B test vs V5.1 (cream) — cuál convierte mejor</li>
+            <li style="font-size: 14px; color: var(--text-muted);">📱 Revisar en mobile — ¿texture vs performance?</li>
+            <li style="font-size: 14px; color: var(--text-muted);">🎞️ Añadir animaciones de entrada para fichas</li>
+            <li style="font-size: 14px; color: var(--text-muted);">🎵 Considerar sonido de ficha sobre mesa (táctil)</li>
+            <li style="font-size: 14px; color: var(--text-muted);">💡 ¿Modo claro V5.1 vs La Mesa — dejar al usuario elegir?</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /page-wrapper -->
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer>
+    <div class="footer-brand">Domino Live</div>
+    <p>La mesa venezolana, en tu pantalla. 🇻🇪</p>
+    <div class="footer-links">
+      <a href="#">Privacidad</a>
+      <a href="#">Términos</a>
+      <a href="#">Blog</a>
+      <a href="#">Twitter</a>
+      <a href="#">Discord</a>
+    </div>
+    <p style="margin-top: 20px; font-size: 11px; font-family: 'Roboto Mono', monospace; color: var(--text-dim);">
+      V5.3 "La Mesa" — Wood Texture Edition · Domino Live Brand System
+    </p>
+  </footer>
+
+</body>
+</html>

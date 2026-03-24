@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog Thumbnails Preview — V5.2</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    background: #1A1714;
+    color: #F5F0E8;
+    font-family: -apple-system, 'Inter', sans-serif;
+    padding: 40px;
+    line-height: 1.6;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    color: #9E9181;
+    font-size: 14px;
+    margin-bottom: 40px;
+  }
+
+  h2 {
+    font-size: 16px;
+    color: #E8572A;
+    margin: 40px 0 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .thumbnail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    gap: 32px;
+  }
+
+  .thumbnail-card {
+    background: #211E1A;
+    border: 1px solid #2A2420;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .thumbnail-card:hover {
+    border-color: #E8572A;
+  }
+
+  .thumbnail-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .thumbnail-info {
+    padding: 16px;
+  }
+
+  .thumbnail-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .thumbnail-file {
+    font-size: 12px;
+    color: #9E9181;
+  }
+
+  .section-note {
+    background: rgba(232, 87, 42, 0.1);
+    border: 1px solid rgba(232, 87, 42, 0.3);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    color: #C8BC9F;
+  }
+
+  @media (max-width: 600px) {
+    body { padding: 20px; }
+    .thumbnail-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Blog Thumbnails — V5.2 Preview</h1>
+<p class="subtitle">comojugardomino.com • Awaiting Gabriel's approval</p>
+
+<!-- TEST THUMBNAILS -->
+<h2>Test Batch (3 thumbnails for approval)</h2>
+<div class="section-note">
+  These 3 test thumbnails need your approval before Pixel generates the remaining 41 articles.
+</div>
+
+<div class="thumbnail-grid">
+  <div class="thumbnail-card">
+    <img src="/images/blog/thumbnails/article-como-jugar-domino.png" alt="Cómo Jugar">
+    <div class="thumbnail-info">
+      <div class="thumbnail-title">CÓMO JUGAR</div>
+      <div class="thumbnail-file">como-jugar-domino — Teaching moment, explaining gesture</div>
+    </div>
+  </div>
+
+  <div class="thumbnail-card">
+    <img src="/images/blog/thumbnails/article-reglas-basicas.png" alt="En Pareja">
+    <div class="thumbnail-info">
+      <div class="thumbnail-title">EN PAREJA</div>
+      <div class="thumbnail-file">reglas-basicas — Two partners, knowing nod</div>
+    </div>
+  </div>
+
+  <div class="thumbnail-card">
+    <img src="/images/blog/thumbnails/article-estrategia-basica.png" alt="Estrategia">
+    <div class="thumbnail-info">
+      <div class="thumbnail-title">ESTRATEGIA</div>
+      <div class="thumbnail-file">estrategia-basica — Chess master thinking</div>
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORY COVERS -->
+<h2>Category Covers (5 thumbnails)</h2>
+<div class="section-note">
+  Default thumbnails for each blog category.
+</div>
+
+<div class="thumbnail-grid">
+  <div class="thumbnail-card">
+    <img src="/images/blog/thumbnails/thumbnail-reglas.png" alt="Reglas">
+    <div class="thumbnail-info">
+      <div class="thumbnail-title">REGLAS</div>
+      <div class="thumbnail-file">Hands placing tile — authority, clarity</div>
+    </div>
+  </div>
+
+  <div class="thumbnail-card">
+    <img src="/images/blog/thumbnails/thumbnail-estrategia.png" alt="Estrategia">
+    <div class="thumbnail-info">
+      <div class="thumbnail-title">ESTRATEGIA</div>
+      <div class="thumbnail-file">Chess master focus — Rembrandt lighting</div>
+    </div>
+  </div>
+
+  <div class="thumbnail-card">
+    <img src="/images/blog/thumbnails/thumbnail-cultura.png" alt="Cultura">
+    <div class="thumbnail-info">
+      <div class="thumbnail-title">CULTURA</div>
+      <div class="thumbnail-file">Three generations — golden hour warmth</div>
+    </div>
+  </div>
+
+  <div class="thumbnail-card">
+    <img src="/images/blog/thumbnails/thumbnail-psicologia.png" alt="Psicología">
+    <div class="thumbnail-info">
+      <div class="thumbnail-title">PSICOLOGÍA</div>
+      <div class="thumbnail-file">Close-up eyes — reading the opponent</div>
+    </div>
+  </div>
+
+  <div class="thumbnail-card">
+    <img src="/images/blog/thumbnails/thumbnail-variantes.png" alt="Variantes">
+    <div class="thumbnail-info">
+      <div class="thumbnail-title">VARIANTES</div>
+      <div class="thumbnail-file">Overhead flat-lay — editorial style</div>
+    </div>
+  </div>
+</div>
+
+<p style="text-align: center; color: #6B6560; font-size: 12px; margin-top: 60px;">
+  V5.2 "Dark Earth" • Pixel 🎨
+</p>
+
+</body>
+</html>

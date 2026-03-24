@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Chivo Thumbnails — Preview</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    background: #1A1714;
+    color: #F5F0E8;
+    font-family: -apple-system, 'Inter', sans-serif;
+    padding: 40px;
+    line-height: 1.6;
+  }
+
+  h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
+
+  .subtitle {
+    color: #9E9181;
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(232, 87, 42, 0.15);
+    border: 1px solid rgba(232, 87, 42, 0.3);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    color: #E8572A;
+    margin-bottom: 32px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 24px;
+  }
+
+  .card {
+    background: #211E1A;
+    border: 1px solid #2A2420;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .card:hover {
+    border-color: #E8572A;
+    transform: translateY(-2px);
+  }
+
+  .card img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+
+  .card-info {
+    padding: 16px;
+    border-top: 1px solid #2A2420;
+  }
+
+  .card-name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .card-desc {
+    font-size: 13px;
+    color: #9E9181;
+  }
+
+  .note {
+    background: rgba(107, 124, 92, 0.15);
+    border: 1px solid rgba(107, 124, 92, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 32px;
+  }
+
+  .note h3 {
+    font-size: 14px;
+    color: #6B7C5C;
+    margin-bottom: 8px;
+  }
+
+  .note p {
+    font-size: 13px;
+    color: #9E9181;
+  }
+
+  @media (max-width: 600px) {
+    body { padding: 20px; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<h1>🐐 El Chivo Thumbnails</h1>
+<p class="subtitle">YouTube-style thumbnails with mascot prominently featured</p>
+<span class="badge">⚠️ PREVIEW ONLY — Awaiting Gabriel's Approval</span>
+
+<div class="grid">
+
+  <div class="card">
+    <img src="/images/thumbnails/examples/thumb-como-jugar.png?v=1119" alt="Cómo Jugar">
+    <div class="card-info">
+      <div class="card-name">1. CÓMO JUGAR</div>
+      <div class="card-desc">How to Play — El Chivo pointing at domino tiles, teaching vibe</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="/images/thumbnails/examples/thumb-estrategia.png?v=1119" alt="Estrategia">
+    <div class="card-info">
+      <div class="card-name">2. TRUCO SECRETO</div>
+      <div class="card-desc">Winning Strategy — Thinking pose, lightbulb, dramatic lighting</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="/images/thumbnails/examples/thumb-errores.png?v=1119" alt="Errores">
+    <div class="card-info">
+      <div class="card-name">3. ¿ESTE ERROR?</div>
+      <div class="card-desc">Mistakes — Warning expression, red accents, pointing at viewer</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="/images/thumbnails/examples/thumb-el-que-sabe.png?v=1119" alt="El Que Sabe">
+    <div class="card-info">
+      <div class="card-name">4. EL QUE SABE, SABE</div>
+      <div class="card-desc">Brand/Intro — Celebrating pose, premium feel, golden confetti</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="note">
+  <h3>📐 Specs</h3>
+  <p>
+    • 16:9 aspect ratio (YouTube thumbnail format)<br>
+    • El Chivo at 60-70% frame height (prominent, not in corner)<br>
+    • V5.2 palette: dark #1A1714, coral #E8572A, cream #F5F0E8<br>
+    • Bold 3-5 word text, high contrast for small sizes
+  </p>
+</div>
+
+<p style="text-align: center; color: #6B6560; font-size: 12px; margin-top: 40px;">
+  Pixel 🎨 • Inspired by OpenClaw's mascot style
+</p>
+
+</body>
+</html>

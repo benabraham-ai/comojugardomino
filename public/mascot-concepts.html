@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mascot Concepts — DominoLive</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    background: #1A1714;
+    color: #F5F0E8;
+    font-family: -apple-system, 'Inter', sans-serif;
+    padding: 40px;
+    line-height: 1.6;
+  }
+
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    color: #9E9181;
+    font-size: 14px;
+    margin-bottom: 40px;
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(232, 87, 42, 0.15);
+    border: 1px solid rgba(232, 87, 42, 0.3);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    color: #E8572A;
+    margin-bottom: 24px;
+  }
+
+  .mascot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 32px;
+  }
+
+  .mascot-card {
+    background: #211E1A;
+    border: 1px solid #2A2420;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .mascot-card:hover {
+    border-color: #E8572A;
+    transform: translateY(-4px);
+  }
+
+  .mascot-image {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
+    background: #1A1714;
+    display: block;
+    padding: 20px;
+  }
+
+  .mascot-info {
+    padding: 24px;
+    border-top: 1px solid #2A2420;
+  }
+
+  .mascot-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .mascot-emoji {
+    font-size: 32px;
+  }
+
+  .mascot-name {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .mascot-tagline {
+    color: #E8572A;
+    font-size: 14px;
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+
+  .mascot-description {
+    color: #C8BC9F;
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .mascot-traits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .trait {
+    background: rgba(107, 124, 92, 0.2);
+    border: 1px solid rgba(107, 124, 92, 0.3);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    color: #9E9181;
+  }
+
+  .recommendation {
+    background: linear-gradient(135deg, rgba(232, 87, 42, 0.1), rgba(107, 124, 92, 0.1));
+    border: 2px solid #E8572A;
+    border-radius: 16px;
+    padding: 24px;
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  .recommendation h2 {
+    color: #E8572A;
+    margin-bottom: 12px;
+    font-size: 20px;
+  }
+
+  .recommendation p {
+    color: #C8BC9F;
+    font-size: 14px;
+  }
+
+  @media (max-width: 500px) {
+    body { padding: 20px; }
+    .mascot-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<h1>🎨 Mascot Concepts</h1>
+<p class="subtitle">DominoLive • 100% Original • Kosher Animals Only</p>
+<span class="badge">⚠️ PREVIEW ONLY — Awaiting Gabriel's Approval</span>
+
+<div class="mascot-grid">
+
+  <!-- EL GALLO -->
+  <div class="mascot-card">
+    <img src="/images/mascots/concepts/concept-gallo.png" alt="El Gallo" class="mascot-image">
+    <div class="mascot-info">
+      <div class="mascot-header">
+        <span class="mascot-emoji">🐓</span>
+        <span class="mascot-name">El Gallo</span>
+      </div>
+      <div class="mascot-tagline">"El que canta primero, gana"</div>
+      <p class="mascot-description">
+        Proud rooster on a stepped platform, holding a double-six domino in his talon. Jade/earth tones with coral comb. Strong geometric feathers — Caribbean competitive energy.
+      </p>
+      <div class="mascot-traits">
+        <span class="trait">Proud</span>
+        <span class="trait">Competitive</span>
+        <span class="trait">Caribbean</span>
+        <span class="trait">Bold</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EL CHIVO -->
+  <div class="mascot-card">
+    <img src="/images/mascots/concepts/concept-chivo.png" alt="El Chivo" class="mascot-image">
+    <div class="mascot-info">
+      <div class="mascot-header">
+        <span class="mascot-emoji">🐐</span>
+        <span class="mascot-name">El Chivo</span>
+      </div>
+      <div class="mascot-tagline">"The GOAT — Greatest Of All Time"</div>
+      <p class="mascot-description">
+        Half-bust goat with flat cap and gold chain, domino tile raised confidently. Knows he's the best. That knowing smirk says it all.
+      </p>
+      <div class="mascot-traits">
+        <span class="trait">GOAT</span>
+        <span class="trait">Wise</span>
+        <span class="trait">Confident</span>
+        <span class="trait">Experienced</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EL TORO -->
+  <div class="mascot-card">
+    <img src="/images/mascots/concepts/concept-toro.png" alt="El Toro" class="mascot-image">
+    <div class="mascot-info">
+      <div class="mascot-header">
+        <span class="mascot-emoji">🐂</span>
+        <span class="mascot-name">El Toro</span>
+      </div>
+      <div class="mascot-tagline">"Fuerza y estrategia"</div>
+      <p class="mascot-description">
+        Full-body bull facing forward, domino tile integrated into chest geometry. Coral/gold/black with intense focused eyes. Miami energy, strategic power.
+      </p>
+      <div class="mascot-traits">
+        <span class="trait">Powerful</span>
+        <span class="trait">Miami</span>
+        <span class="trait">Strategic</span>
+        <span class="trait">Intense</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EL ÁGUILA -->
+  <div class="mascot-card">
+    <img src="/images/mascots/concepts/concept-aguila.png" alt="El Águila" class="mascot-image">
+    <div class="mascot-info">
+      <div class="mascot-header">
+        <span class="mascot-emoji">🦅</span>
+        <span class="mascot-name">El Águila</span>
+      </div>
+      <div class="mascot-tagline">"Ve todo el tablero"</div>
+      <p class="mascot-description">
+        Perched eagle with domino pip dots woven into wing feathers — subtle and brilliant. Sharp intelligent eye, dignified premium feel.
+      </p>
+      <div class="mascot-traits">
+        <span class="trait">Sharp-eyed</span>
+        <span class="trait">Strategic</span>
+        <span class="trait">Premium</span>
+        <span class="trait">Visionary</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EL GALLO PADRINO -->
+  <div class="mascot-card">
+    <img src="/images/mascots/concepts/concept-gallo-padrino.png" alt="El Gallo Padrino" class="mascot-image">
+    <div class="mascot-info">
+      <div class="mascot-header">
+        <span class="mascot-emoji">🐓</span>
+        <span class="mascot-name">El Gallo Padrino</span>
+      </div>
+      <div class="mascot-tagline">"I own this table"</div>
+      <p class="mascot-description">
+        Dramatically reduced palette — near-black, cream, coral only. More angular/flat than V1. Holds domino quietly. That calm eye says boss.
+      </p>
+      <div class="mascot-traits">
+        <span class="trait">Boss</span>
+        <span class="trait">Minimal</span>
+        <span class="trait">Refined</span>
+        <span class="trait">Icon-ready</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="recommendation">
+  <h2>🎯 Pixel's Recommendations</h2>
+  <p>
+    <strong>Best icon scalability:</strong> El Toro, El Gallo Padrino<br>
+    <strong>Most unique storytelling:</strong> El Águila (pips in feathers)
+  </p>
+</div>
+
+<p style="text-align: center; color: #6B6560; font-size: 12px; margin-top: 40px;">
+  All concepts 100% original • Kosher animals only • V5.2 Dark Earth palette
+</p>
+
+</body>
+</html>

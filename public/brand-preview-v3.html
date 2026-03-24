@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DominoLive — Verde Conquistador (V3) Preview</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    background: #0D1610;
+    color: #F5F0E8;
+    font-family: -apple-system, 'Inter', 'Segoe UI', sans-serif;
+    padding: 24px;
+    line-height: 1.6;
+  }
+
+  h1 {
+    font-weight: 800;
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    font-weight: 700;
+    font-size: 22px;
+    margin: 32px 0 16px;
+    color: #D4AA2A;
+  }
+
+  .subtitle {
+    color: #9CA89E;
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+
+  .section {
+    background: #141E17;
+    border: 1px solid #1E2B22;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  .section-title {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #6B7A6E;
+    margin-bottom: 16px;
+  }
+
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 16px;
+  }
+
+  .color-card {
+    text-align: center;
+  }
+
+  .color-swatch {
+    width: 100%;
+    height: 80px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    border: 1px solid rgba(245, 240, 232, 0.1);
+  }
+
+  .color-name {
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+
+  .color-hex {
+    font-size: 11px;
+    color: #6B7A6E;
+    font-family: monospace;
+  }
+
+  /* Button Preview */
+  .button-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn-primary {
+    background: #1E8C52;
+    color: #F5F0E8;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: #9CA89E;
+    border: 1.5px solid #2A3D2F;
+    padding: 14px 28px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  .btn-gold {
+    background: #D4AA2A;
+    color: #0D1610;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  /* Card Preview */
+  .preview-card {
+    background: #141E17;
+    border: 1px solid #1E2B22;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 320px;
+  }
+
+  .preview-card.active {
+    border-left: 3px solid #1E8C52;
+    background: #182119;
+  }
+
+  .preview-card.premium {
+    border: 1px solid #D4AA2A;
+  }
+
+  .card-title {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .card-subtitle {
+    font-size: 13px;
+    color: #9CA89E;
+  }
+
+  .card-badge {
+    display: inline-block;
+    background: #D4AA2A;
+    color: #0D1610;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+
+  /* Comparison */
+  .comparison {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .comparison-box {
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .comparison-box h4 {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+
+  .v1-style {
+    background: #0a0a0a;
+  }
+  .v1-style .demo-btn {
+    background: #ff6b35;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  .v2-style {
+    background: #1A110A;
+  }
+  .v2-style .demo-btn {
+    background: #8B3A2A;
+    color: #F5EDD6;
+    padding: 10px 20px;
+    border-radius: 6px;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  .v3-style {
+    background: #0D1610;
+  }
+  .v3-style .demo-btn {
+    background: #1E8C52;
+    color: #F5F0E8;
+    padding: 10px 20px;
+    border-radius: 6px;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  .divider {
+    height: 1px;
+    background: #1E2B22;
+    margin: 32px 0;
+  }
+
+  /* Hero Preview */
+  .hero-preview {
+    background: linear-gradient(180deg, #0F1D13 0%, #0D1610 100%);
+    border: 1px solid #1E2B22;
+    border-radius: 12px;
+    padding: 48px 24px;
+    text-align: center;
+  }
+
+  .hero-preview h1 {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .hero-preview p {
+    color: #9CA89E;
+    font-size: 16px;
+    margin-bottom: 24px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .tagline {
+    font-style: italic;
+    color: #D4AA2A;
+    font-size: 18px;
+    margin-top: 32px;
+  }
+
+  /* Signal bars */
+  .signal-demo {
+    display: flex;
+    gap: 24px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .signal-item {
+    text-align: center;
+  }
+
+  .signal-bars {
+    display: flex;
+    gap: 3px;
+    align-items: flex-end;
+    height: 32px;
+    margin-bottom: 8px;
+    justify-content: center;
+  }
+
+  .bar {
+    width: 8px;
+    border-radius: 2px 2px 0 0;
+  }
+
+  .signal-label {
+    font-size: 11px;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<h1>Verde Conquistador</h1>
+<p class="subtitle">DominoLive Brand Direction V3 — Preview for Approval</p>
+
+<!-- V1 vs V2 vs V3 COMPARISON -->
+<h2>V1 → V2 → V3 Evolution</h2>
+<div class="comparison">
+  <div class="comparison-box v1-style">
+    <h4 style="color: #666;">V1 — Esports</h4>
+    <div class="demo-btn">Jugar Ahora</div>
+    <p style="font-size: 10px; color: #666; margin-top: 8px;">Neon orange #ff6b35</p>
+  </div>
+  <div class="comparison-box v2-style">
+    <h4 style="color: #7A6550;">V2 — Café (rejected)</h4>
+    <div class="demo-btn">Jugar Ahora</div>
+    <p style="font-size: 10px; color: #7A6550; margin-top: 8px;">Terracota #8B3A2A</p>
+  </div>
+  <div class="comparison-box v3-style">
+    <h4 style="color: #1E8C52;">V3 — Verde</h4>
+    <div class="demo-btn">Jugar Ahora</div>
+    <p style="font-size: 10px; color: #6B7A6E; margin-top: 8px;">Emerald #1E8C52</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- PRIMARY COLORS -->
+<div class="section">
+  <div class="section-title">Primary Colors</div>
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background: #1E8C52;"></div>
+      <div class="color-name">Verde Mesa</div>
+      <div class="color-hex">#1E8C52</div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #D4AA2A;"></div>
+      <div class="color-name">Oro Campeón</div>
+      <div class="color-hex">#D4AA2A</div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #F5F0E8;"></div>
+      <div class="color-name">Marfil</div>
+      <div class="color-hex">#F5F0E8</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECONDARY COLORS -->
+<div class="section">
+  <div class="section-title">Secondary Colors</div>
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background: #C4622D;"></div>
+      <div class="color-name">Cobre Vivo</div>
+      <div class="color-hex">#C4622D</div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #2461B8;"></div>
+      <div class="color-name">Azul Confianza</div>
+      <div class="color-hex">#2461B8</div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #2A3D2F;"></div>
+      <div class="color-name">Verde Borde</div>
+      <div class="color-hex">#2A3D2F</div>
+    </div>
+  </div>
+</div>
+
+<!-- BACKGROUNDS -->
+<div class="section">
+  <div class="section-title">Backgrounds</div>
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background: #0D1610; border: 1px solid #1E2B22;"></div>
+      <div class="color-name">Fondo Principal</div>
+      <div class="color-hex">#0D1610</div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #141E17;"></div>
+      <div class="color-name">Fondo Tarjeta</div>
+      <div class="color-hex">#141E17</div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #1E2B22;"></div>
+      <div class="color-name">Fondo Elevado</div>
+      <div class="color-hex">#1E2B22</div>
+    </div>
+  </div>
+</div>
+
+<!-- TEXT COLORS -->
+<div class="section">
+  <div class="section-title">Text Colors</div>
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background: #0D1610; display: flex; align-items: center; justify-content: center;">
+        <span style="color: #F5F0E8; font-weight: 600; font-size: 18px;">Aa</span>
+      </div>
+      <div class="color-name">Texto Principal</div>
+      <div class="color-hex">#F5F0E8</div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #0D1610; display: flex; align-items: center; justify-content: center;">
+        <span style="color: #9CA89E; font-weight: 600; font-size: 18px;">Aa</span>
+      </div>
+      <div class="color-name">Texto Secundario</div>
+      <div class="color-hex">#9CA89E</div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #0D1610; display: flex; align-items: center; justify-content: center;">
+        <span style="color: #6B7A6E; font-weight: 600; font-size: 18px;">Aa</span>
+      </div>
+      <div class="color-name">Texto Muted</div>
+      <div class="color-hex">#6B7A6E</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<h2>Buttons</h2>
+<div class="section">
+  <div class="button-row">
+    <button class="btn-primary">Jugar Ahora</button>
+    <button class="btn-gold">Torneo VIP</button>
+    <button class="btn-secondary">Ver Perfil</button>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<h2>Cards</h2>
+<div class="section" style="display: flex; gap: 16px; flex-wrap: wrap;">
+  <div class="preview-card">
+    <div class="card-title">Carlos Mendoza</div>
+    <div class="card-subtitle">ELO 1847 • Miami, FL</div>
+  </div>
+  <div class="preview-card active">
+    <div class="card-title">Tu Turno</div>
+    <div class="card-subtitle">Mesa #42 • 3 jugadores esperando</div>
+  </div>
+  <div class="preview-card premium">
+    <div class="card-badge">TORNEO</div>
+    <div class="card-title">Copa Fundadores</div>
+    <div class="card-subtitle">Inscripción abierta • 64 jugadores</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<h2>Signal Bars (Difficulty)</h2>
+<div class="section">
+  <div class="signal-demo">
+    <div class="signal-item">
+      <div class="signal-bars">
+        <div class="bar" style="height: 8px; background: #6B9FBF;"></div>
+        <div class="bar" style="height: 14px; background: rgba(107,159,191,0.3);"></div>
+        <div class="bar" style="height: 20px; background: rgba(107,159,191,0.3);"></div>
+        <div class="bar" style="height: 28px; background: rgba(107,159,191,0.3);"></div>
+      </div>
+      <div class="signal-label" style="color: #6B9FBF;">Fácil</div>
+    </div>
+    <div class="signal-item">
+      <div class="signal-bars">
+        <div class="bar" style="height: 8px; background: #5B8FD9;"></div>
+        <div class="bar" style="height: 14px; background: #5B8FD9;"></div>
+        <div class="bar" style="height: 20px; background: rgba(91,143,217,0.3);"></div>
+        <div class="bar" style="height: 28px; background: rgba(91,143,217,0.3);"></div>
+      </div>
+      <div class="signal-label" style="color: #5B8FD9;">Intermedio</div>
+    </div>
+    <div class="signal-item">
+      <div class="signal-bars">
+        <div class="bar" style="height: 8px; background: #C4622D;"></div>
+        <div class="bar" style="height: 14px; background: #C4622D;"></div>
+        <div class="bar" style="height: 20px; background: #C4622D;"></div>
+        <div class="bar" style="height: 28px; background: rgba(196,98,45,0.3);"></div>
+      </div>
+      <div class="signal-label" style="color: #C4622D;">Avanzado</div>
+    </div>
+    <div class="signal-item">
+      <div class="signal-bars">
+        <div class="bar" style="height: 8px; background: #D4AA2A;"></div>
+        <div class="bar" style="height: 14px; background: #D4AA2A;"></div>
+        <div class="bar" style="height: 20px; background: #D4AA2A;"></div>
+        <div class="bar" style="height: 28px; background: #D4AA2A;"></div>
+      </div>
+      <div class="signal-label" style="color: #D4AA2A;">Experto</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<h2>Hero Preview</h2>
+<div class="hero-preview">
+  <h1>La Mesa Te Está Esperando</h1>
+  <p>Dominó en tiempo real con chat de voz. Reglas venezolanas. Jugadores de verdad. La experiencia que siempre quisiste.</p>
+  <button class="btn-primary">Reserva Tu Lugar Gratis</button>
+  <div class="tagline">El que sabe, sabe.</div>
+</div>
+
+<div class="divider"></div>
+
+<h2>Why V3 Works</h2>
+<div class="section">
+  <ul style="list-style: none; padding: 0;">
+    <li style="margin-bottom: 12px;">✅ <strong>Green = felt table</strong> — the authentic domino surface</li>
+    <li style="margin-bottom: 12px;">✅ <strong>Chess.com precedent</strong> — they built a billion-dollar brand on green</li>
+    <li style="margin-bottom: 12px;">✅ <strong>Energy without neon</strong> — rich, confident, not loud</li>
+    <li style="margin-bottom: 12px;">✅ <strong>Gold that pops</strong> — actually reads as gold, not tan</li>
+    <li style="margin-bottom: 12px;">✅ <strong>Same fonts</strong> — typography unchanged</li>
+  </ul>
+</div>
+
+<p style="text-align: center; color: #6B7A6E; font-size: 13px; padding: 24px 0;">
+  Preview for Gabriel's approval — Luna 🎨 March 2026
+</p>
+
+</body>
+</html>

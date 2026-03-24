@@ -18,7 +18,7 @@ export function LanguageSwitcher() {
   return (
     <button
       onClick={handleSwitch}
-      className="px-2 py-1 text-sm font-semibold border border-madera/30 rounded hover:bg-madera/10 transition-colors"
+      className="glass-button px-3 py-1.5 text-xs font-bold tracking-widest uppercase rounded-md hover:text-cream transition-all text-cream-muted"
       aria-label={`Switch to ${otherLocale === "es" ? "Spanish" : "English"}`}
     >
       {label}

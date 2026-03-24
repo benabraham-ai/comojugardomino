@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Domino Live — Icon Library v2</title>
+<style>
+  :root {
+    --bg: #0F1117;
+    --surface: #1A1D27;
+    --border: #2A2D3A;
+    --text: #F1F3F9;
+    --muted: #7A7F8E;
+    --facil: #6B9FBF;
+    --intermedio: #5B8FD9;
+    --avanzado: #E8973A;
+    --experto: #C9952C;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, 'Inter', 'Segoe UI', sans-serif;
+    padding: 40px;
+    line-height: 1.5;
+  }
+
+  h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+  h2 { font-size: 18px; font-weight: 600; color: var(--muted); margin: 40px 0 20px; text-transform: uppercase; letter-spacing: 0.08em; font-size: 13px; }
+  p.sub { color: var(--muted); font-size: 14px; margin-bottom: 30px; }
+
+  .section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 24px;
+  }
+
+  .badge-row {
+    display: flex;
+    gap: 32px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .badge-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .badge-item img, .badge-item svg {
+    display: block;
+  }
+
+  .badge-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .badge-item.facil .badge-label { color: var(--facil); }
+  .badge-item.intermedio .badge-label { color: var(--intermedio); }
+  .badge-item.avanzado .badge-label { color: var(--avanzado); }
+  .badge-item.experto .badge-label { color: var(--experto); }
+
+  /* Difficulty comparison options */
+  .options-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .option-card {
+    background: #12141E;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .option-card h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .option-card p {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .option-card.recommended {
+    border-color: var(--experto);
+    position: relative;
+  }
+
+  .recommended-tag {
+    position: absolute;
+    top: -10px;
+    right: 16px;
+    background: var(--experto);
+    color: #000;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 99px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* Bars visualization */
+  .bars-row {
+    display: flex;
+    gap: 16px;
+    align-items: flex-end;
+  }
+
+  .bars-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .bars-viz {
+    display: flex;
+    gap: 3px;
+    align-items: flex-end;
+    height: 32px;
+  }
+
+  .bar {
+    width: 6px;
+    border-radius: 2px 2px 0 0;
+    border: 1.5px solid var(--facil);
+  }
+
+  .bar.filled { background: var(--facil); border-color: var(--facil); }
+  .bar.empty { background: transparent; border-color: rgba(107, 159, 191, 0.35); }
+
+  .bars-item.lv1 .bar { border-color: var(--facil); }
+  .bars-item.lv1 .bar.filled { background: var(--facil); }
+  .bars-item.lv2 .bar { border-color: var(--intermedio); }
+  .bars-item.lv2 .bar.filled { background: var(--intermedio); }
+  .bars-item.lv3 .bar { border-color: var(--avanzado); }
+  .bars-item.lv3 .bar.filled { background: var(--avanzado); }
+  .bars-item.lv4 .bar { border-color: var(--experto); }
+  .bars-item.lv4 .bar.filled { background: var(--experto); }
+
+  /* Gems visualization */
+  .gems-row {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  /* UI icon grid */
+  .icon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 16px;
+  }
+
+  .icon-cell {
+    background: #12141E;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 10px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: default;
+    transition: border-color 0.15s, background 0.15s;
+  }
+
+  .icon-cell:hover {
+    border-color: rgba(201, 149, 44, 0.4);
+    background: #1A1D27;
+  }
+
+  .icon-cell .icon-name {
+    font-size: 10px;
+    color: var(--muted);
+    text-align: center;
+    font-weight: 500;
+  }
+
+  .icon-cell .icon-lib {
+    font-size: 9px;
+    color: rgba(122, 127, 142, 0.6);
+    text-align: center;
+  }
+
+  .ph-icon {
+    color: var(--text);
+    opacity: 0.85;
+  }
+</style>
+</head>
+<body>
+
+<h1>Domino Live — Icon Library v2</h1>
+<p class="sub">Premium gaming brand · comojugardomino.com · Updated 2026-03-23</p>
+
+<!-- DIFFICULTY BADGES -->
+<h2>Difficulty Badges (Option B — Recommended)</h2>
+<div class="section">
+  <div class="badge-row">
+    <div class="badge-item facil">
+      <img src="badges/difficulty-facil.svg" width="64" height="64" alt="Fácil">
+      <span class="badge-label">Fácil</span>
+    </div>
+    <div class="badge-item intermedio">
+      <img src="badges/difficulty-intermedio.svg" width="64" height="64" alt="Intermedio">
+      <span class="badge-label">Intermedio</span>
+    </div>
+    <div class="badge-item avanzado">
+      <img src="badges/difficulty-avanzado.svg" width="64" height="64" alt="Avanzado">
+      <span class="badge-label">Avanzado</span>
+    </div>
+    <div class="badge-item experto">
+      <img src="badges/difficulty-experto.svg" width="64" height="64" alt="Experto">
+      <span class="badge-label">Experto</span>
+    </div>
+    <!-- Small size test -->
+    <div style="margin-left: 32px; display: flex; flex-direction: column; gap: 8px; justify-content: center;">
+      <p style="font-size: 11px; color: var(--muted); margin-bottom: 4px;">16px test</p>
+      <div style="display: flex; gap: 8px; align-items: center;">
+        <img src="badges/difficulty-facil.svg" width="16" height="16" alt="Fácil">
+        <img src="badges/difficulty-intermedio.svg" width="16" height="16" alt="Intermedio">
+        <img src="badges/difficulty-avanzado.svg" width="16" height="16" alt="Avanzado">
+        <img src="badges/difficulty-experto.svg" width="16" height="16" alt="Experto">
+      </div>
+      <p style="font-size: 11px; color: var(--muted); margin-top: 8px; margin-bottom: 4px;">32px test</p>
+      <div style="display: flex; gap: 8px; align-items: center;">
+        <img src="badges/difficulty-facil.svg" width="32" height="32" alt="Fácil">
+        <img src="badges/difficulty-intermedio.svg" width="32" height="32" alt="Intermedio">
+        <img src="badges/difficulty-avanzado.svg" width="32" height="32" alt="Avanzado">
+        <img src="badges/difficulty-experto.svg" width="32" height="32" alt="Experto">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ALL 3 OPTIONS COMPARISON -->
+<h2>3 Style Options — Comparison</h2>
+<div class="options-grid">
+
+  <!-- Option A: Bars -->
+  <div class="option-card">
+    <h3>Option A — Signal Bars</h3>
+    <p>Mastery meter. Universal proficiency bars — clean, readable at any size. Like Duolingo XP or network signal strength.</p>
+    <div class="bars-row">
+      <div class="bars-item lv1">
+        <div class="bars-viz">
+          <div class="bar filled" style="height: 8px;"></div>
+          <div class="bar empty" style="height: 14px;"></div>
+          <div class="bar empty" style="height: 20px;"></div>
+          <div class="bar empty" style="height: 28px;"></div>
+        </div>
+        <span style="font-size:10px; color: var(--facil);">Fácil</span>
+      </div>
+      <div class="bars-item lv2">
+        <div class="bars-viz">
+          <div class="bar filled" style="height: 8px; border-color: var(--intermedio); background: var(--intermedio);"></div>
+          <div class="bar filled" style="height: 14px; border-color: var(--intermedio); background: var(--intermedio);"></div>
+          <div class="bar empty" style="height: 20px; border-color: rgba(91,143,217,0.3);"></div>
+          <div class="bar empty" style="height: 28px; border-color: rgba(91,143,217,0.3);"></div>
+        </div>
+        <span style="font-size:10px; color: var(--intermedio);">Interm.</span>
+      </div>
+      <div class="bars-item lv3">
+        <div class="bars-viz">
+          <div class="bar filled" style="height: 8px; border-color: var(--avanzado); background: var(--avanzado);"></div>
+          <div class="bar filled" style="height: 14px; border-color: var(--avanzado); background: var(--avanzado);"></div>
+          <div class="bar filled" style="height: 20px; border-color: var(--avanzado); background: var(--avanzado);"></div>
+          <div class="bar empty" style="height: 28px; border-color: rgba(232,151,58,0.3);"></div>
+        </div>
+        <span style="font-size:10px; color: var(--avanzado);">Avanz.</span>
+      </div>
+      <div class="bars-item lv4">
+        <div class="bars-viz">
+          <div class="bar filled" style="height: 8px; border-color: var(--experto); background: var(--experto);"></div>
+          <div class="bar filled" style="height: 14px; border-color: var(--experto); background: var(--experto);"></div>
+          <div class="bar filled" style="height: 20px; border-color: var(--experto); background: var(--experto);"></div>
+          <div class="bar filled" style="height: 28px; border-color: var(--experto); background: var(--experto);"></div>
+        </div>
+        <span style="font-size:10px; color: var(--experto);">Experto</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Option B: Badges (Recommended) -->
+  <div class="option-card recommended">
+    <div class="recommended-tag">★ Recommended</div>
+    <h3>Option B — Rank Badges</h3>
+    <p>Shield-based rank system. Each badge feels earned and collectible. Cultural fit for gaming in Latin America.</p>
+    <div style="display: flex; gap: 12px; align-items: flex-end;">
+      <div style="text-align:center;">
+        <img src="badges/difficulty-facil.svg" width="40" height="40" alt="Fácil">
+        <div style="font-size:9px; color:var(--facil); margin-top:4px;">Fácil</div>
+      </div>
+      <div style="text-align:center;">
+        <img src="badges/difficulty-intermedio.svg" width="40" height="40" alt="Intermedio">
+        <div style="font-size:9px; color:var(--intermedio); margin-top:4px;">Interm.</div>
+      </div>
+      <div style="text-align:center;">
+        <img src="badges/difficulty-avanzado.svg" width="40" height="40" alt="Avanzado">
+        <div style="font-size:9px; color:var(--avanzado); margin-top:4px;">Avanz.</div>
+      </div>
+      <div style="text-align:center;">
+        <img src="badges/difficulty-experto.svg" width="40" height="40" alt="Experto">
+        <div style="font-size:9px; color:var(--experto); margin-top:4px;">Experto</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Option C: Gems -->
+  <div class="option-card">
+    <h3>Option C — Crystal Tiers</h3>
+    <p>Gemstone progression. Aspirational, collectible. Facets increase with each tier. Mobile-game energy but executed with precision.</p>
+    <!-- SVG inline gem sketches -->
+    <div class="gems-row">
+      <div style="text-align:center;">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <polygon points="20,6 30,16 20,34 10,16" stroke="#4CAF50" stroke-width="1.5" fill="rgba(76,175,80,0.1)"/>
+          <line x1="10" y1="16" x2="30" y2="16" stroke="#4CAF50" stroke-width="1.5" opacity="0.5"/>
+        </svg>
+        <div style="font-size:9px; color:#4CAF50; margin-top:4px;">Fácil</div>
+      </div>
+      <div style="text-align:center;">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <polygon points="20,6 30,16 20,34 10,16" stroke="#2196F3" stroke-width="1.5" fill="rgba(33,150,243,0.12)"/>
+          <line x1="10" y1="16" x2="30" y2="16" stroke="#2196F3" stroke-width="1.5" opacity="0.5"/>
+          <line x1="20" y1="6" x2="20" y2="16" stroke="#2196F3" stroke-width="1.5" opacity="0.4"/>
+        </svg>
+        <div style="font-size:9px; color:#2196F3; margin-top:4px;">Interm.</div>
+      </div>
+      <div style="text-align:center;">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <polygon points="20,6 32,14 32,26 20,34 8,26 8,14" stroke="#FF9800" stroke-width="1.5" fill="rgba(255,152,0,0.12)"/>
+          <line x1="8" y1="14" x2="32" y2="14" stroke="#FF9800" stroke-width="1.5" opacity="0.5"/>
+          <line x1="8" y1="26" x2="32" y2="26" stroke="#FF9800" stroke-width="1.5" opacity="0.4"/>
+        </svg>
+        <div style="font-size:9px; color:#FF9800; margin-top:4px;">Avanz.</div>
+      </div>
+      <div style="text-align:center;">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <polygon points="20,4 30,12 34,22 30,32 20,36 10,32 6,22 10,12" stroke="#7C3AED" stroke-width="1.5" fill="rgba(124,58,237,0.15)"/>
+          <line x1="10" y1="12" x2="30" y2="12" stroke="#7C3AED" stroke-width="1.5" opacity="0.5"/>
+          <line x1="6" y1="22" x2="34" y2="22" stroke="#7C3AED" stroke-width="1.5" opacity="0.4"/>
+          <line x1="10" y1="32" x2="30" y2="32" stroke="#7C3AED" stroke-width="1.5" opacity="0.3"/>
+          <line x1="20" y1="4" x2="20" y2="36" stroke="#7C3AED" stroke-width="1" opacity="0.25"/>
+        </svg>
+        <div style="font-size:9px; color:#7C3AED; margin-top:4px;">Experto</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- UI ICONS -->
+<h2>UI Icons — Phosphor Mapping</h2>
+<div class="section">
+  <p style="font-size: 13px; color: var(--muted); margin-bottom: 24px;">
+    Source: <strong>@phosphor-icons/react</strong> — Use <code>regular</code> weight for nav, <code>fill</code> for active states, <code>duotone</code> for feature cards.
+  </p>
+  <!-- Rendered as SVG inline for preview (simulating Phosphor icons) -->
+  <div class="icon-grid">
+    <!-- Play -->
+    <div class="icon-cell">
+      <svg width="24" height="24" viewBox="0 0 256 256" fill="currentColor" class="ph-icon">
+        <path d="M240,128a15.74,15.74,0,0,1-7.6,13.51L88.32,229.65a16,16,0,0,1-16.2.3A15.86,15.86,0,0,1,64,216.13V39.87a15.86,15.86,0,0,1,8.12-13.82,16,16,0,0,1,16.2.3L232.4,114.49A15.74,15.74,0,0,1,240,128Z"/>
+      </svg>
+      <span class="icon-name">Play</span>
+      <span class="icon-lib">Ph: PlayFill</span>
+    </div>
+    <!-- Learn / Book -->
+    <div class="icon-cell">
+      <svg width="24" height="24" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" class="ph-icon">
+        <path d="M208,32H48A16,16,0,0,0,32,48V208a8,8,0,0,0,8,8H192a8,8,0,0,0,8-8V56h16V208a8,8,0,0,0,16,0V48A16,16,0,0,0,208,32ZM72,80H176" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="icon-name">Learn</span>
+      <span class="icon-lib">Ph: BookOpenText</span>
+    </div>
+    <!-- Download -->
+    <div class="icon-cell">
+      <svg width="24" height="24" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" class="ph-icon">
+        <path d="M224,144v64H32V144" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M128,32V168" stroke-linecap="round"/>
+        <polyline points="56,104 128,176 200,104" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="icon-name">Download</span>
+      <span class="icon-lib">Ph: DownloadSimple</span>
+    </div>
+    <!-- Menu -->
+    <div class="icon-cell">
+      <svg width="24" height="24" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" class="ph-icon">
+        <line x1="40" y1="80" x2="216" y2="80" stroke-linecap="round"/>
+        <line x1="40" y1="128" x2="216" y2="128" stroke-linecap="round"/>
+        <line x1="40" y1="176" x2="216" y2="176" stroke-linecap="round"/>
+      </svg>
+      <span class="icon-name">Menu</span>
+      <span class="icon-lib">Ph: List</span>
+    </div>
+    <!-- Arrow Right -->
+    <div class="icon-cell">
+      <svg width="24" height="24" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" class="ph-icon">
+        <line x1="40" y1="128" x2="216" y2="128" stroke-linecap="round"/>
+        <polyline points="144,56 216,128 144,200" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="icon-name">Arrow →</span>
+      <span class="icon-lib">Ph: ArrowRight</span>
+    </div>
+    <!-- Lessons -->
+    <div class="icon-cell">
+      <svg width="24" height="24" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" class="ph-icon">
+        <rect x="40" y="40" width="176" height="136" rx="8" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="128" y1="176" x2="128" y2="216" stroke-linecap="round"/>
+        <line x1="80" y1="216" x2="176" y2="216" stroke-linecap="round"/>
+        <line x1="76" y1="108" x2="180" y2="108" stroke-linecap="round"/>
+        <line x1="76" y1="76" x2="140" y2="76" stroke-linecap="round"/>
+      </svg>
+      <span class="icon-name">Lessons</span>
+      <span class="icon-lib">Ph: Chalkboard</span>
+    </div>
+    <!-- Strategy / Brain -->
+    <div class="icon-cell">
+      <svg width="24" height="24" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" class="ph-icon">
+        <path d="M96,224a16,16,0,0,1-16-16V184" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M208,88a80,80,0,0,1-80,80H96a48,48,0,0,1,0-96,80,80,0,0,1,80-16A80,80,0,0,1,208,88Z" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M168,168a48,48,0,0,0,48-48" stroke-linecap="round"/>
+      </svg>
+      <span class="icon-name">Strategy</span>
+      <span class="icon-lib">Ph: Brain</span>
+    </div>
+    <!-- Rules / Scales -->
+    <div class="icon-cell">
+      <svg width="24" height="24" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" class="ph-icon">
+        <line x1="128" y1="40" x2="128" y2="216" stroke-linecap="round"/>
+        <line x1="88" y1="216" x2="168" y2="216" stroke-linecap="round"/>
+        <line x1="64" y1="88" x2="192" y2="88" stroke-linecap="round"/>
+        <path d="M64,88,32,168H96Z" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M192,88l-32,80h64Z" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="icon-name">Rules</span>
+      <span class="icon-lib">Ph: Scales</span>
+    </div>
+    <!-- Multiplayer -->
+    <div class="icon-cell">
+      <svg width="24" height="24" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" class="ph-icon">
+        <circle cx="80" cy="100" r="44" stroke-linecap="round"/>
+        <path d="M16,196a96,96,0,0,1,128,0" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M172,60a44,44,0,0,1,0,80" stroke-linecap="round"/>
+        <path d="M192,196a96,96,0,0,0-28.57-67.23" stroke-linecap="round"/>
+      </svg>
+      <span class="icon-name">Multiplayer</span>
+      <span class="icon-lib">Ph: UsersThree</span>
+    </div>
+    <!-- Phone Download -->
+    <div class="icon-cell">
+      <svg width="24" height="24" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" class="ph-icon">
+        <rect x="64" y="16" width="128" height="224" rx="16" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="128" y1="80" x2="128" y2="160" stroke-linecap="round"/>
+        <polyline points="96,132 128,164 160,132" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="104" y1="192" x2="152" y2="192" stroke-linecap="round"/>
+      </svg>
+      <span class="icon-name">App Download</span>
+      <span class="icon-lib">Ph: DeviceMobile</span>
+    </div>
+    <!-- QR Code -->
+    <div class="icon-cell">
+      <svg width="24" height="24" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" class="ph-icon">
+        <rect x="32" y="32" width="80" height="80" rx="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="56" y="56" width="32" height="32" fill="currentColor"/>
+        <rect x="144" y="32" width="80" height="80" rx="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="168" y="56" width="32" height="32" fill="currentColor"/>
+        <rect x="32" y="144" width="80" height="80" rx="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="56" y="168" width="32" height="32" fill="currentColor"/>
+        <line x1="144" y1="144" x2="144" y2="224" stroke-linecap="round"/>
+        <line x1="144" y1="144" x2="224" y2="144" stroke-linecap="round"/>
+        <line x1="224" y1="184" x2="184" y2="184" stroke-linecap="round"/>
+        <line x1="224" y1="184" x2="224" y2="224" stroke-linecap="round"/>
+        <line x1="184" y1="224" x2="224" y2="224" stroke-linecap="round"/>
+      </svg>
+      <span class="icon-name">QR Code</span>
+      <span class="icon-lib">Ph: QrCode</span>
+    </div>
+  </div>
+</div>
+
+<!-- Color System -->
+<h2>Difficulty Color System</h2>
+<div class="section" style="display: flex; gap: 20px; flex-wrap: wrap;">
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+    <div style="width: 64px; height: 64px; border-radius: 12px; background: #6B9FBF;"></div>
+    <span style="font-size: 11px; color: var(--muted);">Fácil</span>
+    <code style="font-size: 10px; color: var(--facil);">#6B9FBF</code>
+  </div>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+    <div style="width: 64px; height: 64px; border-radius: 12px; background: #5B8FD9;"></div>
+    <span style="font-size: 11px; color: var(--muted);">Intermedio</span>
+    <code style="font-size: 10px; color: var(--intermedio);">#5B8FD9</code>
+  </div>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+    <div style="width: 64px; height: 64px; border-radius: 12px; background: #E8973A;"></div>
+    <span style="font-size: 11px; color: var(--muted);">Avanzado</span>
+    <code style="font-size: 10px; color: var(--avanzado);">#E8973A</code>
+  </div>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+    <div style="width: 64px; height: 64px; border-radius: 12px; background: linear-gradient(135deg, #C9952C, #F0C040);"></div>
+    <span style="font-size: 11px; color: var(--muted);">Experto</span>
+    <code style="font-size: 10px; color: var(--experto);">#C9952C</code>
+  </div>
+</div>
+
+</body>
+</html>

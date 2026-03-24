@@ -1,0 +1,9 @@
+<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Domino Live Final Icon — [1|1] Diagonal (Light Version) -->
+  <!-- Light tile on transparent, for use on dark backgrounds -->
+  <g transform="rotate(-35 28 28)">
+    <rect x="16" y="8" width="24" height="44" rx="4" fill="#F5F0E8"/>
+    <circle cx="28" cy="18" r="3.5" fill="#3D2B1F"/>
+    <circle cx="28" cy="38" r="3.5" fill="#3D2B1F"/>
+  </g>
+</svg>

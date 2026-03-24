@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DominoLive V5 — Color Exploration</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #111;
+      color: #fff;
+      padding: 40px 24px;
+      min-height: 100vh;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .page-header h1 {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .page-header p {
+      font-size: 15px;
+      color: #888;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: #222;
+      color: #888;
+      margin-bottom: 16px;
+    }
+
+    /* ── GRID ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── PANEL ── */
+    .panel {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .panel-header {
+      padding: 28px 28px 24px;
+    }
+
+    .panel-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.5;
+      margin-bottom: 8px;
+    }
+
+    .panel-title {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      margin-bottom: 6px;
+    }
+
+    .panel-tagline {
+      font-size: 13px;
+      opacity: 0.6;
+      line-height: 1.5;
+    }
+
+    .panel-body {
+      padding: 0 28px 28px;
+    }
+
+    /* ── SECTION TITLES ── */
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      opacity: 0.45;
+      margin: 24px 0 10px;
+    }
+
+    /* ── SWATCHES ── */
+    .swatches {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .swatch-dot {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .swatch-hex {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      opacity: 0.5;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* ── BUTTONS ── */
+    .buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.2px;
+    }
+
+    /* ── CARD ── */
+    .sample-card {
+      border-radius: 14px;
+      padding: 18px;
+      margin-top: 2px;
+    }
+
+    .card-meta {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      opacity: 0.5;
+    }
+
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .card-body {
+      font-size: 12px;
+      line-height: 1.6;
+      opacity: 0.7;
+      margin-bottom: 14px;
+    }
+
+    .card-pill {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    /* ── DOMINO ── */
+    .domino-preview {
+      display: inline-flex;
+      flex-direction: column;
+      border-radius: 8px;
+      overflow: hidden;
+      padding: 8px;
+      gap: 3px;
+      border: 2px solid rgba(255,255,255,0.15);
+    }
+
+    .domino-half {
+      width: 36px;
+      height: 36px;
+      border-radius: 4px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      padding: 4px;
+      gap: 2px;
+    }
+
+    .pip {
+      border-radius: 50%;
+    }
+
+    .pip.on { opacity: 1; }
+    .pip.off { opacity: 0; }
+
+    .divider-line {
+      height: 2px;
+      border-radius: 1px;
+      opacity: 0.3;
+    }
+
+    /* ── RATIONALE ── */
+    .rationale {
+      font-size: 12.5px;
+      line-height: 1.65;
+      opacity: 0.65;
+      padding: 14px 16px;
+      border-radius: 10px;
+      margin-top: 2px;
+    }
+
+    /* ============================
+       DIRECTION A: DEEP NAVY
+    ============================ */
+    .panel-a {
+      background: #0A0E1A;
+    }
+    .panel-a .panel-header { background: linear-gradient(135deg, #0D1526 0%, #0A0E1A 100%); }
+    .panel-a .panel-title { color: #E8EDF5; }
+    .panel-a .panel-tagline { color: #8B96A8; }
+    .panel-a .section-label { color: #5A6678; }
+
+    /* A: Swatches */
+    .a-primary-1 { background: #0D2354; } /* Deep Navy */
+    .a-primary-2 { background: #1A3A7A; } /* Midnight Blue */
+    .a-primary-3 { background: #C0C8D8; } /* Silver/Platinum */
+    .a-bg-1 { background: #0A0E1A; } /* Near Black Navy */
+    .a-bg-2 { background: #0D1526; } /* Card Background */
+    .a-accent { background: #4D9EFF; } /* Electric Blue */
+    .a-text-1 { background: #F0F4FF; }
+    .a-text-2 { background: #8B96A8; }
+
+    /* A: Buttons */
+    .btn-a-primary {
+      background: linear-gradient(135deg, #1A3A7A, #0D2354);
+      color: #E8EDF5;
+      box-shadow: 0 4px 14px rgba(13,35,84,0.5);
+    }
+    .btn-a-accent {
+      background: #4D9EFF;
+      color: #0A0E1A;
+    }
+    .btn-a-ghost {
+      background: transparent;
+      color: #8B96A8;
+      border: 1px solid #1E2D4A;
+    }
+
+    /* A: Card */
+    .card-a {
+      background: #0D1526;
+      border: 1px solid #1E2D4A;
+    }
+    .card-a .card-meta { color: #4D9EFF; }
+    .card-a .card-title { color: #E8EDF5; }
+    .card-a .card-body { color: #8B96A8; }
+    .card-a .card-pill { background: rgba(77,158,255,0.12); color: #4D9EFF; }
+
+    /* A: Domino */
+    .domino-a { background: #0D1526; border-color: #1E2D4A; }
+    .domino-half-a { background: #132040; }
+    .pip-a { background: #C0C8D8; }
+
+    /* A: Rationale */
+    .rationale-a { background: #0D1526; color: #8B96A8; border-left: 3px solid #4D9EFF; }
+
+    /* ============================
+       DIRECTION B: SLATE/CHARCOAL
+    ============================ */
+    .panel-b {
+      background: #14161A;
+    }
+    .panel-b .panel-header { background: linear-gradient(135deg, #1C1F24 0%, #14161A 100%); }
+    .panel-b .panel-title { color: #EAEBED; }
+    .panel-b .panel-tagline { color: #878A90; }
+    .panel-b .section-label { color: #55585F; }
+
+    /* B: Swatches */
+    .b-primary-1 { background: #1C1F24; } /* Dark Charcoal */
+    .b-primary-2 { background: #2B2F36; } /* Slate */
+    .b-primary-3 { background: #3D4148; } /* Medium Slate */
+    .b-bg-1 { background: #14161A; }
+    .b-bg-2 { background: #1C1F24; }
+    .b-accent { background: #5E6AD2; } /* Violet (Linear-style) */
+    .b-text-1 { background: #EAEBED; }
+    .b-text-2 { background: #878A90; }
+
+    /* B: Buttons */
+    .btn-b-primary {
+      background: #5E6AD2;
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(94,106,210,0.35);
+    }
+    .btn-b-accent {
+      background: #2B2F36;
+      color: #EAEBED;
+      border: 1px solid #3D4148;
+    }
+    .btn-b-ghost {
+      background: transparent;
+      color: #878A90;
+      border: 1px solid #2B2F36;
+    }
+
+    /* B: Card */
+    .card-b {
+      background: #1C1F24;
+      border: 1px solid #2B2F36;
+    }
+    .card-b .card-meta { color: #5E6AD2; }
+    .card-b .card-title { color: #EAEBED; }
+    .card-b .card-body { color: #878A90; }
+    .card-b .card-pill { background: rgba(94,106,210,0.12); color: #8A93E0; }
+
+    /* B: Domino */
+    .domino-b { background: #1C1F24; border-color: #2B2F36; }
+    .domino-half-b { background: #252830; }
+    .pip-b { background: #EAEBED; }
+
+    /* B: Rationale */
+    .rationale-b { background: #1C1F24; color: #878A90; border-left: 3px solid #5E6AD2; }
+
+    /* ============================
+       DIRECTION C: IVORY/CREAM
+    ============================ */
+    .panel-c {
+      background: #F2EDE4;
+    }
+    .panel-c .panel-header { background: linear-gradient(135deg, #EDE8DE 0%, #F2EDE4 100%); }
+    .panel-c .panel-title { color: #1A1612; }
+    .panel-c .panel-tagline { color: #7A7068; }
+    .panel-c .section-label { color: #9A8F85; }
+    .panel-c .swatch-hex { color: #7A7068; }
+
+    /* C: Swatches */
+    .c-primary-1 { background: #F5F0E8; border: 1px solid #D8D0C4 !important; } /* Ivory White */
+    .c-primary-2 { background: #1A1612; } /* Ink Black */
+    .c-primary-3 { background: #8B6914; } /* Warm Amber */
+    .c-bg-1 { background: #F5F0E8; border: 1px solid #D8D0C4 !important; }
+    .c-bg-2 { background: #EDE8DE; border: 1px solid #D8D0C4 !important; }
+    .c-accent { background: #C4380D; } /* Deep Terra Red */
+    .c-text-1 { background: #1A1612; }
+    .c-text-2 { background: #7A7068; }
+
+    /* C: Buttons */
+    .btn-c-primary {
+      background: #1A1612;
+      color: #F5F0E8;
+    }
+    .btn-c-accent {
+      background: #C4380D;
+      color: #F5F0E8;
+    }
+    .btn-c-ghost {
+      background: transparent;
+      color: #7A7068;
+      border: 1px solid #C8C0B4;
+    }
+
+    /* C: Card */
+    .card-c {
+      background: #EDE8DE;
+      border: 1px solid #D8D0C4;
+    }
+    .card-c .card-meta { color: #C4380D; }
+    .card-c .card-title { color: #1A1612; }
+    .card-c .card-body { color: #7A7068; }
+    .card-c .card-pill { background: rgba(196,56,13,0.1); color: #C4380D; }
+
+    /* C: Domino */
+    .domino-c { background: #F5F0E8; border-color: #D8D0C4; }
+    .domino-half-c { background: #EDE8DE; }
+    .pip-c { background: #1A1612; }
+
+    /* C: Rationale */
+    .rationale-c { background: #EDE8DE; color: #7A7068; border-left: 3px solid #C4380D; }
+
+    /* ── DIVIDER ── */
+    .divider-a { background: #4D9EFF; }
+    .divider-b { background: #5E6AD2; }
+    .divider-c { background: #C4380D; }
+
+    /* ── FOOTER ── */
+    .footer {
+      text-align: center;
+      margin-top: 56px;
+      font-size: 12px;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-header">
+    <div class="badge">DominoLive V5</div>
+    <h1>Color Direction Exploration</h1>
+    <p>Three fresh palettes — no wood tones, no neon. Pick a direction and we'll build from there.</p>
+  </div>
+
+  <div class="grid">
+
+    <!-- ════ DIRECTION A ════ -->
+    <div class="panel panel-a">
+      <div class="panel-header">
+        <div class="panel-label">Direction A</div>
+        <div class="panel-title" style="color:#E8EDF5">Deep Navy / Midnight</div>
+        <div class="panel-tagline">Premium, sophisticated, trust. Luxury watch brands. Private clubs.</div>
+      </div>
+      <div class="panel-body">
+
+        <div class="section-label">Primary Colors</div>
+        <div class="swatches">
+          <div class="swatch">
+            <div class="swatch-dot a-primary-1"></div>
+            <div class="swatch-hex">#0D2354</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-dot a-primary-2"></div>
+            <div class="swatch-hex">#1A3A7A</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-dot a-primary-3"></div>
+            <div class="swatch-hex">#C0C8D8</div>
+          </div>
+        </div>
+
+        <div class="section-label">Backgrounds</div>
+        <div class="swatches">
+          <div class="swatch">
+            <div class="swatch-dot a-bg-1"></div>
+            <div class="swatch-hex">#0A0E1A</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-dot a-bg-2"></div>
+            <div class="swatch-hex">#0D1526</div>
+          </div>
+        </div>
+
+        <div class="section-label">Accent + Text</div>
+        <div class="swatches">
+          <div class="swatch">
+            <div class="swatch-dot a-accent"></div>
+            <div class="swatch-hex">#4D9EFF</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-dot a-text-1"></div>
+            <div class="swatch-hex">#F0F4FF</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-dot a-text-2"></div>
+            <div class="swatch-hex">#8B96A8</div>
+          </div>
+        </div>
+
+        <div class="section-label">Buttons</div>
+        <div class="buttons">
+          <button class="btn btn-a-primary">Play Now</button>
+          <button class="btn btn-a-accent">Join Table</button>
+          <button class="btn btn-a-ghost">Learn More</button>
+        </div>
+
+        <div class="section-label">Sample Card</div>
+        <div class="sample-card card-a">
+          <div class="card-meta">Live Table · 4 Players</div>
+          <div class="card-title">Sala VIP #12</div>
+          <div class="card-body">Ernesto's table · High stakes · Round 3 of 5</div>
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <div class="card-pill">⚡ In Progress</div>
+            <div class="domino-preview domino-a">
+              <div class="domino-half domino-half-a" style="display:grid; grid-template:repeat(3,1fr)/repeat(3,1fr); padding:4px; gap:2px;">
+                <div class="pip pip-a on" style="background:#C0C8D8;border-radius:50%;"></div>
+                <div class="pip off"></div>
+                <div class="pip pip-a on" style="background:#C0C8D8;border-radius:50%;"></div>
+                <div class="pip off"></div>
+                <div class="pip pip-a on" style="background:#C0C8D8;border-radius:50%;"></div>
+                <div class="pip off"></div>
+                <div class="pip pip-a on" style="background:#C0C8D8;border-radius:50%;"></div>
+                <div class="pip off"></div>
+                <div class="pip pip-a on" style="background:#C0C8D8;border-radius:50%;"></div>
+              </div>
+              <div class="divider-line divider-a"></div>
+              <div class="domino-half domino-half-a" style="display:grid; grid-template:repeat(3,1fr)/repeat(3,1fr); padding:4px; gap:2px;">
+                <div class="pip off"></div>
+                <div class="pip off"></div>
+                <div class="pip off"></div>
+                <div class="pip off"></div>
+                <div class="pip pip-a on" style="background:#C0C8D8;border-radius:50%;"></div>
+                <div class="pip off"></div>
+                <div class="pip off"></div>
+                <div class="pip off"></div>
+                <div class="pip off"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-label">Why It Works for Ernesto</div>
+        <div class="rationale rationale-a">
+          Deep navy reads as serious and premium without feeling cold. The silver/platinum accents echo the underside of a real domino tile. This palette signals <strong style="color:#E8EDF5">trust and prestige</strong> — exactly what a competitive player wants from their platform. Pairs naturally with the Venezuelan flag's dark tones without being literal about it.
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ════ DIRECTION B ════ -->
+    <div class="panel panel-b">
+      <div class="panel-header">
+        <div class="panel-label">Direction B</div>
+        <div class="panel-title" style="color:#EAEBED">Slate / Charcoal Modern</div>
+        <div class="panel-tagline">Tech-forward, warm edges. Notion meets Linear meets dominoes.</div>
+      </div>
+      <div class="panel-body">
+
+        <div class="section-label">Primary Colors</div>
+        <div class="swatches">
+          <div class="swatch">
+            <div class="swatch-dot b-primary-1"></div>
+            <div class="swatch-hex">#1C1F24</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-dot b-primary-2"></div>
+            <div class="swatch-hex">#2B2F36</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-dot b-primary-3"></div>
+            <div class="swatch-hex">#3D4148</div>
+          </div>
+        </div>
+
+        <div class="section-label">Backgrounds</div>
+        <div class="swatches">
+          <div class="swatch">
+            <div class="swatch-dot b-bg-1"></div>
+            <div class="swatch-hex">#14161A</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-dot b-bg-2"></div>
+            <div class="swatch-hex">#1C1F24</div>
+          </div>
+        </div>
+
+        <div class="section-label">Accent + Text</div>
+        <div class="swatches">
+          <div class="swatch">
+            <div class="swatch-dot b-accent"></div>
+            <div class="swatch-hex">#5E6AD2</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-dot b-text-1"></div>
+            <div class="swatch-hex">#EAEBED</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-dot b-text-2"></div>
+            <div class="swatch-hex">#878A90</div>
+          </div>
+        </div>
+
+        <div class="section-label">Buttons</div>
+        <div class="buttons">
+          <button class="btn btn-b-primary">Play Now</button>
+          <button class="btn btn-b-accent">Join Table</button>
+          <button class="btn btn-b-ghost">Learn More</button>
+        </div>
+
+        <div class="section-label">Sample Card</div>
+        <div class="sample-card card-b">
+          <div class="card-meta">Live Table · 4 Players</div>
+          <div class="card-title">Sala VIP #12</div>
+          <div class="card-body">Ernesto's table · High stakes · Round 3 of 5</div>
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <div class="card-pill">⚡ In Progress</div>
+            <div class="domino-preview domino-b">
+              <div class="domino-half domino-half-b" style="display:grid; grid-template:repeat(3,1fr)/repeat(3,1fr); padding:4px; gap:2px;">
+                <div class="pip on" style="background:#EAEBED;border-radius:50%;"></div>
+                <div class="pip off"></div>
+                <div class="pip on" style="background:#EAEBED;border-radius:50%;"></div>
+                <div class="pip off"></div>
+                <div class="pip on" style="background:#EAEBED;border-radius:50%;"></div>
+                <div class="pip off"></div>
+                <div class="pip on" style="background:#EAEBED;border-radius:50%;"></div>
+                <div class="pip off"></div>
+                <div class="pip on" style="background:#EAEBED;border-radius:50%;"></div>
+              </div>
+              <div class="divider-line divider-b"></div>
+              <div class="domino-half domino-half-b" style="display:grid; grid-template:repeat(3,1fr)/repeat(3,1fr); padding:4px; gap:2px;">
+                <div class="pip off"></div>
+                <div class="pip off"></div>
+                <div class="pip off"></div>
+                <div class="pip off"></div>
+                <div class="pip on" style="background:#EAEBED;border-radius:50%;"></div>
+                <div class="pip off"></div>
+                <div class="pip off"></div>
+                <div class="pip off"></div>
+                <div class="pip off"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-label">Why It Works for Ernesto</div>
+        <div class="rationale rationale-b">
+          Charcoal grays are approachable and modern — not cold like pure black, not loud like blue. The single violet accent (borrowed from Linear/Notion) makes action moments feel <strong style="color:#EAEBED">decisive and smart</strong>. This palette bridges the gap between Ernesto's older family playing on tablets and his younger audience discovering the game online.
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ════ DIRECTION C ════ -->
+    <div class="panel panel-c">
+      <div class="panel-header">
+        <div class="panel-label" style="color:#9A8F85">Direction C</div>
+        <div class="panel-title">Ivory / Cream Dominant</div>
+        <div class="panel-tagline" style="color:#7A7068">The bold flip — light mode premium. Inspired by the tile itself.</div>
+      </div>
+      <div class="panel-body">
+
+        <div class="section-label">Primary Colors</div>
+        <div class="swatches">
+          <div class="swatch">
+            <div class="swatch-dot c-primary-1"></div>
+            <div class="swatch-hex" style="color:#9A8F85">#F5F0E8</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-dot c-primary-2"></div>
+            <div class="swatch-hex" style="color:#9A8F85">#1A1612</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-dot c-primary-3"></div>
+            <div class="swatch-hex" style="color:#9A8F85">#8B6914</div>
+          </div>
+        </div>
+
+        <div class="section-label">Backgrounds</div>
+        <div class="swatches">
+          <div class="swatch">
+            <div class="swatch-dot c-bg-1"></div>
+            <div class="swatch-hex" style="color:#9A8F85">#F5F0E8</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-dot c-bg-2"></div>
+            <div class="swatch-hex" style="color:#9A8F85">#EDE8DE</div>
+          </div>
+        </div>
+
+        <div class="section-label">Accent + Text</div>
+        <div class="swatches">
+          <div class="swatch">
+            <div class="swatch-dot c-accent"></div>
+            <div class="swatch-hex" style="color:#9A8F85">#C4380D</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-dot c-text-1"></div>
+            <div class="swatch-hex" style="color:#9A8F85">#1A1612</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-dot c-text-2"></div>
+            <div class="swatch-hex" style="color:#9A8F85">#7A7068</div>
+          </div>
+        </div>
+
+        <div class="section-label" style="color:#9A8F85">Buttons</div>
+        <div class="buttons">
+          <button class="btn btn-c-primary">Play Now</button>
+          <button class="btn btn-c-accent">Join Table</button>
+          <button class="btn btn-c-ghost">Learn More</button>
+        </div>
+
+        <div class="section-label" style="color:#9A8F85">Sample Card</div>
+        <div class="sample-card card-c">
+          <div class="card-meta">Live Table · 4 Players</div>
+          <div class="card-title">Sala VIP #12</div>
+          <div class="card-body">Ernesto's table · High stakes · Round 3 of 5</div>
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <div class="card-pill">⚡ In Progress</div>
+            <div class="domino-preview domino-c">
+              <div class="domino-half domino-half-c" style="display:grid; grid-template:repeat(3,1fr)/repeat(3,1fr); padding:4px; gap:2px;">
+                <div class="pip on" style="background:#1A1612;border-radius:50%;"></div>
+                <div class="pip off"></div>
+                <div class="pip on" style="background:#1A1612;border-radius:50%;"></div>
+                <div class="pip off"></div>
+                <div class="pip on" style="background:#1A1612;border-radius:50%;"></div>
+                <div class="pip off"></div>
+                <div class="pip on" style="background:#1A1612;border-radius:50%;"></div>
+                <div class="pip off"></div>
+                <div class="pip on" style="background:#1A1612;border-radius:50%;"></div>
+              </div>
+              <div class="divider-line divider-c"></div>
+              <div class="domino-half domino-half-c" style="display:grid; grid-template:repeat(3,1fr)/repeat(3,1fr); padding:4px; gap:2px;">
+                <div class="pip off"></div>
+                <div class="pip off"></div>
+                <div class="pip off"></div>
+                <div class="pip off"></div>
+                <div class="pip on" style="background:#1A1612;border-radius:50%;"></div>
+                <div class="pip off"></div>
+                <div class="pip off"></div>
+                <div class="pip off"></div>
+                <div class="pip off"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-label" style="color:#9A8F85">Why It Works for Ernesto</div>
+        <div class="rationale rationale-c">
+          Every other domino app is dark. Going ivory/cream is the <strong style="color:#1A1612">most radical move</strong> available — and it's earned, because actual domino tiles ARE white/cream. This palette feels culturally honest, reads beautifully in daytime, and stands out instantly in any app store. Terra red accent carries the Latin energy without screaming.
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    DominoLive V5 Color Exploration · Luna 🎨 · All type unchanged — color only
+  </div>
+
+</body>
+</html>

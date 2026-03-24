@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DominoLive — Café con Leche Palette Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    background: #1A110A;
+    color: #F5EDD6;
+    font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+    padding: 24px;
+    line-height: 1.6;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 900;
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    font-size: 22px;
+    margin: 32px 0 16px;
+    color: #C49A3C;
+  }
+
+  .subtitle {
+    color: #BFA98A;
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+
+  .section {
+    background: #251810;
+    border: 1px solid #3A2418;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  .section-title {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #7A6550;
+    margin-bottom: 16px;
+  }
+
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 16px;
+  }
+
+  .color-card {
+    text-align: center;
+  }
+
+  .color-swatch {
+    width: 100%;
+    height: 80px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    border: 1px solid rgba(245, 237, 214, 0.1);
+  }
+
+  .color-name {
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+
+  .color-hex {
+    font-size: 11px;
+    color: #7A6550;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* Button Preview */
+  .button-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn-primary {
+    background: #8B3A2A;
+    color: #F5EDD6;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 6px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: #BFA98A;
+    border: 1.5px solid #6B4423;
+    padding: 14px 28px;
+    border-radius: 6px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: #7A6550;
+    border: none;
+    padding: 14px 28px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  /* Card Preview */
+  .preview-card {
+    background: #251810;
+    border: 1px solid #3A2418;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 320px;
+  }
+
+  .preview-card.active {
+    border-left: 3px solid #8B3A2A;
+    background: #2E1C10;
+  }
+
+  .preview-card.premium {
+    border: 1px solid #C49A3C;
+  }
+
+  .card-title {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .card-subtitle {
+    font-size: 13px;
+    color: #BFA98A;
+  }
+
+  .card-badge {
+    display: inline-block;
+    background: #C49A3C;
+    color: #1A110A;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+
+  /* Typography Preview */
+  .type-display {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 900;
+    font-size: 36px;
+    margin-bottom: 8px;
+  }
+
+  .type-h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+  .type-h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+
+  .type-h3 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .type-body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 16px;
+    color: #BFA98A;
+    margin-bottom: 8px;
+  }
+
+  .type-caption {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13px;
+    color: #7A6550;
+  }
+
+  /* Comparison */
+  .comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .comparison-box {
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .comparison-box h4 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+
+  .old-style {
+    background: #0a0a0a;
+  }
+
+  .old-style .demo-btn {
+    background: #ff6b35;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    display: inline-block;
+    font-weight: 600;
+  }
+
+  .new-style {
+    background: #1A110A;
+  }
+
+  .new-style .demo-btn {
+    background: #8B3A2A;
+    color: #F5EDD6;
+    padding: 12px 24px;
+    border-radius: 6px;
+    display: inline-block;
+    font-weight: 600;
+  }
+
+  .divider {
+    height: 1px;
+    background: #3A2418;
+    margin: 32px 0;
+  }
+
+  /* Hero Preview */
+  .hero-preview {
+    background: linear-gradient(180deg, #2C1A0E 0%, #1A110A 100%);
+    border-radius: 12px;
+    padding: 48px 24px;
+    text-align: center;
+  }
+
+  .hero-preview h1 {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .hero-preview p {
+    color: #BFA98A;
+    font-size: 16px;
+    margin-bottom: 24px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .tagline {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    color: #C49A3C;
+    font-size: 18px;
+    margin-top: 32px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Café con Leche</h1>
+<p class="subtitle">DominoLive Brand Direction v2 — Preview for Approval</p>
+
+<!-- PRIMARY COLORS -->
+<div class="section">
+  <div class="section-title">Primary Colors</div>
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background: #2C1A0E;"></div>
+      <div class="color-name">Café Oscuro</div>
+      <div class="color-hex">#2C1A0E</div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #F5EDD6;"></div>
+      <div class="color-name">Pergamino</div>
+      <div class="color-hex">#F5EDD6</div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #8B3A2A;"></div>
+      <div class="color-name">Terracota Real</div>
+      <div class="color-hex">#8B3A2A</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECONDARY COLORS -->
+<div class="section">
+  <div class="section-title">Secondary Colors</div>
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background: #6B4423;"></div>
+      <div class="color-name">Madera</div>
+      <div class="color-hex">#6B4423</div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #C49A3C;"></div>
+      <div class="color-name">Oro Viejo</div>
+      <div class="color-hex">#C49A3C</div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #A0785A;"></div>
+      <div class="color-name">Cuero</div>
+      <div class="color-hex">#A0785A</div>
+    </div>
+  </div>
+</div>
+
+<!-- BACKGROUNDS -->
+<div class="section">
+  <div class="section-title">Backgrounds</div>
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background: #1A110A; border: 1px solid #3A2418;"></div>
+      <div class="color-name">Fondo Principal</div>
+      <div class="color-hex">#1A110A</div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #251810;"></div>
+      <div class="color-name">Fondo Tarjeta</div>
+      <div class="color-hex">#251810</div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #3A2418;"></div>
+      <div class="color-name">Fondo Elevado</div>
+      <div class="color-hex">#3A2418</div>
+    </div>
+  </div>
+</div>
+
+<!-- TEXT COLORS -->
+<div class="section">
+  <div class="section-title">Text Colors</div>
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background: #1A110A; display: flex; align-items: center; justify-content: center;">
+        <span style="color: #F5EDD6; font-weight: 600;">Aa</span>
+      </div>
+      <div class="color-name">Texto Principal</div>
+      <div class="color-hex">#F5EDD6</div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #1A110A; display: flex; align-items: center; justify-content: center;">
+        <span style="color: #BFA98A; font-weight: 600;">Aa</span>
+      </div>
+      <div class="color-name">Texto Secundario</div>
+      <div class="color-hex">#BFA98A</div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #1A110A; display: flex; align-items: center; justify-content: center;">
+        <span style="color: #7A6550; font-weight: 600;">Aa</span>
+      </div>
+      <div class="color-name">Texto Muted</div>
+      <div class="color-hex">#7A6550</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<h2>Old vs New</h2>
+<div class="comparison">
+  <div class="comparison-box old-style">
+    <h4 style="color: #888;">V1 — Esports</h4>
+    <div class="demo-btn">Jugar Ahora</div>
+  </div>
+  <div class="comparison-box new-style">
+    <h4 style="color: #7A6550;">V2 — Premium</h4>
+    <div class="demo-btn">Jugar Ahora</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<h2>Typography</h2>
+<div class="section">
+  <div class="type-display">La Mesa Está Lista</div>
+  <div class="type-h1">Domino Live</div>
+  <div class="type-h2">Torneo de Fundadores</div>
+  <div class="type-h3">Partida Rápida</div>
+  <div class="type-body">El dominó como debe ser. Reglas venezolanas, jugadores de verdad.</div>
+  <div class="type-caption">Playfair Display + IBM Plex Sans</div>
+</div>
+
+<div class="divider"></div>
+
+<h2>Buttons</h2>
+<div class="section">
+  <div class="button-row">
+    <button class="btn-primary">Unirme a la Lista</button>
+    <button class="btn-secondary">Ver Perfil</button>
+    <button class="btn-ghost">Cancelar</button>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<h2>Cards</h2>
+<div class="section" style="display: flex; gap: 16px; flex-wrap: wrap;">
+  <div class="preview-card">
+    <div class="card-title">Carlos Mendoza</div>
+    <div class="card-subtitle">ELO 1847 • Miami, FL</div>
+  </div>
+  <div class="preview-card active">
+    <div class="card-title">Tu Turno</div>
+    <div class="card-subtitle">Mesa #42 • 3 jugadores esperando</div>
+  </div>
+  <div class="preview-card premium">
+    <div class="card-badge">TORNEO</div>
+    <div class="card-title">Copa Fundadores</div>
+    <div class="card-subtitle">Inscripción abierta • 64 jugadores</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<h2>Hero Preview</h2>
+<div class="hero-preview">
+  <h1>La Mesa Te Está Esperando</h1>
+  <p>Dominó en tiempo real con chat de voz. Reglas venezolanas. Jugadores de verdad. La experiencia que siempre quisiste.</p>
+  <button class="btn-primary">Reserva Tu Lugar Gratis</button>
+  <div class="tagline">El que sabe, sabe.</div>
+</div>
+
+<div class="divider"></div>
+
+<p style="text-align: center; color: #7A6550; font-size: 13px; padding: 24px 0;">
+  Preview for Gabriel's approval — Luna 🎨 March 2026
+</p>
+
+</body>
+</html>

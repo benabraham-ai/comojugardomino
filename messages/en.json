@@ -6,6 +6,9 @@
     "email_placeholder": "you@email.com",
     "submit_button": "Join the list",
     "success_message": "You're in! We'll notify you when we launch.",
+    "duplicate_message": "You're already on the list! We'll notify you when we launch.",
+    "error_invalid_email": "Please enter a valid email address.",
+    "error_generic": "Something went wrong. Please try again.",
     "value_multiplayer": "Real-time multiplayer with voice chat",
     "value_rules": "Venezuelan rules, played right",
     "value_ranked": "Compete in ranked matches",
@@ -13,7 +16,12 @@
     "tournament_badge": "Exclusive",
     "tournament_headline": "Exclusive access to the first tournament",
     "tournament_description": "Join the waitlist now and get invited to the Founders Tournament when we launch. Only waitlist members can compete.",
-    "footer_tagline": "If you know, you know."
+    "footer_tagline": "If you know, you know.",
+    "trust_live_voice": "Live voice",
+    "trust_realtime": "Real-time",
+    "trust_tournaments": "Tournaments",
+    "trust_mobile": "Mobile app",
+    "trust_counter_label": "players on the waitlist"
   },
   "nav": {
     "home": "Home",
@@ -39,7 +47,12 @@
     "app_subtitle": "Carry dominoes in your pocket. Play quick matches, practice with bots, or challenge friends from anywhere.",
     "app_coming_soon": "Coming soon",
     "featured_title": "Recent Articles",
-    "featured_view_all": "View all articles"
+    "featured_view_all": "View all articles",
+    "trust_live_voice": "Live voice",
+    "trust_realtime": "Real-time",
+    "trust_tournaments": "Tournaments",
+    "trust_mobile": "Mobile app",
+    "trust_counter_label": "players on the waitlist"
   },
   "blog": {
     "title": "Blog",
@@ -67,6 +80,27 @@
   "footer": {
     "tagline": "The definitive guide to Latin American dominoes.",
     "play": "Play Domino Live",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "brandTagline": "If you know, you know.",
+    "brandDescription": "The definitive guide to Latin American dominoes. Learn, practice, and master the table.",
+    "columns": {
+      "content": "Content",
+      "resources": "Resources",
+      "community": "Community"
+    },
+    "links": {
+      "blog": "Blog",
+      "rules": "Rules",
+      "strategy": "Strategy",
+      "culture": "Culture",
+      "beginnerGuide": "Beginner's Guide",
+      "variants": "Domino Variants",
+      "psychology": "Game Psychology",
+      "waitlist": "Waitlist"
+    },
+    "legal": {
+      "privacy": "Privacy",
+      "terms": "Terms"
+    }
   }
 }

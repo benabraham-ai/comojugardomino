@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Link } from "@/i18n/routing";
 import { routing } from "@/i18n/routing";
 
 export function generateStaticParams() {
@@ -27,24 +28,22 @@ export default function AboutPage({ params }: { params: { locale: string } }) {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
-      <h1 className="font-heading text-3xl sm:text-4xl mb-6">{t("title")}</h1>
-      <p className="text-lg leading-relaxed text-cafecito/80 mb-8">
+      <h1 className="font-extrabold text-3xl sm:text-4xl mb-6 text-cream">{t("title")}</h1>
+      <p className="text-lg leading-relaxed text-cream-secondary mb-8">
         {t("description")}
       </p>
 
-      <div className="bg-gradient-to-br from-cafecito to-madera rounded-xl p-8 text-hueso">
-        <h2 className="font-heading text-2xl mb-3">Domino Live</h2>
-        <p className="text-hueso/80 mb-6">
+      <div className="bg-gradient-to-r from-coral to-gold rounded-xl p-8">
+        <h2 className="font-extrabold text-2xl mb-3 text-dark">Domino Live</h2>
+        <p className="text-dark/80 mb-6">
           {t("play_cta")}
         </p>
-        <a
-          href="https://domino-dev.benabraham.ai"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center px-6 py-3 bg-terracota text-hueso font-semibold rounded-lg hover:bg-terracota/90 transition-colors"
+        <Link
+          href="/waitlist"
+          className="inline-flex items-center px-6 py-3 bg-dark text-cream font-bold rounded-lg hover:bg-dark-raised transition-colors"
         >
           Domino Live &rarr;
-        </a>
+        </Link>
       </div>
     </div>
   );

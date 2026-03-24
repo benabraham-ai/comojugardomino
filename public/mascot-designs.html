@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mascot Designs — DominoLive</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    background: #1A1714;
+    color: #F5F0E8;
+    font-family: -apple-system, 'Inter', sans-serif;
+    padding: 40px;
+    line-height: 1.6;
+  }
+
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    color: #9E9181;
+    font-size: 14px;
+    margin-bottom: 40px;
+  }
+
+  .mascot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 32px;
+  }
+
+  .mascot-card {
+    background: #211E1A;
+    border: 1px solid #2A2420;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .mascot-card:hover {
+    border-color: #E8572A;
+  }
+
+  .mascot-image {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    display: block;
+  }
+
+  .mascot-info {
+    padding: 24px;
+  }
+
+  .mascot-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .mascot-emoji {
+    font-size: 32px;
+  }
+
+  .mascot-name {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .mascot-tagline {
+    color: #E8572A;
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .mascot-description {
+    color: #C8BC9F;
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .mascot-uses {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .use-tag {
+    background: rgba(232, 87, 42, 0.15);
+    border: 1px solid rgba(232, 87, 42, 0.3);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    color: #E8572A;
+  }
+
+  .vote-section {
+    background: linear-gradient(135deg, rgba(232, 87, 42, 0.1), rgba(107, 124, 92, 0.1));
+    border: 2px solid #E8572A;
+    border-radius: 16px;
+    padding: 32px;
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  .vote-section h2 {
+    color: #E8572A;
+    margin-bottom: 16px;
+  }
+
+  .vote-section p {
+    color: #C8BC9F;
+    font-size: 14px;
+  }
+
+  @media (max-width: 500px) {
+    body { padding: 20px; }
+    .mascot-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<h1>🎨 Mascot Designs</h1>
+<p class="subtitle">DominoLive Brand Identity • Actual illustrations by Pixel</p>
+
+<div class="mascot-grid">
+
+  <!-- LA IGUANA -->
+  <div class="mascot-card">
+    <img src="/images/mascots/mascot-iguana.png" alt="La Iguana" class="mascot-image">
+    <div class="mascot-info">
+      <div class="mascot-header">
+        <span class="mascot-emoji">🦎</span>
+        <span class="mascot-name">La Iguana</span>
+      </div>
+      <div class="mascot-tagline">Patient. Calculated. Caribbean cool.</div>
+      <p class="mascot-description">
+        Geometric-stylized Caribbean iguana. Shepard Fairey meets Nike SB. Arms crossed, half-lidded amber eyes, jade green body. The brand character.
+      </p>
+      <div class="mascot-uses">
+        <span class="use-tag">Brand Character</span>
+        <span class="use-tag">Thumbnails</span>
+        <span class="use-tag">Merch</span>
+        <span class="use-tag">App Icon</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EL CAPO -->
+  <div class="mascot-card">
+    <img src="/images/mascots/mascot-capo.png" alt="El Capo" class="mascot-image">
+    <div class="mascot-info">
+      <div class="mascot-header">
+        <span class="mascot-emoji">👴</span>
+        <span class="mascot-name">El Capo</span>
+      </div>
+      <div class="mascot-tagline">Timeless. Aspirational. The master's silhouette.</div>
+      <p class="mascot-description">
+        Cuban poster art meets Saul Bass. Pure flat silhouette with fedora, holding a domino tile. Cream on obsidian, coral hatband accent.
+      </p>
+      <div class="mascot-uses">
+        <span class="use-tag">Premium Emblem</span>
+        <span class="use-tag">Channel Banner</span>
+        <span class="use-tag">Merch</span>
+        <span class="use-tag">Achievement Badge</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- LA FICHA -->
+  <div class="mascot-card">
+    <img src="/images/mascots/mascot-ficha.png" alt="La Ficha" class="mascot-image">
+    <div class="mascot-info">
+      <div class="mascot-header">
+        <span class="mascot-emoji">🎭</span>
+        <span class="mascot-name">La Ficha</span>
+      </div>
+      <div class="mascot-tagline">The game piece IS the mascot.</div>
+      <p class="mascot-description">
+        Anthropomorphic domino tile with pip-eyes. Cream tile, obsidian pips, coral dividing line. Tilted at jaunty angle. Infinite expression system.
+      </p>
+      <div class="mascot-uses">
+        <span class="use-tag">App Icon (Best)</span>
+        <span class="use-tag">UI Elements</span>
+        <span class="use-tag">Stickers</span>
+        <span class="use-tag">Difficulty Icons</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EL LAGARTO -->
+  <div class="mascot-card">
+    <img src="/images/mascots/mascot-lagarto.png" alt="El Lagarto" class="mascot-image">
+    <div class="mascot-info">
+      <div class="mascot-header">
+        <span class="mascot-emoji">🦎⚡</span>
+        <span class="mascot-name">El Lagarto</span>
+      </div>
+      <div class="mascot-tagline">Miami Vice meets esports. Sunglasses never come off.</div>
+      <p class="mascot-description">
+        Aggressive esports iguana. Angular crest, dark reflective shades, coral accent scales. Front-facing confrontational stance with neon glow.
+      </p>
+      <div class="mascot-uses">
+        <span class="use-tag">Competitive Mode</span>
+        <span class="use-tag">Tournament Content</span>
+        <span class="use-tag">Streetwear Merch</span>
+        <span class="use-tag">Esports</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- LA FICHA — APP ICON ONLY -->
+<h2 style="font-size: 24px; margin: 48px 0 24px; color: #E8572A;">🎭 La Ficha — App Icon</h2>
+<div class="mascot-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+  <div class="mascot-card">
+    <img src="/images/mascots/mascot-ficha.png" alt="La Ficha" class="mascot-image">
+    <div class="mascot-info">
+      <div class="mascot-name">La Ficha</div>
+      <p class="mascot-description">The game piece IS the icon. Clean, simple, brand-native.</p>
+    </div>
+  </div>
+  <div class="mascot-card">
+    <img src="/images/mascots/ficha-icon-dark.png" alt="Ficha Icon Dark" class="mascot-image">
+    <div class="mascot-info">
+      <div class="mascot-name">Dark Mode Icon</div>
+      <p class="mascot-description">On #1A1714 background. Primary app icon.</p>
+    </div>
+  </div>
+  <div class="mascot-card">
+    <img src="/images/mascots/ficha-icon-light.png" alt="Ficha Icon Light" class="mascot-image">
+    <div class="mascot-info">
+      <div class="mascot-name">Light Mode Icon</div>
+      <p class="mascot-description">On cream background. For light themes.</p>
+    </div>
+  </div>
+</div>
+
+<h2 style="font-size: 24px; margin: 48px 0 24px; color: #E8572A;">🦎 La Iguana — Expressions & Poses</h2>
+<div class="mascot-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+  <div class="mascot-card">
+    <img src="/images/mascots/iguana-neutral.png" alt="Iguana Neutral" class="mascot-image">
+    <div class="mascot-info">
+      <div class="mascot-name">Neutral</div>
+      <p class="mascot-description">Arms crossed, observing. The "I've seen this before" stance.</p>
+    </div>
+  </div>
+  <div class="mascot-card">
+    <img src="/images/mascots/iguana-thinking.png" alt="Iguana Thinking" class="mascot-image">
+    <div class="mascot-info">
+      <div class="mascot-name">Thinking</div>
+      <p class="mascot-description">Hand on chin, holding tile. For strategy thumbnails.</p>
+    </div>
+  </div>
+  <div class="mascot-card">
+    <img src="/images/mascots/iguana-celebrating.png" alt="Iguana Celebrating" class="mascot-image">
+    <div class="mascot-info">
+      <div class="mascot-name">Celebrating</div>
+      <p class="mascot-description">Fist raised, controlled victory. For success content.</p>
+    </div>
+  </div>
+</div>
+
+<div class="vote-section">
+  <h2>✅ Dual System</h2>
+  <p><strong>La Ficha</strong> = App icon (simple, no expressions)<br><strong>La Iguana</strong> = Brand character with expressions (thumbnails, merch, content)</p>
+</div>
+
+<p style="text-align: center; color: #6B6560; font-size: 12px; margin-top: 40px;">
+  V5.2 Dark Earth • Pixel 🎨 • Awaiting Gabriel's decision
+</p>
+
+</body>
+</html>

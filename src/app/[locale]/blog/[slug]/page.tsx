@@ -31,6 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       publishedTime: post.date,
       authors: [post.author],
       tags: post.tags,
+      ...(post.image && { images: [post.image] }),
     },
   };
 }
@@ -46,26 +47,34 @@ export default async function BlogPostPage({ params }: Props) {
     <article className="max-w-3xl mx-auto px-4 py-12">
       <Link
         href="/blog"
-        className="text-sm text-terracota hover:underline mb-6 inline-block"
+        className="text-sm text-orange hover:text-gold transition-colors mb-6 inline-block"
       >
         &larr; {t("back_to_blog")}
       </Link>
+
+      {post.image && (
+        <img
+          src={post.image}
+          alt={post.title}
+          className="w-full rounded-xl mb-8 max-h-80 object-cover"
+        />
+      )}
 
       <header className="mb-8">
         <div className="flex flex-wrap gap-2 mb-3">
           {post.tags.map((tag) => (
             <span
               key={tag}
-              className="text-xs px-2 py-0.5 bg-verde/10 text-verde rounded-full"
+              className="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 bg-orange/10 text-orange rounded"
             >
               {tag}
             </span>
           ))}
         </div>
-        <h1 className="font-heading text-3xl sm:text-4xl leading-tight">
+        <h1 className="font-extrabold text-3xl sm:text-4xl leading-tight text-cream">
           {post.title}
         </h1>
-        <div className="mt-3 flex items-center gap-4 text-sm text-cafecito/50">
+        <div className="mt-3 flex items-center gap-4 text-sm text-muted">
           <time dateTime={post.date}>
             {new Date(post.date).toLocaleDateString(
               params.locale === "es" ? "es-LA" : "en-US",
@@ -79,7 +88,7 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
       </header>
 
-      <div className="prose prose-domino max-w-none">
+      <div className="prose prose-domino prose-lg max-w-none">
         <MDXRemote source={post.content} />
       </div>
     </article>
