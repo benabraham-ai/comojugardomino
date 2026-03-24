@@ -115,7 +115,7 @@ export function CategoryIcon({
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      style={{ color: active ? "#E8572A" : "#9E9181" }}
+      style={{ color: active ? "#FF6B35" : "#C9BBA8" }}
       className={className}
       aria-hidden="true"
     >

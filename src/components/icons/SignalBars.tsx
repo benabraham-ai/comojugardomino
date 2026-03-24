@@ -34,10 +34,10 @@ interface SignalBarsProps {
 // ============================================================
 
 export const SIGNAL_COLORS: Record<SignalLevel, string> = {
-  1: "#6B7C5C", // Olive — Fácil
+  1: "#7FC145", // Live Green — Fácil
   2: "#B5A07A", // Khaki — Intermedio
-  3: "#C05C3A", // Terracotta — Avanzado
-  4: "#C9923A", // Gold — Experto
+  3: "#FF6B35", // Brand Orange — Avanzado
+  4: "#F7C948", // Brand Gold — Experto
 };
 
 // ============================================================

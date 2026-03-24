@@ -77,7 +77,7 @@ export default function WaitlistPage() {
           {/* Logo */}
           <div className="flex justify-center mb-8">
             <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-earth-olive to-earth-khaki rounded-2xl shadow-lg shadow-earth-olive/30">
-              <DominoIcon name="domino-live-logo" size={48} color="#1A1714" />
+              <DominoIcon name="domino-live-logo" size={48} color="#3D2B1F" />
             </div>
           </div>
 

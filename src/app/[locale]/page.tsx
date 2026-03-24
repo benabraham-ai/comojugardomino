@@ -139,7 +139,7 @@ export default function HomePage({
               <div className="glass-card rounded-2xl p-8 relative z-10">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 bg-gradient-to-br from-coral to-gold rounded-xl flex items-center justify-center shadow-lg shadow-coral/20">
-                    <DominoIcon name="feature-lessons" size="lg" color="#1A1714" weight="fill" />
+                    <DominoIcon name="feature-lessons" size="lg" color="#3D2B1F" weight="fill" />
                   </div>
                   <div>
                     <h3 className="font-bold text-cream">Lecciones Rápidas</h3>
