@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Color Palettes — Pick Your Favorite</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    background: #0a0a0a;
+    color: #e0e0e0;
+    font-family: -apple-system, 'Inter', sans-serif;
+    padding: 40px 20px;
+    line-height: 1.6;
+  }
+
+  h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; text-align: center; }
+
+  .subtitle {
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 32px;
+    text-align: center;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .card {
+    background: #1a1a1a;
+    border: 2px solid #333;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .card:hover {
+    border-color: #ff6b35;
+    transform: translateY(-4px);
+  }
+
+  .card img {
+    width: 100%;
+  }
+
+  .card-info {
+    padding: 20px;
+    border-top: 1px solid #333;
+  }
+
+  .card-name {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .colors {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .color-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid #333;
+  }
+
+  .color-list {
+    font-size: 12px;
+    color: #888;
+    line-height: 1.8;
+  }
+
+  .best-for {
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: rgba(255, 107, 53, 0.15);
+    border-radius: 8px;
+    font-size: 13px;
+    color: #ff6b35;
+  }
+
+  @media (max-width: 500px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<h1>🎨 New Color Palettes</h1>
+<p class="subtitle">More vibrant options to replace the muted V5.2 palette</p>
+
+<div class="grid">
+
+  <div class="card">
+    <img src="/images/palettes/palette-1-caribbean.png" alt="Caribbean Heat">
+    <div class="card-info">
+      <div class="card-name">🌅 1. Caribbean Heat</div>
+      <div class="colors">
+        <div class="color-dot" style="background: #0d1b2a;"></div>
+        <div class="color-dot" style="background: #ff4500;"></div>
+        <div class="color-dot" style="background: #ffaa00;"></div>
+        <div class="color-dot" style="background: #ffffff;"></div>
+        <div class="color-dot" style="background: #00e676;"></div>
+      </div>
+      <div class="color-list">
+        BG: #0d1b2a • CTA: #ff4500 • Secondary: #ffaa00 • Text: #fff • Win: #00e676
+      </div>
+      <div class="best-for">✨ Tropical, sunset vibes — perfect for domino culture</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="/images/palettes/palette-2-neon.png" alt="Neon Nights">
+    <div class="card-info">
+      <div class="card-name">⚡ 2. Neon Nights</div>
+      <div class="colors">
+        <div class="color-dot" style="background: #0a0a0f;"></div>
+        <div class="color-dot" style="background: #ff00ff;"></div>
+        <div class="color-dot" style="background: #00ffff;"></div>
+        <div class="color-dot" style="background: #ffffff;"></div>
+        <div class="color-dot" style="background: #39ff14;"></div>
+      </div>
+      <div class="color-list">
+        BG: #0a0a0f • CTA: #ff00ff • Secondary: #00ffff • Text: #fff • Win: #39ff14
+      </div>
+      <div class="best-for">🎮 Esports energy — biggest departure from current</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="/images/palettes/palette-3-golden.png" alt="Golden Hour">
+    <div class="card-info">
+      <div class="card-name">🏆 3. Golden Hour</div>
+      <div class="colors">
+        <div class="color-dot" style="background: #1a1000;"></div>
+        <div class="color-dot" style="background: #ffb300;"></div>
+        <div class="color-dot" style="background: #ff6f00;"></div>
+        <div class="color-dot" style="background: #fff8e1;"></div>
+        <div class="color-dot" style="background: #76ff03;"></div>
+      </div>
+      <div class="color-list">
+        BG: #1a1000 • CTA: #ffb300 • Secondary: #ff6f00 • Text: #fff8e1 • Win: #76ff03
+      </div>
+      <div class="best-for">💎 Premium, rich feel — sophisticated but vibrant</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="/images/palettes/palette-4-venezuelan.png" alt="Venezuelan Flag">
+    <div class="card-info">
+      <div class="card-name">🇻🇪 4. Venezuelan Flag</div>
+      <div class="colors">
+        <div class="color-dot" style="background: #0a0a1a;"></div>
+        <div class="color-dot" style="background: #cf142b;"></div>
+        <div class="color-dot" style="background: #00247d;"></div>
+        <div class="color-dot" style="background: #ffffff;"></div>
+        <div class="color-dot" style="background: #ffd700;"></div>
+      </div>
+      <div class="color-list">
+        BG: #0a0a1a • CTA: #cf142b • Secondary: #00247d • Text: #fff • Win: #ffd700
+      </div>
+      <div class="best-for">🇻🇪 Cultural pride — crowd-pleaser for Venezuelan audience</div>
+    </div>
+  </div>
+
+</div>
+
+<p style="text-align: center; color: #555; font-size: 12px; margin-top: 40px;">
+  Pixel 🎨 • All palettes designed for dark mode
+</p>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>App Section Concepts — Pick Your Favorite</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    background: #0a0a0a;
+    color: #e0e0e0;
+    font-family: -apple-system, 'Inter', sans-serif;
+    padding: 40px 20px;
+    line-height: 1.6;
+  }
+
+  h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; text-align: center; }
+
+  .subtitle {
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 32px;
+    text-align: center;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .card {
+    background: #1a1a1a;
+    border: 2px solid #333;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .card:hover {
+    border-color: #ff6b35;
+    transform: translateY(-4px);
+  }
+
+  .card img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+  }
+
+  .card-info {
+    padding: 20px;
+    border-top: 1px solid #333;
+  }
+
+  .card-num {
+    display: inline-block;
+    background: #ff6b35;
+    color: #0a0a0a;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+  }
+
+  .card-name {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #f7c948;
+  }
+
+  .card-desc {
+    font-size: 14px;
+    color: #888;
+  }
+
+  .best-for {
+    margin-top: 12px;
+    padding: 8px 12px;
+    background: rgba(247, 201, 72, 0.1);
+    border-radius: 8px;
+    font-size: 13px;
+    color: #f7c948;
+  }
+
+  @media (max-width: 500px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<h1>🐐 App Section Concepts</h1>
+<p class="subtitle">Pick your favorite to replace the current mobile app mockup</p>
+
+<div class="grid">
+
+  <div class="card">
+    <img src="/images/app-section/lifestyle-hands.png" alt="Lifestyle Hands">
+    <div class="card-info">
+      <span class="card-num">1</span>
+      <div class="card-name">Lifestyle Hands</div>
+      <div class="card-desc">Hands holding a phone in a warm coffee shop setting. Active domino game on screen.</div>
+      <div class="best-for">✨ Best for: Relatable, human feeling</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="/images/app-section/floating-phone-3d.png" alt="Floating Phone 3D">
+    <div class="card-info">
+      <span class="card-num">2</span>
+      <div class="card-name">Floating Phone 3D</div>
+      <div class="card-desc">3D phone floating with domino tiles flying around. El Chivo peeking from behind!</div>
+      <div class="best-for">🚀 Best for: Energy, brand identity, most dynamic</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="/images/app-section/multiple-devices.png" alt="Multiple Devices">
+    <div class="card-info">
+      <span class="card-num">3</span>
+      <div class="card-name">Multiple Devices</div>
+      <div class="card-desc">Phone + tablet + laptop all showing the app. Clean, minimal arrangement.</div>
+      <div class="best-for">💻 Best for: Cross-platform messaging</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="/images/app-section/el-chivo-phone.png" alt="El Chivo Phone">
+    <div class="card-info">
+      <span class="card-num">4</span>
+      <div class="card-name">El Chivo Holding Phone</div>
+      <div class="card-desc">Cute Pixar-style El Chivo holding an oversized phone. Adorable and memorable!</div>
+      <div class="best-for">🐐 Best for: Brand personality, most memorable</div>
+    </div>
+  </div>
+
+</div>
+
+<p style="text-align: center; color: #555; font-size: 12px; margin-top: 40px;">
+  Pixel 🎨 • V5.2 Brand Colors • Dark Theme
+</p>
+
+</body>
+</html>
