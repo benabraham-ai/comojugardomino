@@ -78,7 +78,7 @@ export function MobileNav() {
       <button
         ref={buttonRef}
         onClick={() => setIsOpen(!isOpen)}
-        className="relative z-50 flex items-center justify-center w-10 h-10 text-cream hover:text-coral transition-colors duration-200"
+        className="relative z-[70] flex items-center justify-center w-10 h-10 text-cream hover:text-coral transition-colors duration-200"
         aria-label={isOpen ? "Close menu" : "Open menu"}
         aria-expanded={isOpen}
         aria-controls="mobile-menu"
@@ -104,7 +104,7 @@ export function MobileNav() {
 
       {/* Overlay */}
       <div
-        className={`fixed inset-0 bg-dark/80 backdrop-blur-sm z-40 transition-opacity duration-300 ${
+        className={`fixed inset-0 bg-dark/80 backdrop-blur-sm z-[60] transition-opacity duration-300 ${
           isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
         onClick={closeMenu}
@@ -118,7 +118,7 @@ export function MobileNav() {
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
-        className={`fixed inset-0 z-40 transform transition-all duration-300 ease-out ${
+        className={`fixed inset-0 z-[60] transform transition-all duration-300 ease-out ${
           isOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
