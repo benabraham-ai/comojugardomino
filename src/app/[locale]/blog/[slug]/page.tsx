@@ -118,7 +118,11 @@ export default async function BlogPostPage({ params }: Props) {
           <span>
             {post.readingTime} {t("min_read")}
           </span>
-          <span>{post.author}</span>
+          <span>
+            {post.author === "Sarah"
+              ? "Sarah, Experta en Dominó"
+              : post.author}
+          </span>
         </div>
       </header>
 
